@@ -28,6 +28,8 @@ gem 'active_model_serializers', '~> 0.10.0'
 # secure env var handling
 gem 'figaro'
 
+gem 'faker', github: 'stympy/faker'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
