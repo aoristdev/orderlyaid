@@ -1,16 +1,22 @@
 import React from 'react'
-
+import { browserHistory } from 'react-router'
 
 class SetSchedule extends React.Component { 
+
+      goToAddDescription() {
+       browserHistory.push('/AddDescription')
+   }
+   
 render(){
+  
 
     return<div>
     <h1>Set your schedule.</h1>
         <div className="form-group">
-            <label for="startDate">Start Date</label>
+            <label htmlFor="startDate">Start Date</label>
             <input type="text" className="form-control" id="startDate" />
 
-            <label for="quantity">Perscription Quantity</label>
+            <label htmlFor="quantity">Perscription Quantity</label>
             <input type="text" className="form-control" id="quantity" />
 
             <div className="radio">
@@ -55,7 +61,7 @@ render(){
                     <input type="checkbox" value="" />
                     Saturday
                 </label>
-                <button type="submit" className="btn btn-default">Add</button>
+                <button type="submit" className="btn btn-default onClick={this.goToAddDescription}">Add</button>
             </div>
         </div>
     </div>

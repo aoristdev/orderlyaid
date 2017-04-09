@@ -21,7 +21,7 @@ render(){
                             <AddPatient />
                             <SetReminders />
                             <SetSchedule />
-                            <button type="submit" class="btn btn-default">Next</button>
+                           
                             </div>
                             <div className="col-sm-4">
                                 <h3>Steps to get started.</h3>

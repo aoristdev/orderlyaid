@@ -2,14 +2,23 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 
 class SignIn extends React.Component { 
+    goToProfile(){
+    browserHistory.push('/Profile')
+    }
+    goToSignIn() {
+    browserHistory.push('/SignIn')
+   }
+     goToSignUp() {
+    browserHistory.push('/SignUp')
+   }
 render(){
     return<div>
     <div classNameName="container">
         <div classNameName="row">
             <div className="col-sm-8 col-sm-offset-2">
                 <div className="pull-right">
-                    <button type="button" className="btn btn-link pull-right">Sign Up</button> 
-                    <button type="button" className="btn btn-link pull-right">Sign In</button> 
+                    <button type="button" className="btn btn-link pull-right onClick={this.goToSignUp}">Sign Up</button> 
+                    <button type="button" className="btn btn-link pull-right onClick={this.goToSignIn}">Sign In</button> 
                 </div>
             </div>
         </div>
@@ -23,13 +32,13 @@ render(){
                                <h1>Manage all your medications in one place.</h1>
                                 <div className="form-group">
 
-                                    <label for="email">Email Address</label>
+                                    <label htmlFor="email">Email Address</label>
                                     <input type="email" className="form-control" id="email"/>
 
-                                    <label for="password">Password</label>
+                                    <label htmlFor="password">Password</label>
                                     <input type="password" className="form-control" id="password" />
 
-                                    <button type="submit" className="btn btn-default">Next</button>
+                                    <button type="submit" className="btn btn-default onClick={this.goToProfile}">Next</button>
                                 </div>
                             </div>
                             <div className="col-sm-4">

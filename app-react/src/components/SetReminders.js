@@ -1,15 +1,19 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 
 class SetReminders extends React.Component { 
+    goToSetSchedule() {
+    browserHistory.push('/SetSchedule')
+   }
 render (){
 
 return<div>
   <h1>Set your reminder.</h1>
     <div className="form-group">
-        <label for="startDate">Start Date</label>
+        <label htmlFor="startDate">Start Date</label>
         <input type="text" className="form-control" id="startDate" />
 
-        <label for="endDate">End Date</label>
+        <label htmlFor="endDate">End Date</label>
         <input type="text" className="form-control" id="endDate" />
 
         <div className="radio">
@@ -37,6 +41,7 @@ return<div>
             </label>
         </select>
     </div>
+     <button type="submit" className="btn btn-default onClick={this.goToSetSchedule}">Add</button>
 </div>
 }
 }

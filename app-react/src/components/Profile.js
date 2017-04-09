@@ -4,6 +4,13 @@ import TodaysMeds from './TodaysMeds'
 import MedHistory from './MedHistory'
 
 class Profile extends React.Component { 
+    goToTodaysMeds() {
+    browserHistory.push('/TodaysMeds')
+   }
+    goToHistory() {
+    browserHistory.push('/MedHistory')
+   }
+  
 render(){
 
     return<div>
@@ -50,8 +57,8 @@ render(){
             <div className="col-sm-8">
                 <div className="tabs">
                     <ul className="nav nav-tabs">
-                        <li role="presentation" className="active"><a href="#">Current</a></li>
-                        <li role="presentation"><a href="#">History</a></li>
+                        <li role="presentation" className="active onClick={this.goToTodaysMeds}"><a href="#">Current</a></li>
+                        <li role="presentation" className="onClick={this.goToHistory}"><a href="#">History</a></li>
                     </ul>
                 </div>
                  <div className="panel panel-default">

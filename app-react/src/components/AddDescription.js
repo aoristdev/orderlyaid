@@ -1,7 +1,13 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 
 class AddDescription extends React.Component { 
-
+    goToAddMedication() {
+    browserHistory.push('/AddMedication')
+   }
+    goToProfile() {
+    browserHistory.push('/Profile')
+   }
 render() {
 
     return<div>
@@ -40,8 +46,12 @@ render() {
             Some medications may decrease the effectivness of birthcontrol pills. Ask your Doctor or Pharmacist. 
         </div>
     </div>
-    <button type="submit" className="btn btn-default">Add More</button>
+    <button type="submit" className="btn btn-default onClick={this.goToAddMedication}">Add More</button>
+    <button type="submit" className="btn btn-default onClick={this.goToProfile}">Next</button>
+    
+    
 </div>
+
 
     }
 }
