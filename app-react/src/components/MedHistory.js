@@ -5,12 +5,12 @@ class MedHistory extends React.Component {
 render(){
 
     return<div>
-    <div class="historyTable">
-        <table class="table table-hover">
-            <th class="active">Date</th>
-            <th class="active">Time Taken</th> 
-            <th class="active">Medication</th>
-            <th class="active">Count</th>
+    <div className="historyTable">
+        <table className="table table-hover">
+            <th className="active">Date</th>
+            <th className="active">Time Taken</th> 
+            <th className="active">Medication</th>
+            <th className="active">Count</th>
 
             <tr>
                 <td>04.10.2017</td>
