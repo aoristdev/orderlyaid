@@ -2,8 +2,8 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 
 class SignUp extends React.Component {
-    constructor(props){
-        super(props)
+    constructor(){
+        super()
         this.state = {
             name:'',
             email:'',
@@ -12,38 +12,40 @@ class SignUp extends React.Component {
         }
         this.signup = this.signup.bind(this)
         this.goToSignUp = this.goToSignUp.bind(this)
-        this.goToSignIn = this.goToSignIp.bind(this)
+        this.goToSignIn = this.goToSignIn.bind(this)
  
     }
     signup() {
-        console.log(this.state.name)
+        console.log(this.state)
         var name = this.state.name;
         var email = this.state.email;
         var mobile = this.state.mobile;
         var photo = this.state.photo;
         var password = this.state.password;
 
-        fetch('/users/create', {
+        fetch('api/users/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+               user: {
                 username: name,
                 email: email,
                 phone: mobile,
                 avatar: photo,
                 password: password,
-               
+               }
             })
+     
+             
+        })  
             .then(response => response.json())
             .then(function(response){
                 if (response.api_token) {
                 sessionStorage.setItem('api_token', response.api_token)
                 browserHistory.push('/patient')
             }
-             
-        })  
     })
     }
 
@@ -74,16 +76,16 @@ class SignUp extends React.Component {
                                         <h1>Manage all your medications in one place.</h1>
                                         <div className="form-group">
                                             <label htmlFor="name">Name</label>
-                                            <input type="text" className="form-control" value={this.state.name} onChange={(e)=>this.setState ({name:e.target.value})} />
+                                            <input type="text" className="form-control" onChange={(e)=>this.setState ({name:e.target.value})} />
 
                                             <label htmlFor="email">Email Address</label>
-                                            <input type="email" className="form-control" value={this.state.email} onChange={(e)=>this.setState({email:e.target.value})} />
+                                            <input type="email" className="form-control" onChange={(e)=>this.setState({email:e.target.value})} />
 
                                             <label htmlFor="tel">Mobile Number</label>
-                                            <input type="tel" className="form-control" value={this.state.mobile} onChange={(e)=>this.setState({mobile:e.target.value})} />
+                                            <input type="tel" className="form-control" onChange={(e)=>this.setState({mobile:e.target.value})} />
 
                                             <label htmlFor="password">Password</label>
-                                            <input type="password" className="form-control" value={this.state.password} onChange={(e)=>this.setState({password:e.target.value})}/>
+                                            <input type="password" className="form-control"  onChange={(e)=>this.setState({password:e.target.value})}/>
 
                                            
 

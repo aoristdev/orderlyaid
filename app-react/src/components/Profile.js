@@ -62,7 +62,7 @@ render(){
                  <div className="panel panel-default">
                     <div className="panel-body">
                         <div className="row">
-                          {this.props.children}
+                
                         </div>
                     </div>
                 </div>
@@ -74,3 +74,5 @@ render(){
 }
 }
 export default Profile
+
+        //   {this.props.children} line 65
