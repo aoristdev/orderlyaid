@@ -2,6 +2,9 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 
 class OnBoarding extends React.Component {
+
+// add constructor 
+
     render() {
         console.log(this)
 
@@ -13,7 +16,7 @@ class OnBoarding extends React.Component {
                             <div className="panel-body">
                                 <div className="row">
                                     <div className="col-sm-8">
-                                        {this.props.children}
+                                      
 
                                     </div>
                                     <div className="col-sm-4">
@@ -39,3 +42,6 @@ class OnBoarding extends React.Component {
     }
 }
 export default OnBoarding
+
+//   {this.props.children} line 16
+// needs constructor
