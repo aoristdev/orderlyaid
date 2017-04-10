@@ -3,10 +3,10 @@ import { browserHistory } from 'react-router'
 
 class AddDescription extends React.Component { 
     goToAddMedication() {
-    browserHistory.push('/AddMedication')
+    browserHistory.push('/medication')
    }
     goToProfile() {
-    browserHistory.push('/Profile')
+    browserHistory.push('/profile')
    }
 render() {
 
@@ -46,8 +46,8 @@ render() {
             Some medications may decrease the effectivness of birthcontrol pills. Ask your Doctor or Pharmacist. 
         </div>
     </div>
-    <button type="submit" className="btn btn-default onClick={this.goToAddMedication}">Add More</button>
-    <button type="submit" className="btn btn-default onClick={this.goToProfile}">Next</button>
+    <button type="submit" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>
+    <button type="submit" className="btn btn-default" onClick={this.goToProfile}>Next</button>
     
     
 </div>

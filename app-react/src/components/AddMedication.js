@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 
 class AddMedication extends React.Component { 
     goToSetReminders() {
-    browserHistory.push('/SetReminders')
+    browserHistory.push('/reminders')
    }
 render() {
 
@@ -13,7 +13,7 @@ render() {
         <input type="text" class="form-control" id="name" />
         </div>
 
-        <button type="submit" className="btn btn-default onClick={this.goToSetReminders}">Add</button>
+        <button type="submit" className="btn btn-default" onClick={this.goToSetReminders}>Add</button>
 
     </div>
     }

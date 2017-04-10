@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 
 class AddPatient extends React.Component { 
     goToAddMedication() {
-    browserHistory.push('/AddMedication')
+    browserHistory.push('/medication')
    }
 render(){
 
@@ -22,7 +22,7 @@ render(){
                 <input type="text" className="form-control" id="photoUrl" />
             </div>
         </div>
-        <button type="submit" className="btn btn-default onClick={this.goToAddMedication}">Add</button>
+        <button type="submit" className="btn btn-default" onClick={this.goToAddMedication}>Add</button>
     </div>
 }
 }

@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 
 class SetReminders extends React.Component { 
     goToSetSchedule() {
-    browserHistory.push('/SetSchedule')
+    browserHistory.push('/schedule')
    }
 render (){
 
@@ -41,7 +41,7 @@ return<div>
             </label>
         </select>
     </div>
-     <button type="submit" className="btn btn-default onClick={this.goToSetSchedule}">Add</button>
+     <button type="submit" className="btn btn-default" onClick={this.goToSetSchedule}>Add</button>
 </div>
 }
 }
