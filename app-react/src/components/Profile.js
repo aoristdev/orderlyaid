@@ -1,14 +1,12 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import TodaysMeds from './TodaysMeds'
-import MedHistory from './MedHistory'
 
 class Profile extends React.Component { 
     goToTodaysMeds() {
-    browserHistory.push('/TodaysMeds')
+    browserHistory.push('/todaysmeds')
    }
     goToHistory() {
-    browserHistory.push('/MedHistory')
+    browserHistory.push('/medhistory')
    }
   
 render(){
@@ -57,15 +55,14 @@ render(){
             <div className="col-sm-8">
                 <div className="tabs">
                     <ul className="nav nav-tabs">
-                        <li role="presentation" className="active onClick={this.goToTodaysMeds}"><a href="#">Current</a></li>
-                        <li role="presentation" className="onClick={this.goToHistory}"><a href="#">History</a></li>
+                        <li role="presentation" onClick={this.goToTodaysMeds}><a>Current</a></li>
+                        <li role="presentation" onClick={this.goToHistory}><a>History</a></li>
                     </ul>
                 </div>
                  <div className="panel panel-default">
                     <div className="panel-body">
                         <div className="row">
-                          <TodaysMeds />
-                          <MedHistory />
+                          {this.props.children}
                         </div>
                     </div>
                 </div>

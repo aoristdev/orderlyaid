@@ -7,10 +7,10 @@ render(){
     return<div>
     <div className="historyTable">
         <table className="table table-hover">
-            <th className="active">Date</th>
-            <th className="active">Time Taken</th> 
-            <th className="active">Medication</th>
-            <th className="active">Count</th>
+            <tr className="active">Date</tr>
+            <tr className="active">Time Taken</tr> 
+            <tr className="active">Medication</tr>
+            <tr className="active">Count</tr>
 
             <tr>
                 <td>04.10.2017</td>

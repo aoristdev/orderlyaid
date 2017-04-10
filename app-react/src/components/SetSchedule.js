@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router'
 class SetSchedule extends React.Component { 
 
       goToAddDescription() {
-       browserHistory.push('/AddDescription')
+       browserHistory.push('/description')
    }
    
 render(){
@@ -61,7 +61,7 @@ render(){
                     <input type="checkbox" value="" />
                     Saturday
                 </label>
-                <button type="submit" className="btn btn-default onClick={this.goToAddDescription}">Add</button>
+                <button type="submit" className="btn btn-default" onClick={this.goToAddDescription}>Add</button>
             </div>
         </div>
     </div>
