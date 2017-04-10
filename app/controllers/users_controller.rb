@@ -2,16 +2,6 @@ class UsersController < ApplicationController
 
     before_action :require_user, except: [:create, :authenticate]
 
-    def show
-      render json: find_user
-    end
-
-    def authenticate
-      user = User.find_by(username: params[:username])
-                 &.authenticate(params[:password])
-      render json: user || error
-    end
-
     def create
       user = User.new(user_params)
       if user.save
@@ -22,24 +12,41 @@ class UsersController < ApplicationController
       end
     end
 
+    def authenticate
+      user = User.find_by(username: params[:username])
+                 &.authenticate(params[:password])
+      render json: user || error
+    end
+
+    def show
+      render json: current_user || error
+    end
+
     def update
-      user = find_user
-      if user.update(user_params)
+      if current_user.update(user_params)
         render json: signal('User updated.')
       else
         render json: error('User update failed.', 400)
       end
     end
 
+    def deactivate
+      current_user.active = false
+      current_user.token = nil
+      current_user.save
+      render json: signal('User deactivated.')
+    end
+
+    def destroy
+      current_user.destroy
+      render json: signal('User deleted.')
+    end
+
     private
 
     def user_params
-      params.permit(:id, :token, :username, :email, :phone, :forename, :surname, :avatar, :patient_name, :patient_avatar,
+      params.permit(:token, :username, :email, :phone, :forename, :surname, :avatar, :patient_name, :patient_avatar,
                     :password)
-    end
-
-    def find_user
-      User.find(params[:id])
     end
 
 end

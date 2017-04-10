@@ -12,8 +12,12 @@ class ApplicationController < ActionController::API
          status: status)
   end
 
+  def find_user
+    User.find_by(token: params[:token])
+  end
+
   def current_user
-    @current_user ||= User.find_by(token: params[:token]) if params[:token]
+    @current_user ||= find_user if params[:token]
   end
 
   def require_user
