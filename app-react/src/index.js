@@ -10,7 +10,6 @@ import MedHistory from './components/MedHistory'
 import TodaysMeds from './components/TodaysMeds'
 
 import OnBoarding from './components/OnBoarding'
-import AddPatient from './components/AddPatient'
 import AddMedication from './components/AddMedication'
 import SetReminders from './components/SetReminders' 
 import SetSchedule from './components/SetSchedule' 
@@ -27,7 +26,6 @@ ReactDOM.render (
         </Route>
         
         <Route path='/new' component={OnBoarding}>
-            <Route path='patient' component={AddPatient} />
             <Route path='medication' component={AddMedication} />
             <Route path='reminders' component={SetReminders} />
             <Route path='schedule' component={SetSchedule} />

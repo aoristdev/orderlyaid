@@ -29,7 +29,7 @@ render(){
                 </label>
             </div>
 
-            <div className="radio">
+            <div className="radio" placeholder="Scheduled Days">
                 <label>
                     <input type="radio" name="scheduledDays" id="scheduledDays" value="scheduledDays" />
                     Scheduled Days
