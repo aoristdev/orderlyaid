@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :prescriptions
   scope '/users' do
     post  '/create',         to: 'users#create'
     post  '/authenticate',   to: 'users#authenticate'
