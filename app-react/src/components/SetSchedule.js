@@ -3,8 +3,11 @@ import { browserHistory } from 'react-router'
 
 class SetSchedule extends React.Component { 
 
-      goToAddDescription() {
-       browserHistory.push('/AddDescription')
+    goToAddDescription() {
+    browserHistory.push('description')
+   }
+    goToProfile() {
+    browserHistory.push('/profile')
    }
    
 render(){
@@ -26,7 +29,7 @@ render(){
                 </label>
             </div>
 
-            <div className="radio">
+            <div className="radio" placeholder="Scheduled Days">
                 <label>
                     <input type="radio" name="scheduledDays" id="scheduledDays" value="scheduledDays" />
                     Scheduled Days
@@ -61,7 +64,7 @@ render(){
                     <input type="checkbox" value="" />
                     Saturday
                 </label>
-                <button type="submit" className="btn btn-default onClick={this.goToAddDescription}">Add</button>
+                <button type="submit" className="btn btn-default" onClick={this.goToAddDescription}>Add</button>
             </div>
         </div>
     </div>
