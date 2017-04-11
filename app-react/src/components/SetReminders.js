@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 
 class SetReminders extends React.Component { 
     goToSetSchedule() {
-    browserHistory.push('/schedule')
+    browserHistory.push('schedule')
    }
 render (){
 

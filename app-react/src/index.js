@@ -10,11 +10,11 @@ import MedHistory from './components/MedHistory'
 import TodaysMeds from './components/TodaysMeds'
 
 import OnBoarding from './components/OnBoarding'
-import AddDescription from './components/AddDescription'
+import AddPatient from './components/AddPatient'
+import AddMedication from './components/AddMedication'
 import SetReminders from './components/SetReminders' 
 import SetSchedule from './components/SetSchedule' 
-import AddMedication from './components/AddMedication'
-import AddPatient from './components/AddPatient'
+import AddDescription from './components/AddDescription'
 
 ReactDOM.render (
    <Router history={browserHistory}>

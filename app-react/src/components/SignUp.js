@@ -1,6 +1,7 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
 
+
 class SignUp extends React.Component {
     constructor(){
         super()
@@ -13,6 +14,7 @@ class SignUp extends React.Component {
         this.signup = this.signup.bind(this)
         this.goToSignUp = this.goToSignUp.bind(this)
         this.goToSignIn = this.goToSignIn.bind(this)
+        this.goToPatient = this.goToPatient.bind(this)
  
     }
     signup() {
@@ -23,28 +25,26 @@ class SignUp extends React.Component {
         var photo = this.state.photo;
         var password = this.state.password;
 
-        fetch('api/users/create', {
+        fetch('/users/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-               user: {
                 username: name,
                 email: email,
                 phone: mobile,
                 avatar: photo,
                 password: password,
-               }
             })
      
              
         })  
             .then(response => response.json())
-            .then(function(response){
+            .then(response => {
                 if (response.api_token) {
                 sessionStorage.setItem('api_token', response.api_token)
-                browserHistory.push('/patient')
+                browserHistory.push('/new')
             }
     })
     }
@@ -54,6 +54,9 @@ class SignUp extends React.Component {
     }
     goToSignUp() {
         browserHistory.push('/')
+    }
+    goToPatient() {
+        browserHistory.push('new')
     }
 
     render() {
@@ -89,7 +92,7 @@ class SignUp extends React.Component {
 
                                            
 
-                                            <button type="button" className="btn btn-default" onClick={this.signup}>Next</button>
+                                            <button type="button" className="btn btn-default" onClick={this.goToPatient}>Next</button>
                                         </div>
                                     </div>
                                     <div className="col-sm-4">

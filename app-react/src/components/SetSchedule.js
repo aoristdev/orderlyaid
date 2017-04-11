@@ -3,8 +3,11 @@ import { browserHistory } from 'react-router'
 
 class SetSchedule extends React.Component { 
 
-      goToAddDescription() {
-       browserHistory.push('/description')
+    goToAddDescription() {
+    browserHistory.push('description')
+   }
+    goToProfile() {
+    browserHistory.push('/profile')
    }
    
 render(){

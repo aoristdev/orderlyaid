@@ -1,9 +1,10 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
 
+
 class AddMedication extends React.Component { 
     goToSetReminders() {
-    browserHistory.push('/reminders')
+    browserHistory.push('reminders')
    }
 render() {
 

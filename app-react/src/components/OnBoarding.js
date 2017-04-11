@@ -1,5 +1,11 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import AddPatient from './AddPatient'
+import AddMedication from './AddMedication'
+import SetReminders from './SetReminders'
+
+import './css/index.css'
+
 
 class OnBoarding extends React.Component {
 
@@ -16,7 +22,9 @@ class OnBoarding extends React.Component {
                             <div className="panel-body">
                                 <div className="row">
                                     <div className="col-sm-8">
-                                      
+                                      <AddPatient />
+                                      <AddMedication />
+                                      <SetReminders />
 
                                     </div>
                                     <div className="col-sm-4">
