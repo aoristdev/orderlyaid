@@ -13,6 +13,8 @@ task event_spooler: :environment do
   #pseudocode end
 
   # rails generate resources Prescription users:references active:boolean status name description:text physical_description:text caution:text notes:text dosage:decimal total:integer count:integer interval:time start_time:time end_time:time
+  # rails generate migration AddDOBGenderToUser gender dob:date
+  # rails generate migration AddInstructionsToPrescription instructions:text
   # rails generate model Weekday day numerical:integer
   # rails generate model PrescriptionToWeekdayJoin prescriptions:references weekdays:references
 
