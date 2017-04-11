@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  users: one
+  active: false
+  status: MyString
+  name: MyString
+  description: MyText
+  physical_description: MyText
+  caution: MyText
+  notes: MyText
+  dosage: 9.99
+  total: 1
+  count: 1
+  interval: 2017-04-11 15:41:13
+  start_time: 2017-04-11 15:41:13
+  end_time: 2017-04-11 15:41:13
+
+two:
+  users: two
+  active: false
+  status: MyString
+  name: MyString
+  description: MyText
+  physical_description: MyText
+  caution: MyText
+  notes: MyText
+  dosage: 9.99
+  total: 1
+  count: 1
+  interval: 2017-04-11 15:41:13
+  start_time: 2017-04-11 15:41:13
+  end_time: 2017-04-11 15:41:13
