@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 
 class SetReminders extends React.Component { 
     goToSetSchedule() {
-    browserHistory.push('schedule')
+    browserHistory.push('/new/schedule')
    }
 render (){
 
@@ -22,23 +22,19 @@ return<div>
                 Continuous
             </label>
         </div>
-        <select className="form-control">
-            <label> How many times per day?
+        <select className="form-control" placeholder="how many times a day?">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
-            </label>
         </select>
-            <select className="form-control">
-            <label> Dosage
+            <select className="form-control" placeholder="dosage">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
-            </label>
         </select>
     </div>
      <button type="submit" className="btn btn-default" onClick={this.goToSetSchedule}>Add</button>

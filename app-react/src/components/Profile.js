@@ -2,11 +2,17 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 
 class Profile extends React.Component { 
+    constructor(props){
+        super(props)
+         this.goToTodaysMeds = this.goToTodaysMeds.bind(this)
+         this.goToHistory = this.goToHistory.bind(this)
+         
+        }
     goToTodaysMeds() {
-    browserHistory.push('/todaysmeds')
+    browserHistory.push('/profile/todaysmeds')
    }
     goToHistory() {
-    browserHistory.push('/medhistory')
+    browserHistory.push('/profile/medhistory')
    }
   
 render(){
@@ -62,7 +68,7 @@ render(){
                  <div className="panel panel-default">
                     <div className="panel-body">
                         <div className="row">
-                
+                        {this.props.children}
                         </div>
                     </div>
                 </div>
