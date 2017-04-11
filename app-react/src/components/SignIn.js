@@ -9,6 +9,8 @@ class SignIn extends React.Component {
             password:this.state.password,
         }
 
+        this.signin = this.signin.bind(this)
+
     }
     signIn() {
         fetch('/users/profile', {
@@ -61,12 +63,12 @@ class SignIn extends React.Component {
                                         <div className="form-group">
 
                                             <label htmlFor="email">Email Address</label>
-                                            <input type="email" className="form-control" id="email" />
+                                            <input type="email" className="form-control" onChange={(e)=>this.setState ({email:e.target.value})} id="email" />
 
                                             <label htmlFor="password">Password</label>
-                                            <input type="password" className="form-control" id="password" />
+                                            <input type="password" className="form-control" onChange={(e)=>this.setState ({password:e.target.value})} id="password" />
 
-                                            <button type="button" className="btn btn-default" onClick={this.signIn}>Next</button>
+                                            <button type="button" className="btn btn-default" onClick={this.signin}>Next</button>
                                         </div>
                                     </div>
                                     <div className="col-sm-4">
