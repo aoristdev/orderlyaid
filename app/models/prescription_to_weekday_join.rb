@@ -1,4 +1,4 @@
 class PrescriptionToWeekdayJoin < ApplicationRecord
-  belongs_to :prescriptions
-  belongs_to :weekdays
+  belongs_to :prescription
+  belongs_to :weekday
 end

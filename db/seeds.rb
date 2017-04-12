@@ -2,8 +2,12 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 
+%w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each_with_index do |name, number|
+  Weekday.create!(name: name, number: number + 1)
+end
+
 5.times do
-  User.create!(
+  user = User.new!(
     password: Faker::Internet.password,
     username: Faker::Internet.user_name,
     email: Faker::Internet.email,
@@ -14,8 +18,17 @@
     patient_name: Faker::Name.name,
     patient_avatar: Faker::Avatar.image
   )
+  user.prescriptions = []
+  user.save!
 end
 
+Rx = Prescription
+
+gal = Rx.new(name: "Gal Gadot", description: "Multilingual", physical_description: "Attractive", caution: "CAUTION: HOT! DO NOT TOUCH.", total: 60, count: 60)
+
+
+
+# Rx = Prescription; gal = Rx.new(name: "Gal Gadot", description: "Beautiful, athletic, tall, intelligent, multilingual", physical_description: "Attractive", caution: "Too hot.", total: 60, count: 60, instructions: "Do not touch, unless invited.", notes: "I'm afraid I don't know her very well.")
 # response["results"][0]["openfda"]["generic_name|brand_name|substance_name"] == "Omeprazole" (case-insensitive)
 # API key for OpenFDA: bBxbkpf6rdhvKOyXSP99gMJj7vKV0Mqs2PqA8Bbq
 
