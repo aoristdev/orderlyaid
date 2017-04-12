@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   #   Rails.env.production? ? 'https://.../' : 'http://localhost:8000/'
   # )
 
+  #TODO customize routes for Prescriptions
+  #TODO validations!!
+
 end

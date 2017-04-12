@@ -10,27 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412131427) do
+ActiveRecord::Schema.define(version: 20170412123342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "prescription_to_weekday_joins", force: :cascade do |t|
-    t.integer  "prescriptions_id"
-    t.integer  "weekdays_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["prescriptions_id"], name: "index_prescription_to_weekday_joins_on_prescriptions_id", using: :btree
-    t.index ["weekdays_id"], name: "index_prescription_to_weekday_joins_on_weekdays_id", using: :btree
+    t.integer  "prescription_id"
+    t.integer  "weekday_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["prescription_id"], name: "index_prescription_to_weekday_joins_on_prescription_id", using: :btree
+    t.index ["weekday_id"], name: "index_prescription_to_weekday_joins_on_weekday_id", using: :btree
   end
 
   create_table "prescriptions", force: :cascade do |t|
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.boolean  "active",               default: true
     t.string   "status"
     t.string   "name"
     t.text     "description"
     t.text     "physical_description"
+    t.text     "instructions"
     t.text     "caution"
     t.text     "notes"
     t.float    "dosage",               default: 1.0
@@ -41,17 +42,16 @@ ActiveRecord::Schema.define(version: 20170412131427) do
     t.time     "end_time",             default: '2000-01-01 00:00:00'
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
-    t.text     "instructions"
-    t.index ["users_id"], name: "index_prescriptions_on_users_id", using: :btree
+    t.index ["user_id"], name: "index_prescriptions_on_user_id", using: :btree
   end
 
   create_table "reminders", force: :cascade do |t|
-    t.integer  "prescriptions_id"
+    t.integer  "prescription_id"
     t.time     "transmit_time"
+    t.string   "single_use_token"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.string   "single_use_token"
-    t.index ["prescriptions_id"], name: "index_reminders_on_prescriptions_id", using: :btree
+    t.index ["prescription_id"], name: "index_reminders_on_prescription_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,26 +61,26 @@ ActiveRecord::Schema.define(version: 20170412131427) do
     t.string   "phone"
     t.string   "forename"
     t.string   "surname"
-    t.string   "patient_name"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
     t.string   "avatar"
+    t.string   "patient_name"
     t.string   "patient_avatar"
-    t.string   "password_digest"
-    t.boolean  "active",          default: true
     t.string   "patient_gender"
     t.date     "patient_dob"
+    t.boolean  "active",          default: true
+    t.string   "password_digest"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "weekdays", force: :cascade do |t|
-    t.string   "day"
-    t.integer  "day_of_the_week"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "name"
+    t.integer  "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "prescription_to_weekday_joins", "prescriptions", column: "prescriptions_id"
-  add_foreign_key "prescription_to_weekday_joins", "weekdays", column: "weekdays_id"
-  add_foreign_key "prescriptions", "users", column: "users_id"
-  add_foreign_key "reminders", "prescriptions", column: "prescriptions_id"
+  add_foreign_key "prescription_to_weekday_joins", "prescriptions"
+  add_foreign_key "prescription_to_weekday_joins", "weekdays"
+  add_foreign_key "prescriptions", "users"
+  add_foreign_key "reminders", "prescriptions"
 end
