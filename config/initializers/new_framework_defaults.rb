@@ -7,6 +7,7 @@
 # Make Ruby 2.4 preserve the timezone of the receiver when calling `to_time`.
 # Previous versions had false.
 ActiveSupport.to_time_preserves_timezone = true
+Rails.application.config.active_record.time_zone_aware_types = [:datetime] # add `:time` if you would like to use the new behavior
 
 # Require `belongs_to` associations by default. Previous versions had false.
 Rails.application.config.active_record.belongs_to_required_by_default = true

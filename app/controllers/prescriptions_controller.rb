@@ -7,18 +7,33 @@ class PrescriptionsController < ApplicationController
   end
 
   def show
-    render json: Prescription.find(params[:id])
+    render json: find_rx
   end
-  def create; end
-  def update; end
-  def destroy; end
+
+  def create
+    rx = Prescription.new(rx_params)
+    render json: rx.save! ? rx : error('Prescription could not be created.', 400)
+  end
+
+  def update
+    render json: if find_rx.update(rx_params)
+      signal('Prescription updated.')
+    else
+      error('Prescription update failed.', 400)
+    end
+  end
+
+  def destroy
+    find_rx.destroy
+    render json: signal('Prescription deleted.')
+  end
 
   private
 
   def rx_params
     params.permit(
-      :token,
       :id,
+      :user,
       :active,
       :status,
       :name,
@@ -36,6 +51,10 @@ class PrescriptionsController < ApplicationController
       :updated_at,
       :instructions
     )
+  end
+
+  def find_rx
+    @rx = Prescription.find(rx_params[:id])
   end
 
 end

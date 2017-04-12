@@ -1,15 +1,16 @@
 class CreatePrescriptions < ActiveRecord::Migration[5.0]
   def change
-    ignore = {date: [0, 1, 1], timezone: 0, seconds: 0}
-    midnight = Time.new(*ignore[:date], 00, 00, ignore[:seconds], ignore[:timezone])
+    ignore = {date: [0, 1, 1], utc: 0, seconds: 0}
+    midnight = Time.new(*ignore[:date], 00, 00, ignore[:seconds], ignore[:utc])
 
     create_table :prescriptions do |t|
-      t.references :users, foreign_key: true
+      t.references :user, foreign_key: true
       t.boolean :active, default: true
       t.string :status
       t.string :name
       t.text :description
       t.text :physical_description
+      t.text :instructions
       t.text :caution
       t.text :notes
       t.float :dosage, default: 1.0
