@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411195632) do
+ActiveRecord::Schema.define(version: 20170412123342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20170411195632) do
     t.index ["users_id"], name: "index_prescriptions_on_users_id", using: :btree
   end
 
+  create_table "reminder_queues", force: :cascade do |t|
+    t.integer  "prescriptions_id"
+    t.string   "transmit_time"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["prescriptions_id"], name: "index_reminder_queues_on_prescriptions_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "token"
     t.string   "username"
@@ -59,8 +67,8 @@ ActiveRecord::Schema.define(version: 20170411195632) do
     t.string   "patient_avatar"
     t.string   "password_digest"
     t.boolean  "active",          default: true
-    t.string   "gender",          default: "f"
-    t.date     "dob"
+    t.string   "patient_gender"
+    t.date     "patient_dob"
   end
 
   create_table "weekdays", force: :cascade do |t|
@@ -73,4 +81,5 @@ ActiveRecord::Schema.define(version: 20170411195632) do
   add_foreign_key "prescription_to_weekday_joins", "prescriptions", column: "prescriptions_id"
   add_foreign_key "prescription_to_weekday_joins", "weekdays", column: "weekdays_id"
   add_foreign_key "prescriptions", "users", column: "users_id"
+  add_foreign_key "reminder_queues", "prescriptions", column: "prescriptions_id"
 end
