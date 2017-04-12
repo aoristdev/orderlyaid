@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prescriptions: one
+  transmit_time: MyString
+
+two:
+  prescriptions: two
+  transmit_time: MyString
