@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412123342) do
+ActiveRecord::Schema.define(version: 20170412131427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,12 +45,13 @@ ActiveRecord::Schema.define(version: 20170412123342) do
     t.index ["users_id"], name: "index_prescriptions_on_users_id", using: :btree
   end
 
-  create_table "reminder_queues", force: :cascade do |t|
+  create_table "reminders", force: :cascade do |t|
     t.integer  "prescriptions_id"
-    t.string   "transmit_time"
+    t.time     "transmit_time"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["prescriptions_id"], name: "index_reminder_queues_on_prescriptions_id", using: :btree
+    t.string   "single_use_token"
+    t.index ["prescriptions_id"], name: "index_reminders_on_prescriptions_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,5 +82,5 @@ ActiveRecord::Schema.define(version: 20170412123342) do
   add_foreign_key "prescription_to_weekday_joins", "prescriptions", column: "prescriptions_id"
   add_foreign_key "prescription_to_weekday_joins", "weekdays", column: "weekdays_id"
   add_foreign_key "prescriptions", "users", column: "users_id"
-  add_foreign_key "reminder_queues", "prescriptions", column: "prescriptions_id"
+  add_foreign_key "reminders", "prescriptions", column: "prescriptions_id"
 end
