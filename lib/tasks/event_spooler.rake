@@ -12,12 +12,6 @@ task reminder_spooler: :environment do
 
   #pseudocode end
 
-  # rails generate model ReminderQueue prescriptions:references transmit_time
-
-  # deftable ReminderQueue
-
-  # end
-
   # argument_1 = args.arg_1
   # include Rails.application.routes.url_helpers; puts "user profile is #{profile_path}"
 
