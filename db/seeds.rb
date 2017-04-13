@@ -31,8 +31,6 @@ end
 
 # Time.now.month
 # Time.now.day
-future_month = ->{ [*(4..6)].sample }
-future_day = ->{ [*(1..31)].sample }
 blank_time = Time.new(0,1,1,   00, 00,   0,0)
 
 %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each_with_index do |name, number|
