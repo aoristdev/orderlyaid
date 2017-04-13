@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router'
 class SetSchedule extends React.Component { 
 
     goToAddDescription() {
-    browserHistory.push('description')
+    browserHistory.push('/new/description')
    }
     goToProfile() {
     browserHistory.push('/profile')

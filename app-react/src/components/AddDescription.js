@@ -2,11 +2,15 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 
 class AddDescription extends React.Component { 
+    constructor(props){
+        super(props)
+         this.goToProfile = this.goToProfile.bind(this)
+    }
     goToAddMedication() {
-    browserHistory.push('/medication')
+    browserHistory.push('/new/medication')
    }
     goToProfile() {
-    browserHistory.push('/profile')
+    browserHistory.push('/nav/profile')
    }
 render() {
 

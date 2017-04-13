@@ -1,0 +1,88 @@
+ /*font-family: 'Varela Round', sans-serif;*/
+    /*font-family: 'Roboto', sans-serif;*/
+.userBio{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 30px;
+}
+.userProfile {
+    margin-top: 40px;  
+}
+.userImg {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    text-align: center;
+    padding: none;
+    margin-top: 20px;
+}
+.userName{
+    font-family: 'Varela Round', sans-serif;
+    font-size: 25px;
+}
+.userGender{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+.userAge {
+     font-family: 'Roboto', sans-serif;
+     font-size: 15px;
+}
+
+.nextMedPanel{
+    margin-top: 40px;
+    max-width: 90%;
+}
+.tabs{
+    margin-bottom: 20px;
+}
+
+.well {
+    border-radius: 2px;
+    padding-top: 14px;
+    padding-bottom: 5px;
+}
+.nextMed {
+    text-align: center; 
+    font-family: 'Varela Round', sans-serif;
+}
+.medName {
+    padding-top: 15px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+.medTime {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+.medDate {
+    margin-top: -8px;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+.medBtns {
+    border-top: .5px solid silver;
+}
+.historyTable {
+    padding: 20px;
+}
+
+/*.card {
+    padding: 20px 20px 20px 20px;  
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    max-width: 400px; 
+    margin: auto;
+    border-radius: 10px;
+}*/
+
+.time {
+   position:relative;
+}
+.thisDiv{
+    position:absolute;
+  left:50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+
+}

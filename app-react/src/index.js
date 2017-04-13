@@ -9,7 +9,9 @@ import Profile from './components/Profile'
 import MedHistory from './components/MedHistory'
 import TodaysMeds from './components/TodaysMeds'
 
+import Nav from './components/Nav'
 import OnBoarding from './components/OnBoarding'
+import AddPatient from './components/AddPatient'
 import AddMedication from './components/AddMedication'
 import SetReminders from './components/SetReminders' 
 import SetSchedule from './components/SetSchedule' 
@@ -20,12 +22,15 @@ ReactDOM.render (
        <Route path="/" component={SignUp} />
        <Route path='/signin' component={SignIn} />
 
-       <Route path='/profile' component={Profile}>
-            <Route path='todaysmeds' component={TodaysMeds} />
-            <Route path='medhistory' component={MedHistory} />
+       <Route path='/nav' component={Nav}>
+            <Route path='profile' component={Profile} >        
+                <Route path='todaysmeds' component={TodaysMeds} />
+                <Route path='medhistory' component={MedHistory} />
+            </Route>
         </Route>
         
         <Route path='/new' component={OnBoarding}>
+            <Route path='patient' component={AddPatient} />
             <Route path='medication' component={AddMedication} />
             <Route path='reminders' component={SetReminders} />
             <Route path='schedule' component={SetSchedule} />
@@ -36,10 +41,3 @@ ReactDOM.render (
 
    document.getElementById('root')
 )
-
-        
-        // <route path='profile/:onboardingid/patient' component={AddPatient}></route>
-        // <route path='profile/:onboardingid/medication' component={AddMedication}></route>
-        // <route path='profile/:onboardingid/reminders' component={SetReminders}></route>
-        // <route path='profile/:onboardingid/schedule' component={SetSchedule}></route>
-        // <route path='profile/:onboardingid/description' component={AddDescription}></route>
