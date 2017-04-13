@@ -10,8 +10,12 @@ class PrescriptionsController < ApplicationController
     render json: find_rx
   end
 
+# when rx is created or updated reminder cascading
+
   def create
     rx = Prescription.new(rx_params)
+    binding.pry #Reminder #ex5HaCwEd8sJQmGYfRL4GVSh
+    rx.reminders << Reminder.new(transmit_time: _)
     render json: rx.save! ? rx : error('Prescription could not be created.', 400)
   end
 
@@ -31,6 +35,9 @@ class PrescriptionsController < ApplicationController
   private
 
   def rx_params
+    params[:interval] = hour_to_time_obj(params[:interval])
+    params[:start_time] = hour_to_time_obj(params[:start_time])
+    params[:end_time] = hour_to_time_obj(params[:end_time])
     params.permit(
       :id,
       :user,
@@ -55,6 +62,10 @@ class PrescriptionsController < ApplicationController
 
   def find_rx
     @rx = Prescription.find(rx_params[:id])
+  end
+
+  def hour_to_time_obj(hour)
+    Time.new(0,1,1,*hour.split(':'),0,0)
   end
 
 end
