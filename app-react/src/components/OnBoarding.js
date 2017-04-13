@@ -1,34 +1,16 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
 
-
-
-import './css/index.css'
-
-
 class OnBoarding extends React.Component {
-    constructor(props) {
-        super(props)
-        this.goToAddMedication = this.goToAddMedication.bind(this)
-        this.state = {
 
-        }
+
+    componentDidMount(){
+        browserHistory.push('/new/patient')
     }
-    componentDidMount() {
-        alert("I made it Maaaa!")
-    }
-    goToAddMedication() {
-        // /post patient
-    window.scroll(0, 2500)
-    browserHistory.push('/new/medication')
-    }    
-
-// add constructor 
-
     render() {
         // console.log(this)
 
-        return <div>
+        return<div>
             <div className="container">
                 <div className="row">
                     <div className="col-sm-8 col-sm-offset-2">
@@ -36,22 +18,7 @@ class OnBoarding extends React.Component {
                             <div className="panel-body">
                                 <div className="row">
                                     <div className="col-sm-8">
-                                     <h1>Start by adding a patient.</h1>
-                                        <div className="form-group">
-                                            <label htmlFor="name">Name</label>
-                                            <input type="text" className="form-control" id="name" />
-
-                                            <label htmlFor="birthDate">Birth Date</label>
-                                            <input type="text" className="form-control" id="birthDate" />
-
-                                            <label className="sr-only" htmlFor="photoUrl">Photo</label>
-                                            <div className="input-group">
-                                                <div className="input-group-addon">URL</div>
-                                                <input type="text" className="form-control" id="photoUrl" />
-                                            </div>
-                                        </div>
-                                        <button type="submit" className="btn btn-default" onClick={this.goToAddMedication}>Add</button>
-                                      {this.props.children}
+                                     {this.props.children}
                                     </div>
                                     <div className="col-sm-4">
                                         <h3>Steps to get started.</h3>

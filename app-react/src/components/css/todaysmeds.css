@@ -1,0 +1,48 @@
+.card {
+    padding: 20px 20px 20px 20px;  
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+}
+.todaysDate {
+    text-align: center;
+    font-size: 17px;
+    margin-top: -15px;
+}
+.currentTime {
+    text-align: center;
+    font-size: 35px;
+}
+.listOfCurrentMeds {
+    margin-top: 15px;
+}
+.medicationName {
+    font-size: 20px;
+}
+.dosage {
+    font-size: 15px;
+}
+.instructions {
+    font-size: 15px;
+}
+.cautions {
+    font-size: 15px;
+}
+.notes {
+    font-size: 15px;
+}
+
+.ctaBtns {
+    margin-top: 10px;
+    border-top: .5px solid silver;
+}
+.taken {
+    text-align: center;
+}
+.reschedule {
+    margin-left: 5px;
+    text-align: center;
+     border-left: .5px solid silver;
+}
+
+
+
