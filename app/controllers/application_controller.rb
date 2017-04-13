@@ -13,7 +13,7 @@ class ApplicationController < ActionController::API
   end
 
   def find_user
-    User.find_by(token: params[:token])
+    User.find_by(token: params[:token]) #|| Reminder.find_by(single_use_token: params[:single_use_token]).user
   end
 
   def current_user
