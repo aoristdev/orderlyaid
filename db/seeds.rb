@@ -22,22 +22,41 @@ def fake_received_interval
   minute = seconds_to_minutes(random_duration_in_minutes.seconds)
   Time.parse("#{hour}:#{minute}")
 end
+def random_time_tomorrow
+  hour = seconds_to_hours(random_duration_in_hours.seconds)
+  minute = seconds_to_minutes(random_duration_in_minutes.seconds)
+  Time.parse("#{Time.now.tomorrow.day} #{hour}:#{minute}")
+end
 def fake_received_start_time
   Time.parse("#{random_time_within_a_day}")
 end
 def fake_received_end_time(start)
   Time.parse("#{random_time_within_a_day(start)}")
 end
+def generate_partial_prescription
+  Prescription.new(
+    name: FFaker::HealthcareIpsum.word,
+    description: FFaker::HealthcareIpsum.sentence,
+    physical_description: FFaker::HealthcareIpsum.phrase,
+    instructions: FFaker::HealthcareIpsum.sentence,
+    caution: FFaker::HealthcareIpsum.phrases,
+    notes: "#{Faker::Name.first_name} doesn't like this one. Grind it up into some food.",
+    dosage: [0.5, 1.0, 2.0, 3.0].sample,
+    total: pill_count = [*(5..10), 20, 30, 40, 50, 60, 100, 150, 200, 300].sample,
+    count: pill_count
+  )
+end
 
 # Time.now.month
 # Time.now.day
-blank_time = Time.new(0,1,1,   00, 00,   0,0)
+once_a_day = none = Time.new(0,1,1,   00, 00,   0,0)
 
 %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each_with_index do |name, number|
   Weekday.create!(name: name, number: number + 1)
 end
 
 5.times do
+
   user = User.new(
     password: Faker::Internet.password,
     username: Faker::Internet.user_name,
@@ -49,40 +68,29 @@ end
     patient_name: Faker::Name.name,
     patient_avatar: Faker::Avatar.image
   )
-  user.prescriptions = (1..5).collect do
-    Prescription.new(
-      name: FFaker::HealthcareIpsum.word,
-      description: FFaker::HealthcareIpsum.sentence,
-      physical_description: FFaker::HealthcareIpsum.phrase,
-      instructions: FFaker::HealthcareIpsum.sentence,
-      caution: FFaker::HealthcareIpsum.phrases,
-      notes: "#{Faker::Name.first_name} doesn't like this one. Grind it up into some food.",
-      dosage: [0.5, 1.0, 2.0, 3.0].sample,
-      total: pill_count = [*(5..10), 20, 30, 40, 50, 60, 100, 150, 200, 300].sample,
-      count: pill_count,
-      interval: fake_received_interval,
-      start_time: start_time = fake_received_start_time,
-      end_time: fake_received_end_time(start_time)
-    )
+
+  random_rxes = (1..5).collect do
+    rx = generate_partial_prescription
+    rx.interval   = fake_received_interval
+    rx.start_time = start_time = fake_received_start_time
+    rx.end_time   = fake_received_end_time(start_time)
+    rx
   end
-  user.prescriptions << Prescription.new(
-    name: FFaker::HealthcareIpsum.word,
-    description: FFaker::HealthcareIpsum.sentence,
-    physical_description: FFaker::HealthcareIpsum.phrase,
-    instructions: FFaker::HealthcareIpsum.sentence,
-    caution: FFaker::HealthcareIpsum.phrases,
-    notes: "#{Faker::Name.first_name} doesn't like this one. Grind it up into some food.",
-    dosage: [0.5, 1.0, 2.0, 3.0].sample,
-    total: pill_count = [*(5..10), 20, 30, 40, 50, 60, 100, 150, 200, 300].sample,
-    count: pill_count,
-    interval: fake_received_interval,
-    start_time: blank_time,
-    end_time: blank_time
-  )
+
+  interval_per_day_rx = generate_partial_prescription
+  interval_per_day_rx.interval   = fake_received_interval
+  interval_per_day_rx.start_time = none
+  interval_per_day_rx.end_time   = none
+
+  set_time_per_day_rx = generate_partial_prescription
+  set_time_per_day_rx.interval   = once_a_day
+  set_time_per_day_rx.start_time = tomorrow = random_time_tomorrow
+  set_time_per_day_rx.end_time   = tomorrow
+
+  user.prescriptions << random_rxes << [interval_per_day_rx, set_time_per_day_rx]
   user.save!
 end
 
-# Rx = Prescription
 
 # gal = Rx.new(name: "Gal Gadot", description: "Multilingual", physical_description: "Attractive", caution: "CAUTION: HOT! DO NOT TOUCH.", total: 60, count: 60)
 
