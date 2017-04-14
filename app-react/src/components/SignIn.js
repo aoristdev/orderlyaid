@@ -46,9 +46,6 @@ class SignIn extends React.Component {
         signedin(){
            return sessionStorage.setItem('token')
         }
-    
-
-
 
     goToSignUp() {
         browserHistory.push('/')

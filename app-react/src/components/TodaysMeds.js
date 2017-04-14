@@ -1,64 +1,49 @@
 import React from 'react'
 import './css/todaysmeds.css'
+import CurrentMed from './CurrentMed'
 
 class TodaysMeds extends React.Component {
-   
-render (){
+    constructor(props) {
+        super(props)
+        this.selectCurrentMed = this.selectCurrentMed.bind(this)
+        this.state = {
+            currentMed: 0
+        }
+    }
 
-    return<div>
-    <div className="panel panel-default">
-        <div className="panel-body">
-             <div className="row">
-                <div className="col-sm-6 col-sm-offset-3">
-                    <p className="currentTime">3:00</p>
-                    <p className="todaysDate">Thursday, April 13</p>
-                </div>
-            </div>
-            <div className="row listOfCurrentMeds">
-                <div className="col-sm-4">
-                </div>
-                 <div className="col-sm-5">
-                    <div className="well">
-                        <p className="medicationName">Medication Name</p>
-                        <p className="dosage">2 Capsules</p>
-                        <div className="list-group">
-                        <a href="#" className="list-group-item active">
-                            <h4 className="list-group-item-heading">Instructions</h4>
-                            <p className="list-group-item-text">Take by mouth with water</p>
-                        </a>
-                         <a href="#" className="list-group-item">
-                            <h4 className="list-group-item-heading">Cautions</h4>
-                            <p className="list-group-item-text">Not for women pregnant or nursing</p>
-                        </a>
-                         <a href="#" className="list-group-item">
-                            <h4 className="list-group-item-heading">Notes</h4>
-                            <p className="list-group-item-text">Makes me nauseous without food</p>
-                        </a>
-                        </div>  
-                      
-                        
-                        <div className="row ctaBtns">
-                            <div className="col-sm-6">
-                            <button type="button" className="taken btn btn-link">taken</button>
-                            {/*<button type="button" id="takenbtn"className="taken btn btn-default btn-sm">taken</button>*/}
-                           </div>
-                           <div className="col-sm-6">
-                            <button type="button" className="reschedule border btn btn-link">reschedule</button>
-                            {/*<button type="button" className="reschedule btn btn-default btn-sm">reschedule</button>*/}
-                           </div>
-                          
+    selectCurrentMed(index) {
+        // Scroll currentMed card into view
+        document.querySelector('.currentMeds').scrollLeft = (document.querySelector('.currentMed:nth-child(' + (index + 1) + ')').offsetLeft - 220)
+
+        // Update the currentMed state so it re-renders a new color on nav links
+        this.setState({currentMed: index})
+    }
+
+    render() {
+        const currentMedLinks = [0,1,2].map((number, index) => <a key={index} href={'#currentMed' + index} onClick={() => this.selectCurrentMed(index)} className={this.state.currentMed === index ? "label label-success" : "label label-primary"}>Current Med {index}</a>)
+
+        const currentMeds = [0,1,2].map((number, index) => <CurrentMed key={index} index={index} />)
+
+        return <div>
+            <div className="panel panel-default">
+                <div className="panel-body">
+                    <div className="row">
+                        <div className="col-sm-6 col-sm-offset-3">
+                            <p className="currentTime">3:00</p>
+                            <p className="todaysDate">Thursday, April 13</p>
+                            <p className="text-center">{currentMedLinks}</p>
+                        </div>
+                    </div>
+                    <div className="row listOfCurrentMeds">
+                        <div className="col-sm-12 currentMeds">
+                            {currentMeds}
+                            <div className="currentMed"></div>
                         </div>
                     </div>
                 </div>
-                
-
-                <div className="col-sm-4">
-                </div>
-            </div>   
+            </div>
         </div>
-    </div>     
-</div>                
 
-}
+    }
 }
 export default TodaysMeds
