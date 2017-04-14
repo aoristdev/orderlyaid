@@ -1,6 +1,17 @@
 desc "This task assesses reminder table entries for readiness and queues them"
 task reminder_spooler: :environment do
 
+  # when rx is created or updated reminder cascading
+  # where(start_time: (Time.now - 10.minutes)..(Time.now + 20.minutes))
+
+  # ReminderQueue.find_each(batch_size: Prescription.count) do |rx| # reduce Prescription.count to sensible portions for scaling once this query starts to feel expensive
+  # 
+  #   binding.pry
+  #
+  # end
+
+
+
   #psuedocode begin
 
     # every 10 minutes

@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/ffaker/ffaker.git
+  revision: fbef473d49bbc2ff9092d42c91617b72401dc644
+  specs:
+    ffaker (2.5.0)
+
+GIT
   remote: https://github.com/stympy/faker.git
   revision: 573699dcfb3e8416397411e6fdb2b7f1ceeb8caf
   specs:
@@ -158,6 +164,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   bcrypt (~> 3.1.7)
   faker!
+  ffaker!
   figaro
   listen (~> 3.0.5)
   pg (~> 0.18)
