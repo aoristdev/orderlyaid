@@ -23,7 +23,7 @@ ReactDOM.render (
        <Route path='/signin' component={SignIn} />
 
        <Route path='/nav' component={Nav}>
-            <Route path='profile' component={Profile} >        
+            <Route path='profile' component={Profile}>        
                 <Route path='todaysmeds' component={TodaysMeds} />
                 <Route path='medhistory' component={MedHistory} />
             </Route>

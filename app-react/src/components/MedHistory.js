@@ -6,35 +6,35 @@ render(){
 
     return<div>
 
-            <div className="row">
+            <div className="row historyTitle">
                 <div className="col-sm-3">
-                <p>Date</p>
+                <p className="text-center">Date</p>
                 </div>
                 <div className="col-sm-3">
-                <p>Time Taken</p>
+                <p className="text-center">Time Taken</p>
                 </div>
                 <div className="col-sm-4">
-                <p>Medication</p>
+                <p className="text-center">Medication</p>
                 </div>
                 <div className="col-sm-2">
-                <p>Count</p>
+                <p className="text-center">Count</p>
                 </div>
             </div>
     
      <div className="panel panel-default">
         <div className="panel-body">
-            <div className="row">
+            <div className="row historyData">
                 <div className="col-sm-3">
-                <p>04.11.2017</p>
+                <p className="text-center">04.11.2017</p>
                 </div>
                 <div className="col-sm-3">
-                <p>3:00 pm</p>
+                <p className="text-center">3:00 pm</p>
                 </div>
                 <div className="col-sm-4">
-                <p>Advil</p>
+                <p className="text-center">Advil</p>
                 </div>
                 <div className="col-sm-2">
-                <p>2</p>
+                <p className="text-center">2</p>
                 </div>
             </div>
         </div>
@@ -43,16 +43,16 @@ render(){
         <div className="panel-body">
             <div className="row">
                 <div className="col-sm-3">
-                <p>04.11.2017</p>
+                <p className="text-center">04.11.2017</p>
                 </div>
                 <div className="col-sm-3">
-                <p>3:00 pm</p>
+                <p className="text-center">3:00 pm</p>
                 </div>
                 <div className="col-sm-4">
-                <p>Advil</p>
+                <p className="text-center">Advil</p>
                 </div>
                 <div className="col-sm-2">
-                <p>2</p>
+                <p className="text-center">2</p>
                 </div>
             </div>
         </div>

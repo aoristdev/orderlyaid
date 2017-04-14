@@ -1,0 +1,31 @@
+.toggleBtns {
+    margin-top: 50px;
+}
+.fieldLabel {
+     font-family: 'Roboto', sans-serif;
+     margin-bottom: 1px;
+}
+.signupCard {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.signupTitle {
+    font-size: 30px;
+    font-family: 'Varela Round', sans-serif;
+    margin-bottom: 35px;
+}
+.sidebar {
+    margin-left: 25px;
+    margin-top: 40px;
+}
+.sidebarTitle {
+    font-size: 20px;
+    font-family: 'Varela Round', sans-serif;
+    margin-bottom: 25px;
+}
+.whyPoint {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 25px;
+    line-height: 20px;
+}
