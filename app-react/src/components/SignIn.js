@@ -5,11 +5,14 @@ class SignIn extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            email:this.state.email,
-            password:this.state.password,
+            email:'',
+            password:''
         }
 
-        this.signin = this.signin.bind(this)
+        this.signIn = this.signIn.bind(this)
+        this.signedin = this.signedin.bind(this)
+        
+        
 
     }
     signIn() {
@@ -20,31 +23,42 @@ class SignIn extends React.Component {
             },
             
             body: JSON.stringify({
-                user:{
                     email: this.state.email,
-                    password: this.state.password
-                }
+                    password: this.state.password,
+                    token: this.state.token 
             })
         })
 
         .then(response => response.json())
+     
         .then(response => {
-            browserHistory.push('/profile')
+            if (response.token) {
+                sessionStorage.setItem('token', response.token)
+                sessionStorage.setItem('user_id', JSON.stringify(response.user.id))
+                browserHistory.push('/profile')
+            }
+        
+            else {
+                alert('Entery not found. Please try again!')
+            }
         })
     }
-
-    goToSignIn() {
-        browserHistory.push('/signin')
-    }
+        signedin(){
+           return sessionStorage.setItem('token')
+        }
 
     goToSignUp() {
         browserHistory.push('/')
     }
 
+    goToProfile(){
+        browserHistory.push('/profile')
+    }
+
     render() {
         return <div>
-            <div classNameName="container">
-                <div classNameName="row">
+            <div className="container">
+                <div className="row">
                     <div className="col-sm-8 col-sm-offset-2">
                         <div className="pull-right">
                             <button type="button" className="btn btn-link pull-right" onClick={this.goToSignUp}>Sign Up</button>
@@ -68,7 +82,7 @@ class SignIn extends React.Component {
                                             <label htmlFor="password">Password</label>
                                             <input type="password" className="form-control" onChange={(e)=>this.setState ({password:e.target.value})} id="password" />
 
-                                            <button type="button" className="btn btn-default" onClick={this.signin}>Next</button>
+                                            <button type="button" className="btn btn-default" onClick={this.signIn}>Next</button>
                                         </div>
                                     </div>
                                     <div className="col-sm-4">

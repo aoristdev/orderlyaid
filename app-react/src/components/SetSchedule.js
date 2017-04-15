@@ -4,11 +4,32 @@ import { browserHistory } from 'react-router'
 class SetSchedule extends React.Component { 
 
     goToAddDescription() {
-    browserHistory.push('description')
+    browserHistory.push('/new/description')
    }
     goToProfile() {
     browserHistory.push('/profile')
    }
+
+// addToCart(productId, name, qty) {
+//         fetch('/api/cart', {
+//             method: 'POST',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify({
+//                 product_id: productId,
+//                 name: name,
+//                 quantity: qty
+//             })
+//         })
+//         .then(res => res.json())
+//         .then(res => {
+//             let cart = this.state.cart
+//             cart.push(res)
+
+//             this.setState({cart: cart, message: 'Product added to cart successfully.'})
+
+//             browserHistory.push('/')
+//         })
+//     }
    
 render(){
   
