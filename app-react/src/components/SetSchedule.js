@@ -21,8 +21,8 @@ class SetSchedule extends React.Component {
 }
     componentWillMount(){
         let savedData = store.get('savedData', [])
-        if (this.props.params) {
-            let savedData = savedData[this.props.params]
+        if (this.props.params.index) {
+            let savedData = savedData[this.props.params.index]
             this.setState({
                 // patient_name: savedData.patient_name,
                 // name: savedData.name
@@ -37,7 +37,7 @@ class SetSchedule extends React.Component {
 
     save() {
         let savedData = store.get('savedData', [])
-            if ( ! this.props.params){
+            if ( ! this.props.params.index){
                 savedData.push(this.state)
             }
             else {

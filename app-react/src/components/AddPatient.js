@@ -13,8 +13,8 @@ class AddPatient extends React.Component {
 }
     componentWillMount(){
         let savedData = store.get('savedData', [])
-        if (this.props.parama) {
-            let savedData = savedData[this.props.params]
+        if (this.props.parama.index) {
+            let savedData = savedData[this.props.params.index]
             this.setState({
                 patient_name: savedData.patient_name
             })
@@ -23,11 +23,11 @@ class AddPatient extends React.Component {
 
     save() {
         let savedData = store.get('savedData', [])
-            if ( ! this.props.params){
+            if ( ! this.props.params.index){
                 savedData.push(this.state)
             }
             else {
-                savedData[this.props.params] = this.state
+                savedData[this.props.params.index] = this.state
             }
             store.set('savedData', savedData)
             browserHistory.push('/new/medication')
