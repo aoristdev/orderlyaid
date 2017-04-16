@@ -14,8 +14,21 @@ class PrescriptionsController < ApplicationController
 
   def create
     rx = Prescription.new(rx_params)
-    binding.pry #Reminder #ex5HaCwEd8sJQmGYfRL4GVSh
-    rx.reminders << Reminder.new(transmit_time: _)
+    # binding.pry #Reminder #ex5HaCwEd8sJQmGYfRL4GVSh
+    # Time.now.to_s.scan(/.+? (\d\d:\d\d):.+?/) #[["16:32"]].first.first
+
+    #interval
+    #start_time (waking hour)
+    #end_time (sleeping hour)
+    #Time.now
+
+    transmit_time = Time.new
+    if Time.now < rx.start_time
+      interval_reps = ((rx.end_time - rx.start_time) / rx.interval).round(1)
+      # interval = Time.now.hour + Time.now.min
+    end
+
+    rx.reminders << Reminder.new(transmit_time: )
     render json: rx.save! ? rx : error('Prescription could not be created.', 400)
   end
 
@@ -46,6 +59,7 @@ class PrescriptionsController < ApplicationController
       :name,
       :description,
       :physical_description,
+      :instructions,
       :caution,
       :notes,
       :dosage,
@@ -55,8 +69,7 @@ class PrescriptionsController < ApplicationController
       :start_time,
       :end_time,
       :created_at,
-      :updated_at,
-      :instructions
+      :updated_at
     )
   end
 
