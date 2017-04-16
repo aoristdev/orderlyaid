@@ -11,9 +11,6 @@ class SignIn extends React.Component {
 
         this.signIn = this.signIn.bind(this)
         this.signedin = this.signedin.bind(this)
-        
-        
-
     }
     signIn() {
         fetch('/users/profile', {
@@ -28,16 +25,13 @@ class SignIn extends React.Component {
                     token: this.state.token 
             })
         })
-
         .then(response => response.json())
-     
         .then(response => {
             if (response.token) {
                 sessionStorage.setItem('token', response.token)
                 sessionStorage.setItem('user_id', JSON.stringify(response.user.id))
                 browserHistory.push('/profile')
             }
-        
             else {
                 alert('Entery not found. Please try again!')
             }
@@ -76,10 +70,10 @@ class SignIn extends React.Component {
                                         <h1>Manage all your medications in one place.</h1>
                                         <div className="form-group">
 
-                                            <label htmlFor="email">Email Address</label>
+                                            <p className="fieldLabel">Email Address</p>
                                             <input type="email" className="form-control" onChange={(e)=>this.setState ({email:e.target.value})} id="email" />
 
-                                            <label htmlFor="password">Password</label>
+                                            <p className="fieldLabel">Password</p>
                                             <input type="password" className="form-control" onChange={(e)=>this.setState ({password:e.target.value})} id="password" />
 
                                             <button type="button" className="btn btn-default" onClick={this.signIn}>Next</button>

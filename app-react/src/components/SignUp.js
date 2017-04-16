@@ -14,11 +14,11 @@ class SignUp extends React.Component {
         this.signup = this.signup.bind(this)
         this.goToSignUp = this.goToSignUp.bind(this)
         this.goToSignIn = this.goToSignIn.bind(this)
-        this.goToPatient = this.goToPatient.bind(this)
+        
  
     }
     signup() {
-        console.log(this.state)
+        // console.log(this.state)
         var name = this.state.name;
         var email = this.state.email;
         var mobile = this.state.mobile;
@@ -55,30 +55,7 @@ class SignUp extends React.Component {
     goToSignUp() {
         browserHistory.push('/')
     }
-    goToPatient() {
-        browserHistory.push('/new/patient')
-    }
-    // addToCart(productId, name, qty) {
-    //     fetch('/api/cart', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({
-    //             product_id: productId,
-    //             name: name,
-    //             quantity: qty
-    //         })
-    //     })
-    //     .then(res => res.json())
-    //     .then(res => {
-    //         let cart = this.state.cart
-    //         cart.push(res)
-
-    //         this.setState({cart: cart, message: 'Product added to cart successfully.'})
-
-    //         browserHistory.push('/')
-    //     })
-    // }
-
+ 
     render() {
         return <div>
             <div className="container">
@@ -110,7 +87,7 @@ class SignUp extends React.Component {
                                             <p className="fieldLabel">Password</p>
                                             <input type="password" className="form-control"  onChange={(e)=>this.setState({password:e.target.value})}/><br/>
 
-                                            <button type="button" className="btn btn-default" onClick={this.goToPatient}>Next</button>
+                                            <button type="button" className="btn btn-default" onClick={this.signup}>Next</button>
                                         </div>
                                     </div>
                                     <div className="col-sm-4 sidebar">
@@ -132,7 +109,7 @@ class SignUp extends React.Component {
 export default SignUp;
 
 // <label htmlFor="confirmEmail">Confirm Email Address</label>
-// <input type="email" className="form-control" value={this.state.email} onChange={(e)=>this.setSate({email:e.target.value})} />
+// <input type="email" className="form-control" value={this.state.email} onChange={(e)=>this.setState({email:e.target.value})} />
 
 // <label htmlFor="confirmPassword">Confirm Password</label>
 // <input type="password" className="form-control" value={this.state.password} onChange={(e)=>this.setState({password:e.target.value})} /> 
