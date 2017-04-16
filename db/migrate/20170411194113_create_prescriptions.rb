@@ -1,6 +1,6 @@
 class CreatePrescriptions < ActiveRecord::Migration[5.0]
   def change
-    ignore = {date: [0, 1, 1], utc: 0, seconds: 0}
+    ignore = {date: [0, 1, 1], seconds: 0, utc: 0}
     midnight = Time.new(*ignore[:date], 00, 00, ignore[:seconds], ignore[:utc])
 
     create_table :prescriptions do |t|
