@@ -1,42 +1,53 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import store from 'store'
 import './css/addpatient.css'  
 
-class AddMedication extends React.Component { 
-    goToSetReminders() {
-    browserHistory.push('/new/reminders')
-   }
 
-// addToCart(productId, name, qty) {
-//         fetch('/api/cart', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({
-//                 product_id: productId,
-//                 name: name,
-//                 quantity: qty
-//             })
-//         })
-//         .then(res => res.json())
-//         .then(res => {
-//             let cart = this.state.cart
-//             cart.push(res)
+class AddMedication extends React.Component {
+        constructor(props) {
+            super(props)
+                this.save = this.save.bind(this)
+                this.state = {
+                    // patient_name:'',
+                    name:''
+                    
+                }
+    
+}
+    componentWillMount(){
+        let savedData = store.get('savedData', [])
+        if (this.props.params) {
+            let savedData = savedData[this.props.params]
+            this.setState({
+                // patient_name: savedData.patient_name,
+                name: savedData.name
+            })
+        }
+    }
 
-//             this.setState({cart: cart, message: 'Product added to cart successfully.'})
-
-//             browserHistory.push('/')
-//         })
-//     }
+    save() {
+        let savedData = store.get('savedData', [])
+            if ( ! this.props.params){
+                savedData.push(this.state)
+            }
+            else {
+                savedData[this.props.params] = this.state
+            }
+            store.set('savedData', savedData)
+            browserHistory.push('/new/schedule')
+    } 
+  
 render() {
 // add med title
     return<div>
+    <p>Add a medication.</p>
     <div className="form-group">
-  
         <p className="fieldLabel">Medication Name</p>
-        <input type="text" className="form-control" id="name" />
+        <input type="text" className="form-control"  value={this.state.name} onChange={(e) => this.setState({name:e.target.value})} id="name" />
     </div>
 
-   <button type="submit" className="btn btn-default" onClick={this.goToSetReminders}>Add</button>
+   <button type="button" className="btn btn-default" onClick={this.save}>Add</button>
 
     </div>
     }
