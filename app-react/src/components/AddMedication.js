@@ -17,8 +17,8 @@ class AddMedication extends React.Component {
 }
     componentWillMount(){
         let savedData = store.get('savedData', [])
-        if (this.props.params) {
-            let savedData = savedData[this.props.params]
+        if (this.props.params.index) {
+            let savedData = savedData[this.props.params.index]
             this.setState({
                 // patient_name: savedData.patient_name,
                 name: savedData.name
@@ -28,11 +28,11 @@ class AddMedication extends React.Component {
 
     save() {
         let savedData = store.get('savedData', [])
-            if ( ! this.props.params){
+            if ( ! this.props.params.index){
                 savedData.push(this.state)
             }
             else {
-                savedData[this.props.params] = this.state
+                savedData[this.props.params.index] = this.state
             }
             store.set('savedData', savedData)
             browserHistory.push('/new/schedule')

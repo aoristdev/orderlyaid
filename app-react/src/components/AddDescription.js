@@ -7,6 +7,7 @@ class AddDescription extends React.Component {
         constructor(props) {
             super(props)
                 this.save = this.save.bind(this)
+                this.sendData = this.sendData.bind(this)
                 this.state = {
                     // patient_name:'',
                     // name:'',
@@ -21,9 +22,9 @@ class AddDescription extends React.Component {
                 }
 }
     componentWillMount(){
-        let savedData = store.get('savedData', [])
-        if (this.props.params) {
-            let savedData = savedData[this.props.params]
+      let savedData = store.get('savedData', [])
+        if (this.props.params.index) {
+            let savedData = savedData[this.props.params.index]
             this.setState({
                 // patient_name: savedData.patient_name,
                 // name: savedData.name
@@ -38,14 +39,41 @@ class AddDescription extends React.Component {
             })
         }
     }
+    sendData(patient_name, name, dosage, count, interval, start_time, end_time, instructions, caution, notes){
+        fetch('/users/create', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                patient_name: patient_name,
+                name: name,
+                dosage: dosage,
+                count: count, 
+                interval: interval,
+                start_time,
+                end_time,
+                instructions: instructions,
+                caution: caution, 
+                notes: notes
+            })
+        })
+        .then (res => res.json())
+        .then(res => {
+            let sendData = this.state.sendData
+                sendData.push(res)
+                this.setState({sendData: patient_name, name, dosage, count, interval, start_time, end_time, instructions, caution, notes, message: 'Your medication has been added!'})
+
+                browserHistory.push('/nav/profile')
+        })
+    }
+
 
     save() {
         let savedData = store.get('savedData', [])
-            if ( ! this.props.params){
+            if ( ! this.props.params.index){
                 savedData.push(this.state)
             }
             else {
-                savedData[this.props.params] = this.state
+                savedData[this.props.params.index] = this.state
             }
             store.set('savedData', savedData)
             browserHistory.push('/nav/profile')
