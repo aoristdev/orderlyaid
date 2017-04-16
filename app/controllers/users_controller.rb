@@ -4,11 +4,11 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    if user.save
+    render json: if user.save
       UserMailer.signup(user).deliver
-      render json: signal('User registered, and confirmation email on its way.')
+      user
     else
-      render json: error('User registration failed.', 400)
+      error('User registration failed.', 400)
     end
   end
 
@@ -23,17 +23,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
-      render json: signal('User updated.')
+    render json: if current_user.update(user_params)
+      current_user
     else
-      render json: error('User update failed.', 400)
+      error('User update failed.', 400)
     end
   end
 
   def deactivate
-    current_user.active = false
-    current_user.token = nil
-    current_user.save
+    current_user.update_attributes(active: false, token: nil)
     render json: signal('User deactivated.')
   end
 

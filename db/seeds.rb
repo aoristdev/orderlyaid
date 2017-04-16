@@ -2,37 +2,49 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 
-def seconds_to_minutes(secs)
-  secs / 60
-end
-def seconds_to_hours(secs)
-  secs / 60 / 60
-end
-def random_duration_in_hours(min = 0, max = 24)
-  [*(min...max)].sample.hours
-end
-def random_duration_in_minutes(min = 0, max = 60, every = 5)
-  [*(min...max)].select.with_index{ |_, i| i % every == 0 }.sample.minutes
-end
-def random_time_within_a_day(min = Time.now)
-  Time.at(min + random_duration_in_hours + random_duration_in_minutes)
-end
-def fake_received_interval
-  hour = seconds_to_hours(random_duration_in_hours.seconds)
-  minute = seconds_to_minutes(random_duration_in_minutes.seconds)
-  Time.parse("#{hour}:#{minute}")
-end
-def random_time_tomorrow
-  hour = seconds_to_hours(random_duration_in_hours.seconds)
-  minute = seconds_to_minutes(random_duration_in_minutes.seconds)
-  Time.parse("#{Time.now.tomorrow.day} #{hour}:#{minute}")
-end
-def fake_received_start_time
-  Time.parse("#{random_time_within_a_day}")
-end
-def fake_received_end_time(start)
-  Time.parse("#{random_time_within_a_day(start)}")
-end
+
+# Once_a_day = None = Midnight = Time.new(0,1,1,   00, 00,   0,0)
+#
+# def seconds_to_minutes(secs)
+#   secs / 60
+# end
+# def seconds_to_hours(secs)
+#   secs / 60 / 60
+# end
+# def random_duration_in_hours(min = 0, max = 24)
+#   [*(min..max)].sample.hours
+# end
+# def random_duration_in_minutes(min = 0, max = 60, every = 5)
+#   [*(min..max)].select.with_index{ |_, i| i % every == 0 }.sample.minutes
+# end
+# def random_time_within_a_day(min = 0)
+#   # binding.pry
+#   random_duration_in_hours(1, (Time.new(0,1,1,23,59,0,0) - 1.hour + min.hour.hour).hour)
+# end
+# def fake_received_interval(min, max)
+#   if min == Time.new(0,1,1,   00, 00,   0,0)
+#     max_hour = 24
+#     max_minutes = 0
+#   else
+#     max_hour = max.hour
+#     max_minutes = max.min
+#   end
+#   hour = seconds_to_hours(random_duration_in_hours(min.hour, max_hour).seconds)
+#   minute = seconds_to_minutes(random_duration_in_minutes(min.min, max_minutes).seconds)
+#   Time.parse("#{hour}:#{minute}")
+# end
+# def random_time_tomorrow
+#   hour = seconds_to_hours(random_duration_in_hours.seconds)
+#   minute = seconds_to_minutes(random_duration_in_minutes.seconds)
+#   Time.parse("#{Time.now.tomorrow.day} #{hour}:#{minute}")
+# end
+# def fake_received_start_time(start = Time.new(0,1,1,00,00,0,0))
+#   Time.parse("#{random_time_within_a_day(start)}")
+# end
+# def fake_time(start)
+#   Time.parse("#{random_time_within_a_day(start)}")
+# end
+
 def generate_partial_prescription
   Prescription.new(
     name: FFaker::HealthcareIpsum.word,
@@ -47,16 +59,11 @@ def generate_partial_prescription
   )
 end
 
-# Time.now.month
-# Time.now.day
-once_a_day = none = Time.new(0,1,1,   00, 00,   0,0)
-
 %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each_with_index do |name, number|
   Weekday.create!(name: name, number: number + 1)
 end
 
 5.times do
-
   user = User.new(
     password: Faker::Internet.password,
     username: Faker::Internet.user_name,
@@ -71,30 +78,29 @@ end
 
   random_rxes = (1..5).collect do
     rx = generate_partial_prescription
-    rx.interval   = fake_received_interval
-    rx.start_time = start_time = fake_received_start_time
-    rx.end_time   = fake_received_end_time(start_time)
+    rx.start_time = Hour::Hour.new([*(4..9)].sample, [0, 15, 30].sample).to_time
+    rx.end_time   = Hour::Hour.new([*(19..23)].sample, [0, 15, 30].sample).to_time
+    rx.interval   = Hour::Hour.new([*(1..5)].sample).to_time
     rx
   end
 
   interval_per_day_rx = generate_partial_prescription
-  interval_per_day_rx.interval   = fake_received_interval
-  interval_per_day_rx.start_time = none
-  interval_per_day_rx.end_time   = none
+  interval_per_day_rx.start_time = Hour::Hour.new("08:30").to_time
+  interval_per_day_rx.end_time   = Hour::Hour.new("22:00").to_time
+  interval_per_day_rx.interval   = Hour::Hour.new("29:00").to_time
 
   set_time_per_day_rx = generate_partial_prescription
-  set_time_per_day_rx.interval   = once_a_day
-  set_time_per_day_rx.start_time = tomorrow = random_time_tomorrow
-  set_time_per_day_rx.end_time   = tomorrow
+  set_time_per_day_rx.start_time = Hour::Hour.new("12:30").to_time
+  set_time_per_day_rx.end_time   = Hour::Hour.new("12:30").to_time
+  set_time_per_day_rx.interval   = Hour::Hour.new("24:00").to_time
 
   user.prescriptions << random_rxes << [interval_per_day_rx, set_time_per_day_rx]
   user.save!
 end
 
+Rx = Prescription
 
 # gal = Rx.new(name: "Gal Gadot", description: "Multilingual", physical_description: "Attractive", caution: "CAUTION: HOT! DO NOT TOUCH.", total: 60, count: 60)
-
-
 
 # response["results"][0]["openfda"]["generic_name|brand_name|substance_name"] == "Omeprazole" (case-insensitive)
 # API key for OpenFDA: bBxbkpf6rdhvKOyXSP99gMJj7vKV0Mqs2PqA8Bbq
