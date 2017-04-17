@@ -14,21 +14,23 @@ class PrescriptionsController < ApplicationController
 
   def create
     rx = Prescription.new(rx_params)
-    # binding.pry #Reminder #ex5HaCwEd8sJQmGYfRL4GVSh
-    # Time.now.to_s.scan(/.+? (\d\d:\d\d):.+?/) #[["16:32"]].first.first
 
-    #interval
-    #start_time (waking hour)
-    #end_time (sleeping hour)
-    #Time.now
+    # calculate next reminder
+    # interval   = Hour::Hour.new(rx.interval.hour, rx.interval.min)
+    # start_time = Hour::Hour.new(rx.start_time.hour, rx.start_time.min)
+    # end_time   = Hour::Hour.new(rx.end_time.hour, rx.start_time.min)
+    # last_taken = rx.last_taken
+    # binding.pry
+    # window_in_hours = (rx.start_time - rx.end_time) / 60 / 60
 
-    transmit_time = Time.new
-    if Time.now < rx.start_time
-      interval_reps = ((rx.end_time - rx.start_time) / rx.interval).round(1)
-      # interval = Time.now.hour + Time.now.min
-    end
 
-    rx.reminders << Reminder.new(transmit_time: )
+    # transmit_time = Time.new
+    # if Time.now < rx.start_time
+    #   interval_reps = ((rx.end_time - rx.start_time) / rx.interval).round(1)
+    #   # interval = Time.now.hour + Time.now.min
+    # end
+
+    # rx.reminders << Reminder.new(transmit_time: )
     render json: rx.save! ? rx : error('Prescription could not be created.', 400)
   end
 
@@ -48,12 +50,9 @@ class PrescriptionsController < ApplicationController
   private
 
   def rx_params
-    params[:interval] = hour_to_time_obj(params[:interval])
-    params[:start_time] = hour_to_time_obj(params[:start_time])
-    params[:end_time] = hour_to_time_obj(params[:end_time])
-    params.permit(
+    rx_params = params.permit(
       :id,
-      :user,
+      :user_id,
       :active,
       :status,
       :name,
@@ -68,17 +67,20 @@ class PrescriptionsController < ApplicationController
       :interval,
       :start_time,
       :end_time,
+      :last_taken,
       :created_at,
       :updated_at
     )
+
+    rx_params[:last_taken] = Time.parse(    rx_params[:last_taken])         if rx_params[:last_taken]
+    rx_params[:interval]   = Hour::Hour.new(rx_params[:interval]).to_time   if rx_params[:interval]
+    rx_params[:start_time] = Hour::Hour.new(rx_params[:start_time]).to_time if rx_params[:start_time]
+    rx_params[:end_time]   = Hour::Hour.new(rx_params[:end_time]).to_time   if rx_params[:end_time]
+    rx_params
   end
 
   def find_rx
     @rx = Prescription.find(rx_params[:id])
-  end
-
-  def hour_to_time_obj(hour)
-    Time.new(0,1,1,*hour.split(':'),0,0)
   end
 
 end
