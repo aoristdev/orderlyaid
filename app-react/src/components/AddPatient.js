@@ -1,56 +1,46 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import './css/addpatient.css'
 import store from 'store'
 
 class AddPatient extends React.Component {
-        constructor(props) {
-            super(props)
-                this.save = this.save.bind(this)
-                this.state = {
-                    patient_name:''
-                }
-    
-}
-    componentWillMount(){
-        let savedData = store.get('savedData', [])
-        if (this.props.parama.index) {
-            let savedData = savedData[this.props.params.index]
-            this.setState({
-                patient_name: savedData.patient_name
-            })
+    constructor(props) {
+        super(props)
+        this.save = this.save.bind(this)
+
+        this.state = {
+            patient_name: '',
+            patient_dob: '',
+            patient_avatar: ''
         }
     }
 
     save() {
-        let savedData = store.get('savedData', [])
-            if ( ! this.props.params.index){
-                savedData.push(this.state)
-            }
-            else {
-                savedData[this.props.params.index] = this.state
-            }
-            store.set('savedData', savedData)
-            browserHistory.push('/new/medication')
+        let savedData = store.get('savedData', {})
+        savedData = Object.assign(savedData, this.state)
+        store.set('savedData', savedData)
+
+        browserHistory.push('/new/medication')
     }
-    
+
     render() {
-        return<div>
-        <h1>Start by adding a patient.</h1>
+        return <div>
+            <p className="stepTitle">Start by adding a patient.</p>
             <div className="form-group">
                 <p className="fieldLabel">Name</p>
-                <input type="text" className="form-control" value={this.state.patient_name} onChange={(e) => this.setState({patient_name:e.target.value})}id="name" /><br/>
+                <input id="input" type="text" className="form-control" value={this.state.patient_name} onChange={(e) => this.setState({ patient_name: e.target.value })} /><br />
 
                 <p className="fieldLabel">Birth Date</p>
-                <input type="text" className="form-control" onChange={(e) => this.setState({patient_name:e.target.value})} id="birthDate" /><br/>
+                <input id="input" type="text" className="form-control" onChange={(e) => this.setState({ patient_dob: e.target.value })} /><br />
 
-                <p className="fieldLabel">Photo</p>
+                <p className="fieldLabel">Photo URL</p>
                 <div className="input-group">
-                    <div className="input-group-addon">URL</div>
-                    <input type="text" className="form-control" onChange={(e) => this.setState({patient_name:e.target.value})} id="photoUrl" /><br/>
+                    <div className="input-group-addon"><span className="glyphicon glyphicon-camera"></span></div>
+                    <input id="input" type="text" className="form-control" onChange={(e) => this.setState({ patient_avatar: e.target.value })} /><br />
                 </div>
             </div>
-        <button type="button" className="btn btn-default" onClick={this.save}>Add</button>
-        </div>                                    
+            <button type="button" id="nextBtn" className="btn btn-default" onClick={this.save}>Next</button>
+        </div>
     }
 }
 

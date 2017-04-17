@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './css/todaysmeds.css'
 class CurrentMed extends React.Component {
     render() {
         return <div className="well currentMed">
@@ -21,14 +21,12 @@ class CurrentMed extends React.Component {
                 </a>
             </div>
             <div className="row ctaBtns">
-                <div className="col-sm-6">
-                    <button type="button" className="taken btn btn-link">taken</button>
-                    {/*<button type="button" id="takenbtn"className="taken btn btn-default btn-sm">taken</button>*/}
+                <div className="col-sm-6 col-sm-offset-3" >                
+                    <button id="taken" type="button" className="btn btn-link">taken</button>
                 </div>
-                <div className="col-sm-6">
+                {/*<div className="col-sm-6">
                     <button type="button" className="reschedule border btn btn-link">reschedule</button>
-                    {/*<button type="button" className="reschedule btn btn-default btn-sm">reschedule</button>*/}
-                </div>
+                </div>*/}
             </div>
         </div>
     }

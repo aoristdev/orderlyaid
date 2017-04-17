@@ -1,32 +1,49 @@
-
+html {
+    min-height: 100%
+}
+body {
+    /*background: linear-gradient(white, #ccdbdc);*/
+    background: -webkit-linear-gradient(left,rgba(174,193,190,0),rgba(204,219,220,.5));
+    background-repeat: no-repeat;
+    background: cover;
+}
 .onBoardingCard {
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: 50px;
+    margin-top: 100px;
+    border: solid .5px white;
+    border-radius: 1px;
+    -webkit-box-shadow: 13px 23px 141px 20px rgba(237,234,237,1);
+    -moz-box-shadow: 13px 23px 141px 20px rgba(237,234,237,1);
+    box-shadow: 13px 23px 141px 20px rgba(237,234,237,1);
+
+}
+.line {
+    border-left: .2px solid #aec1be;
 }
 .sidebar {
     margin-left: 25px;
     margin-top: 40px;
 }
-
-.sidebarTitle {
-    font-size: 30px;
-    font-family: 'Varela Round', sans-serif;
-    margin-bottom: 35px;
-}
-
 .sidebarTitle {
     font-size: 20px;
     font-family: 'Varela Round', sans-serif;
     margin-bottom: 25px;
+    /*color: #339989;*/
+    color:#f06449;
 }
 .sidebarStep {
-    font-size: 14px;
+    font-size: 15px;
     font-family: 'Roboto', sans-serif;
     margin-bottom: 25px;
     line-height: 15px;
+    font-weight: 300;
+    color: #223755;
 }
 
 .active {
-    color: blue; 
+     color: #80ced7;
+    font-family: 'Roboto', sans-serif;
+    /*font-weight: 700;*/
+    
 }

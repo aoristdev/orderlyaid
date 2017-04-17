@@ -23,24 +23,38 @@
 .userGender{
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
+    font-weight: 300;
+    margin-top: -5px; 
 }
 .userAge {
      font-family: 'Roboto', sans-serif;
      font-size: 15px;
+     font-weight: 300;
+     margin-top: -5px; 
 }
 
 .nextMedPanel{
-    margin-top: 40px;
+    margin-top: 39px;
     max-width: 90%;
+    border: solid 1px white;
+    border-radius: 1px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
 }
 .tabs{
     margin-bottom: 20px;
+    margin-top: -25px;
 }
 
+#tabname {
+    color: #f06449;
+}
 .well {
-    border-radius: 2px;
+    border-radius: 1px;
     padding-top: 14px;
     padding-bottom: 5px;
+    background: rgba(237,234,237,.2);
+    border: solid 1px white;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
 }
 .nextMed {
     text-align: center; 
@@ -66,15 +80,6 @@
 .historyTable {
     padding: 20px;
 }
-
-/*.card {
-    padding: 20px 20px 20px 20px;  
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-    background-color: #ffffff;
-    max-width: 400px; 
-    margin: auto;
-    border-radius: 10px;
-}*/
 
 .time {
    position:relative;

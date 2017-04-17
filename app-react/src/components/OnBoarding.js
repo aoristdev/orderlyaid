@@ -16,15 +16,15 @@ class OnBoarding extends React.Component {
                                     <div className="col-sm-6 col-sm-offset-1">
                                         {this.props.children}
                                     </div>
-                                    <div className="col-sm-4 sidebar">
+                                    
+                                    <div className="col-sm-4 sidebar line">
                                         <p className="sidebarTitle">Steps to get started.</p>
                                         <p className={location.pathname === '/new/patient' ? "active sidebarStep" : "sidebarStep"}>Add Patient</p>
                                         <p className={location.pathname === '/new/medication' ? "active sidebarStep" : "sidebarStep"}>Add Medication</p>
-                                        <p className={location.pathname === '/new/reminders' ? "active sidebarStep" : "sidebarStep"}>Set Reminders</p>
-                                        <p className="sidebarStep">Set Schedule</p>
-                                        <p className="sidebarStep">Description</p>
-                                        <p className="sidebarStep">Instructions</p>
-                                        <p className="sidebarStep">Cautions</p>
+                                        <p className={location.pathname === '/new/schedule' ? "active sidebarStep" : "sidebarStep"}>Set Schedule</p>
+                                         <p className={location.pathname === '/new/description' ? "active sidebarStep" : "sidebarStep"}>Description</p>
+                                        {/*// <p className="sidebarStep">Instructions</p>
+                                        // <p className="sidebarStep">Cautions</p>*/}
                                     </div>
                                 </div>
                             </div>
