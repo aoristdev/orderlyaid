@@ -4,12 +4,13 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    render json: if user.save
-      UserMailer.signup(user).deliver
-      user
-    else
-      error('User registration failed.', 400)
-    end
+    render json:
+      if user.save
+        UserMailer.signup(user).deliver
+        user #, include: { prescriptions: { include: :reminders } } # will also need applied to Update, Show, need serializer
+      else
+        error('User registration failed.', 400)
+      end
   end
 
   def authenticate
@@ -23,11 +24,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    render json: if current_user.update(user_params)
-      current_user
-    else
-      error('User update failed.', 400)
-    end
+    render json:
+      if current_user.update(user_params)
+        current_user
+      else
+        error('User update failed.', 400)
+      end
   end
 
   def deactivate
