@@ -1,8 +1,9 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
 import store from 'store'
+import 'rc-time-picker/assets/index.css'
 import './css/addpatient.css'
-import TimePicker from 'rc-time-picker';
+import TimePicker from 'rc-time-picker'
 
 class SetSchedule extends React.Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class SetSchedule extends React.Component {
                 <input id="input" type="text" className="form-control" value={this.state.start_time} onChange={(e) => this.setState({ start_time: e.target.value })} /><br />
 
                 <p className="fieldLabel">Bed Time</p>
-                <TimePicker value={this.state.end_time} onChange={(e) => this.setState({ end_time: e.target.value })} />
+                <TimePicker showSecond={false} onChange={(time) => {if (time) {this.setState({end_time: time.format('HH:mm')})}}} />
                 <br/>
 
                 <button type="button" id="nextBtn" className="btn btn-default" onClick={this.save}>Add</button>

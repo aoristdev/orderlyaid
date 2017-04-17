@@ -29,7 +29,7 @@ class AddDescription extends React.Component {
             .then(res => res.json())
             .then(res => {
                 store.remove('savedData')
-                browserHistory.push('/nav/profile')
+                browserHistory.push('/nav/profile/todaysmeds')
             })
     }
 
