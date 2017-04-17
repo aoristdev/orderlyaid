@@ -18,7 +18,7 @@ class Nav extends React.Component {
                             {/*<img src="./img/capsule.png" alt="..." className="logo" />*/}
                         </div>
                         <div className="col-sm-6">
-                            <button className="btn btn-default pull-right" onClick={this.signedout}>Log Out</button>
+                            <button id="singout" className="btn btn-default pull-right" onClick={this.signedout}>Log Out</button>
                         </div>
                     </div>
                 </div>

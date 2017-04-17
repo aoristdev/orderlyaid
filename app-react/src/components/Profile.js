@@ -1,33 +1,35 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-
 import './css/profile.css'
-
 
 class Profile extends React.Component {
     constructor() {
         super()
+        this.getProfile = this.getProfile.bind(this)
+
+        this.state = {}
         this.goToTodaysMeds = this.goToTodaysMeds.bind(this)
         this.goToHistory = this.goToHistory.bind(this)
-
     }
+
+    componentWillMount(){
+        this.getProfile()
+    }
+
+    getProfile() {
+        fetch('/users/profile?token=' + sessionStorage.getItem('token'))
+            .then(res => res.json())
+            .then(res => this.setState({...res}))
+            .then(res => console.log(this.state.user))
+    }
+
     goToTodaysMeds() {
         browserHistory.push('/nav/profile/todaysmeds')
     }
+
     goToHistory() {
         browserHistory.push('/nav/profile/medhistory')
     }
-
-    // getCategories() {
-    //     fetch('/api/categories')
-    //     .then(res => res.json())
-    //     .then(res => this.setState({categories: res}))
-    // }
-    // getProducts() {
-    //     fetch('/api/products')
-    //     .then(res => res.json())
-    //     .then(res => this.setState({products: res, originalProducts: res}))
-    // }
 
     render() {
 
@@ -40,9 +42,9 @@ class Profile extends React.Component {
                         </div>
                         <div className="userProfile">
                             <div className="col-sm-10">
-                                <p className="userName">Betty Jones</p>
-                                <p className="userGender">Female</p>
-                                <p className="userAge">40 years old</p>
+                                <p className="userName">{this.state.patient_name}</p>
+                                {/*<p className="userGender">{this.state.patient_name}</p>*/}
+                                <p className="userAge">{this.state.patient_dob}</p>
                             </div>
                         </div>
                     </div>
@@ -63,10 +65,6 @@ class Profile extends React.Component {
                                             <p className="medName">Medication Name</p>
                                         </div>
                                     </div>
-                                    <div className="row medBtns">
-                                        <button type="button" className="btn btn-link pull-right"><span className="glyphicon glyphicon-plus"></span> </button>
-                                        <button type="button" className="btn btn-link pull-right"><span className="glyphicon glyphicon-pencil"></span> </button>
-                                    </div>
                                 </div>
 
                                 <div className="well">
@@ -79,10 +77,10 @@ class Profile extends React.Component {
                                             <p className="medName">Medication Name</p>
                                         </div>
                                     </div>
-                                    <div className="row medBtns">
-                                        <button type="button" className="btn btn-link pull-right"><span className="glyphicon glyphicon-plus"></span> </button>
-                                        <button type="button" className="btn btn-link pull-right"><span className="glyphicon glyphicon-pencil"></span> </button>
-                                    </div>
+                                    {/*<div className="row medBtns">
+                                       <button type="button" className="btn btn-link pull-right"><span className="glyphicon glyphicon-plus"></span> </button>
+                                       <button type="button" className="btn btn-link pull-right"><span className="glyphicon glyphicon-pencil"></span> </button>
+                                    </div>*/}
                                 </div>
                                 <div className="well">
                                     <div className="row">
@@ -93,25 +91,22 @@ class Profile extends React.Component {
                                         <div className="col-sm-7">
                                             <p className="medName">Medication Name</p>
                                         </div>
-                                    </div>
-                                    <div className="row medBtns">
-                                        <button type="button" className="btn btn-link pull-right"><span className="glyphicon glyphicon-plus"></span> </button>
-                                        <button type="button" className="btn btn-link pull-right"><span className="glyphicon glyphicon-pencil"></span> </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {/*Add a row to fix layout*/}
+
                     <div className="col-sm-8">
                         <div className="tabs">
                             <ul className="nav nav-tabs">
-                                <li role="presentation" onClick={this.goToTodaysMeds}><a>Current</a></li>
+                                <li role="presentation" id="tabname" onClick={this.goToTodaysMeds}><a>Current</a></li>
                                 <li role="presentation" onClick={this.goToHistory}><a>History</a></li>
                             </ul>
                         </div>
 
-                        <div>                        {this.props.children}
+                        <div>
+                            {this.props.children}
                         </div>
 
                     </div>
@@ -123,4 +118,3 @@ class Profile extends React.Component {
 }
 export default Profile
 
-        //   {this.props.children} line 65

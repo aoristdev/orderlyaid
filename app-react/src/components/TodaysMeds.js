@@ -14,7 +14,7 @@ class TodaysMeds extends React.Component {
     selectCurrentMed(index) {
         // Scroll currentMed card into view
         document.querySelector('.currentMeds').scrollLeft = (document.querySelector('.currentMed:nth-child(' + (index + 1) + ')').offsetLeft - 220)
-
+        
         // Update the currentMed state so it re-renders a new color on nav links
         this.setState({currentMed: index})
     }
@@ -25,8 +25,8 @@ class TodaysMeds extends React.Component {
         const currentMeds = [0,1,2].map((number, index) => <CurrentMed key={index} index={index} />)
 
         return <div>
-            <div className="panel panel-default">
-                <div className="panel-body">
+           {/* <div className="panel panel-default">*/}
+                <div className="well medBackgroundPanel">
                     <div className="row">
                         <div className="col-sm-6 col-sm-offset-3">
                             <p className="currentTime">3:00</p>
@@ -41,9 +41,8 @@ class TodaysMeds extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
+           {/* </div>*/}
         </div>
-
     }
 }
 export default TodaysMeds

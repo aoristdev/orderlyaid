@@ -1,6 +1,6 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-
+import './css/signup.css'  
 class SignIn extends React.Component {
     constructor(props){
         super(props)
@@ -54,36 +54,35 @@ class SignIn extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-sm-8 col-sm-offset-2">
-                        <div className="pull-right">
+                        <div className="toggleBtns pull-right">
                             <button type="button" className="btn btn-link pull-right" onClick={this.goToSignUp}>Sign Up</button>
-                            <button type="button" className="btn btn-link pull-right" onClick={this.goToSignIn}>Sign In</button>
+                            <button type="button" className="btn btn-link pull-right" id="nextBtn" onClick={this.goToSignIn}>Sign In</button>
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-8 col-sm-offset-2">
-
-                        <div className="panel panel-default">
+                        <div className="signupCard panel panel-default">
                             <div className="panel-body">
                                 <div className="row">
-                                    <div className="col-sm-8">
-                                        <h1>Manage all your medications in one place.</h1>
+                                    <div className="col-sm-6 col-sm-offset-1">
+                                        <p className="signupTitle">Manage your medications in one place.</p>
                                         <div className="form-group">
 
                                             <p className="fieldLabel">Email Address</p>
-                                            <input type="email" className="form-control" onChange={(e)=>this.setState ({email:e.target.value})} id="email" />
+                                            <input id="input" type="email" className="form-control" onChange={(e)=>this.setState ({email:e.target.value})} id="email" /><br/>
 
                                             <p className="fieldLabel">Password</p>
-                                            <input type="password" className="form-control" onChange={(e)=>this.setState ({password:e.target.value})} id="password" />
+                                            <input id="input" type="password" className="form-control" onChange={(e)=>this.setState ({password:e.target.value})} id="password" /><br/>
 
                                             <button type="button" className="btn btn-default" onClick={this.signIn}>Next</button>
                                         </div>
                                     </div>
-                                    <div className="col-sm-4">
-                                        <h3>Why you'll love us.</h3>
-                                        <h4>Recieve text messages when it's time to take your next perscription.</h4>
-                                        <h4>Add loved ones to recieve reminders to help you stay on track.</h4>
-                                        <h4>Get alerts when it's time for a refill.</h4>
+                                    <div className="col-sm-4 line sidebar">
+                                        <p className="sidebarTitle">Why you'll love us.</p>
+                                        <p className="whyPoint">Recieve text messages when it's time to take your next perscription.</p>
+                                        <p className="whyPoint">Add loved ones to recieve reminders to help you stay on track.</p>
+                                        <p className="whyPoint">Get alerts when it's time for a refill.</p>
                                     </div>
                                 </div>
                             </div>
