@@ -20,8 +20,9 @@ class PrescriptionsController < ApplicationController
     # start_time = Hour::Hour.new(rx.start_time.hour, rx.start_time.min)
     # end_time   = Hour::Hour.new(rx.end_time.hour, rx.start_time.min)
     # last_taken = rx.last_taken
+    # window_in_hours = (rx.end_time - rx.start_time) / 60 / 60
+    # occurrences = window_in_hours / (interval.hours + interval.minutes_in_base10)
     # binding.pry
-    # window_in_hours = (rx.start_time - rx.end_time) / 60 / 60
 
 
     # transmit_time = Time.new
