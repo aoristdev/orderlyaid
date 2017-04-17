@@ -19,6 +19,7 @@ class CreatePrescriptions < ActiveRecord::Migration[5.0]
       t.time :interval, default: midnight
       t.time :start_time, default: midnight
       t.time :end_time, default: midnight
+      t.time :last_taken, default: midnight
 
       t.timestamps
     end

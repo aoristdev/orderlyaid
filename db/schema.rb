@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170412123342) do
     t.time     "interval",             default: '2000-01-01 00:00:00'
     t.time     "start_time",           default: '2000-01-01 00:00:00'
     t.time     "end_time",             default: '2000-01-01 00:00:00'
+    t.time     "last_taken",           default: '2000-01-01 00:00:00'
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
     t.index ["user_id"], name: "index_prescriptions_on_user_id", using: :btree
