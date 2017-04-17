@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router'
 import './css/addpatient.css'
 import store from 'store'
 
+
 class AddPatient extends React.Component {
     constructor(props) {
         super(props)
