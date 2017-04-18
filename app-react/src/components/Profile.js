@@ -20,7 +20,7 @@ class Profile extends React.Component {
         fetch('/users/profile?token=' + sessionStorage.getItem('token'))
             .then(res => res.json())
             .then(res => this.setState({...res}))
-            .then(res => console.log(this.state.user))
+            .then(res => console.log(this.state))
     }
 
     goToTodaysMeds() {
