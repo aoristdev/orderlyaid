@@ -2,49 +2,6 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 
-
-# Once_a_day = None = Midnight = Time.new(0,1,1,   00, 00,   0,0)
-#
-# def seconds_to_minutes(secs)
-#   secs / 60
-# end
-# def seconds_to_hours(secs)
-#   secs / 60 / 60
-# end
-# def random_duration_in_hours(min = 0, max = 24)
-#   [*(min..max)].sample.hours
-# end
-# def random_duration_in_minutes(min = 0, max = 60, every = 5)
-#   [*(min..max)].select.with_index{ |_, i| i % every == 0 }.sample.minutes
-# end
-# def random_time_within_a_day(min = 0)
-#   # binding.pry
-#   random_duration_in_hours(1, (Time.new(0,1,1,23,59,0,0) - 1.hour + min.hour.hour).hour)
-# end
-# def fake_received_interval(min, max)
-#   if min == Time.new(0,1,1,   00, 00,   0,0)
-#     max_hour = 24
-#     max_minutes = 0
-#   else
-#     max_hour = max.hour
-#     max_minutes = max.min
-#   end
-#   hour = seconds_to_hours(random_duration_in_hours(min.hour, max_hour).seconds)
-#   minute = seconds_to_minutes(random_duration_in_minutes(min.min, max_minutes).seconds)
-#   Time.parse("#{hour}:#{minute}")
-# end
-# def random_time_tomorrow
-#   hour = seconds_to_hours(random_duration_in_hours.seconds)
-#   minute = seconds_to_minutes(random_duration_in_minutes.seconds)
-#   Time.parse("#{Time.now.tomorrow.day} #{hour}:#{minute}")
-# end
-# def fake_received_start_time(start = Time.new(0,1,1,00,00,0,0))
-#   Time.parse("#{random_time_within_a_day(start)}")
-# end
-# def fake_time(start)
-#   Time.parse("#{random_time_within_a_day(start)}")
-# end
-
 def generate_partial_prescription
   Prescription.new(
     name: FFaker::HealthcareIpsum.word,
