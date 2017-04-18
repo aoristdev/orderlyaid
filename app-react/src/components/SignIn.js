@@ -13,6 +13,7 @@ class SignIn extends React.Component {
         this.signedin = this.signedin.bind(this)
     }
     signIn() {
+
         fetch('/users/profile', {
             method: 'POST',
             headers: {

@@ -6,9 +6,17 @@ class TodaysMeds extends React.Component {
     constructor(props) {
         super(props)
         this.selectCurrentMed = this.selectCurrentMed.bind(this)
+        this.getMeds = this.getMeds.bind(this)
         this.state = {
             currentMed: 0
         }
+    }
+     getMeds() {
+        fetch('/users/profile?token=' + sessionStorage.getItem('token'))
+            .then(res => res.json())
+            .then(res => this.setState({...res}))
+            .then(res => console.log(this.state))
+            // .then(res => console.log(this.state.perscriptions))
     }
 
     selectCurrentMed(index) {
@@ -29,7 +37,7 @@ class TodaysMeds extends React.Component {
                 <div className="well medBackgroundPanel">
                     <div className="row">
                         <div className="col-sm-6 col-sm-offset-3">
-                            <p className="currentTime">3:00</p>
+                            <p className="currentTime">{this.state.start_time}</p>
                             <p className="todaysDate">Thursday, April 13</p>
                             <p className="text-center">{currentMedLinks}</p>
                         </div>

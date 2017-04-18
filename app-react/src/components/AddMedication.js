@@ -27,7 +27,7 @@ class AddMedication extends React.Component {
         return <div>
             <p className="stepTitle">Add a medication.</p>
             <div className="form-group">
-                <p className="fieldLabel">Perscription Name</p>
+                <p className="fieldLabel">Prescription Name</p>
                 <input id="input" type="text" className="form-control" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} /><br />
 
                 <p className="fieldLabel">Quantity</p>
