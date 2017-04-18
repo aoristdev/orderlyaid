@@ -1,37 +1,38 @@
 import React from 'react'
 import './css/todaysmeds.css'
 class CurrentMed extends React.Component {
-    constructor() {
-        super()
-        this.getMeds = this.getMeds.bind(this)
-        this.state = {}
+    constructor(props) {
+        super(props)
+        this.state = {
+            prescriptions: ''
+        }
     }
-       getMeds() {
-        fetch('/rx/show?token=' + sessionStorage.getItem('token'))
-            .then(res => res.json())
-            .then(res => this.setState({...res}))
-            .then(res => console.log(this.state))
+    componentDidMount(){
+        console.log(this.props)
     }
+    
     render() {
+        console.log(this.props)
         return <div className="well currentMed">
             <a name={'currentMed' + this.props.index}></a>
-            <p className="medicationName">Medication Name</p>
-            <p className="dosage">2 Capsules</p>
-            <div className="list-group">
-                <a href="#" className="list-group-item">
+            <p className="medicationName">{this.props.name}</p>
+            <p className="dosage">{this.props.dosage} Capsules</p>
+            {/*<div className="list-group">*/}
+                <a href="#" id="listItem" className="list-group-item">
                     <h4 className="list-group-item-heading">Instructions</h4>
-                    <p className="list-group-item-text">{this.state.instructions}</p>
+                    <p className="list-group-item-text">{this.props.instructions}</p>
                 </a>
                 <a href="#" className="list-group-item">
                     <h4 className="list-group-item-heading">Cautions</h4>
-                    <p className="list-group-item-text">{this.state.caution}</p>
+                    <p className="list-group-item-text">{this.props.caution}</p>
                 </a>
+                
                 <a href="#" className="list-group-item">
                     <h4 className="list-group-item-heading">Notes</h4>
-                    <p className="list-group-item-text">M{this.state.notes}</p>
+                    <p className="list-group-item-text">{this.props.notes}</p>
                 </a>
-            </div>
-            <div className="row ctaBtns">
+            {/*</div>*/}
+            <div className="row">
                 <div className="col-sm-6 col-sm-offset-3" >                
                     <button id="taken" type="button" className="btn btn-link">taken</button>
                 </div>

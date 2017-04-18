@@ -23,6 +23,7 @@ class Nav extends React.Component {
                     </div>
                 </div>
             </div>
+            
             {this.props.children}
             <div className="footer container-fluid">
                 <div className="row">
