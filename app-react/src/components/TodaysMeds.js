@@ -29,29 +29,27 @@ class TodaysMeds extends React.Component {
     }
 
     render() {
-        const currentMedLinks = this.state.prescriptions.map((number, index) => <a key={index} href={'#currentMed' + index} onClick={() => this.selectCurrentMed(index)} className={this.state.currentMed === index ? "label label-success" : "label label-primary"}>Current Med {index}</a>)
+        const currentMedLinks = this.state.prescriptions.map((number, index) => <a key={index} href={'#currentMed' + index} onClick={() => this.selectCurrentMed(index)} className={this.state.currentMed === index ? "label label-success" : "label label-primary"}>{this.currentMeds} </a>)
 
         console.log(this.state.prescriptions)
         const currentMeds = this.state.prescriptions.map((med, index) => <CurrentMed key={index} index={index} {...med} />)
 
         return <div>
-           {/* <div className="panel panel-default">*/}
-                <div className="well medBackgroundPanel">
-                    <div className="row">
-                        <div className="col-sm-6 col-sm-offset-3">
-                            <p className="currentTime">{this.state.start_time}</p>
-                            <p className="todaysDate">Thursday, April 13</p>
-                            <p className="text-center">{currentMedLinks}</p>
-                        </div>
-                    </div>
-                    <div className="row listOfCurrentMeds">
-                        <div className="col-sm-12 currentMeds">
-                            {currentMeds}
-                            <div className="currentMed"></div>
-                        </div>
+            <div className="well medBackgroundPanel">
+                <div className="row">
+                    <div className="col-sm-6 col-sm-offset-3">
+                        <p className="currentTime">{this.state.start_time}</p>
+                        <p className="todaysDate">Thursday, April 13</p>
+                        <p className="text-center">{currentMedLinks}</p>
                     </div>
                 </div>
-           {/* </div>*/}
+                <div className="row listOfCurrentMeds">
+                    <div className="col-sm-12 currentMeds">
+                        {currentMeds}
+                        <div className="currentMed"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     }
 }
