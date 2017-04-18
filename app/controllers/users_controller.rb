@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
+    user.prescriptions = Rxify.call(rx_params)
     render json:
       if user.save!
         UserMailer.signup(user).deliver
@@ -46,14 +47,19 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(:password, :username, :email, :phone, :forename, :surname, :avatar,
-                  :patient_name, :patient_avatar, :patient_dob, :patient_gender, #:prescriptions,
-                  prescriptions_attributes: [
-                    :id, :status,
-                    :name, :description, :physical_description,
-                    :instructions, :caution, :notes,
-                    :dosage, :total, :count,
-                    :interval, :start_time, :end_time, :last_taken
-                  ])
+                  :patient_name, :patient_avatar, :patient_dob, :patient_gender)
+  end
+
+  def rx_params
+    params.permit(prescriptions_attributes:
+      [
+        :id, :status,
+        :name, :description, :physical_description,
+        :instructions, :caution, :notes,
+        :dosage, :total, :count,
+        :interval, :start_time, :end_time, :last_taken
+      ]
+    )
   end
 
 end
