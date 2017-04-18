@@ -62,13 +62,15 @@ ActiveRecord::Schema.define(version: 20170412123342) do
     t.string   "phone"
     t.string   "forename"
     t.string   "surname"
+    t.string   "avatar"
     t.string   "patient_name"
+    t.string   "patient_avatar"
+    t.string   "patient_gender"
+    t.date     "patient_dob"
+    t.boolean  "active",          default: true
+    t.string   "password_digest"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.string   "avatar"
-    t.string   "patient_avatar"
-    t.string   "password_digest"
-    t.boolean  "active",          default: true
   end
 
   create_table "weekdays", force: :cascade do |t|
