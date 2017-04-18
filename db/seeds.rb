@@ -20,6 +20,34 @@ end
   Weekday.create!(name: name, number: number + 1)
 end
 
+test_user = User.new(
+  password: 'merp',
+  username: 'turtlebear',
+  email: Faker::Internet.email,
+  phone: '+1' + Faker::Number.number(10).to_s,
+  forename: Faker::Name.first_name,
+  surname: Faker::Name.last_name,
+  avatar: Faker::Avatar.image,
+  patient_name: Faker::Name.name,
+  patient_avatar: Faker::Avatar.image
+)
+
+test_user.prescriptions << Prescription.new(
+  name: 'iApathy by Apple',
+  description: 'Eliminates emotions, so you can focus on what matters.',
+  physical_description: 'Designer white, egg-shaped, and trimmed with gold, with concave dimple on either end for precision single-finger guidance into your rectum.',
+  instructions: 'Administer rectally after your morning pachoulli vape.',
+  caution: 'Do not administer in public, around minors, or in the presence of strong magnets.',
+  notes: "#{Faker::Name.first_name} doesn't like this one. Grind it up into some food.",
+  dosage: [0.5, 1.0, 2.0, 3.0].sample,
+  total: pill_count = [*(5..10), 20, 30, 40, 50, 60, 100, 150, 200, 300].sample,
+  count: pill_count,
+  start_time: Hour::Hour.new([*(4..9)].sample, [0, 15, 30].sample).to_time,
+  end_time: Hour::Hour.new([*(19..23)].sample, [0, 15, 30].sample).to_time,
+  interval: Hour::Hour.new([*(1..5)].sample, 0).to_time
+)
+test_user.save!
+
 5.times do
   user = User.new(
     password: Faker::Internet.password,
