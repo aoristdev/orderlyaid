@@ -56,8 +56,8 @@ class SignIn extends React.Component {
                 <div className="row">
                     <div className="col-sm-8 col-sm-offset-2">
                         <div className="toggleBtns pull-right">
-                            <button type="button" className="btn btn-link pull-right" onClick={this.goToSignUp}>Sign Up</button>
-                            <button type="button" className="btn btn-link pull-right" id="nextBtn" onClick={this.goToSignIn}>Sign In</button>
+                            <button type="button" id="toggle" className="btn btn-link pull-right" onClick={this.goToSignUp}>Sign Up</button>
+                            <button type="button" id="toggle" className="btn btn-link pull-right" onClick={this.goToSignIn}>Sign In</button>
                         </div>
                     </div>
                 </div>

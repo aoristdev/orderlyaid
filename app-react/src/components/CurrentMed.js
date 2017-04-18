@@ -17,7 +17,6 @@ class CurrentMed extends React.Component {
             <a name={'currentMed' + this.props.index}></a>
             <p className="medicationName">{this.props.name}</p>
             <p className="dosage">{this.props.dosage} Capsules</p>
-            {/*<div className="list-group">*/}
                 <a href="#" id="listItem" className="list-group-item">
                     <h4 className="list-group-item-heading">Instructions</h4>
                     <p className="list-group-item-text">{this.props.instructions}</p>
@@ -31,7 +30,7 @@ class CurrentMed extends React.Component {
                     <h4 className="list-group-item-heading">Notes</h4>
                     <p className="list-group-item-text">{this.props.notes}</p>
                 </a>
-            {/*</div>*/}
+                
             <div className="row">
                 <div className="col-sm-6 col-sm-offset-3" >                
                     <button id="taken" type="button" className="btn btn-link">taken</button>

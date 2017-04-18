@@ -23,9 +23,9 @@ class AddDescription extends React.Component {
         savedData.prescriptions_attributes = [
             {
                 name: savedData.name,
-                instructions: savedData.instructions, 
-                caution: savedData.caution,
-                notes: savedData.notes,
+                instructions: this.state.instructions, 
+                caution: this.state.caution,
+                notes: this.state.notes,
                 dosage: savedData.dosage,
                 count: savedData.count,
                 interval: savedData.interval,
