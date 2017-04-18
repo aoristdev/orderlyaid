@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     render json:
-      if user.save
+      if user.save!
         UserMailer.signup(user).deliver
         user #, include: { prescriptions: { include: :reminders } } # will also need applied to Update, Show, need serializer
       else
@@ -45,8 +45,15 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:username, :email, :phone, :forename, :surname, :avatar, :patient_name, :patient_avatar, :patient_dob, :patient_gender,
-                  :password)
+    params.permit(:password, :username, :email, :phone, :forename, :surname, :avatar,
+                  :patient_name, :patient_avatar, :patient_dob, :patient_gender, #:prescriptions,
+                  prescriptions_attributes: [
+                    :id, :status,
+                    :name, :description, :physical_description,
+                    :instructions, :caution, :notes,
+                    :dosage, :total, :count,
+                    :interval, :start_time, :end_time, :last_taken
+                  ])
   end
 
 end
