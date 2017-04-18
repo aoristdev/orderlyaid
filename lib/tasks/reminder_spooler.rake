@@ -1,6 +1,10 @@
 desc "Sends reminders"
 task reminder_spooler: :environment do
 
+
+  # Reminders.all.each {}
+
+
   # when rx is created or updated reminder cascading
   # where(start_time: (Time.now - 10.minutes)..(Time.now + 20.minutes))
 
@@ -9,8 +13,6 @@ task reminder_spooler: :environment do
   #   binding.pry
   #
   # end
-
-
 
   #psuedocode begin
 
