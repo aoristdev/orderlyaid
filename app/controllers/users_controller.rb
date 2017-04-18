@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def authenticate
-    user = User.find_by(username: user_params[:username])
+    user = User.find_by(email: user_params[:email])
                &.authenticate(user_params[:password])
     render json: user || error
   end
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:password, :username, :email, :phone, :forename, :surname, :avatar,
+    params.permit(:password, :email, :phone, :forename, :surname, :avatar,
                   :patient_name, :patient_avatar, :patient_dob, :patient_gender)
   end
 
