@@ -18,11 +18,8 @@ class Prescription < ApplicationRecord
       event = window_as_range.step(interval.to_base10).detect do |ev|
         ev > Hour::Hour.from_time(Time.now).to_base10
       end
-      event = event || start_time.on_this_day(Time.now.tomorrow)
-      next_event = Hour::Hour.from_base10(event).to_time
-    else
-      next_event = start_time.on_this_day(Time.now.tomorrow)
     end
+    next_event = Hour::Hour.from_base10(event)&.to_time || start_time.on_this_day(Time.now.tomorrow)
     self.reminders << Reminder.new(transmit_time: next_event)
   end
 end
