@@ -6,7 +6,6 @@ class Profile extends React.Component {
     constructor() {
         super()
         this.getProfile = this.getProfile.bind(this)
-
         this.state = {}
         this.goToTodaysMeds = this.goToTodaysMeds.bind(this)
         this.goToHistory = this.goToHistory.bind(this)
@@ -58,8 +57,8 @@ class Profile extends React.Component {
                                 <div className="well">
                                     <div className="row">
                                         <div className="col-sm-5">
-                                            <p className="medTime">3:00 pm</p>
-                                            <p className="medDate">April 5 2017</p>
+                                            <p className="medTime">{this.state.start_time}</p>
+                                            <p className="medDate">{this.state.start_time}7</p>
                                         </div>
                                         <div className="col-sm-7">
                                             <p className="medName">Medication Name</p>
@@ -70,8 +69,8 @@ class Profile extends React.Component {
                                 <div className="well">
                                     <div className="row">
                                         <div className="col-sm-5">
-                                            <p className="medTime">3:00 pm</p>
-                                            <p className="medDate">April 5 2017</p>
+                                            <p className="medTime">{this.state.start_time}</p>
+                                            <p className="medDate">{this.state.end_time}</p>
                                         </div>
                                         <div className="col-sm-7">
                                             <p className="medName">Medication Name</p>

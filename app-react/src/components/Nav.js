@@ -27,7 +27,6 @@ class Nav extends React.Component {
             <div className="footer container-fluid">
                 <div className="row">
                     <div className="col-sm-12">
-                        <h2>orderlyaid y'all</h2>
                     </div>
                 </div>
             </div>

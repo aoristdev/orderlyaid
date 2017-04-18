@@ -47,14 +47,12 @@ class SignUp extends React.Component {
             }
     })
     }
-
     goToSignIn() {
         browserHistory.push('/signin')
     }
     goToSignUp() {
         browserHistory.push('/')
-    }
- 
+    } 
     render() {
         return <div>
             <div className="container">

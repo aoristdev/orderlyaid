@@ -14,10 +14,10 @@ body {
     padding: 8px 20px 6px 20px;
 }
 #singout {
-    background: transparent;
-    color:  white;
-    border: soild .5px white;
-    border-radius: 10px;
+    background: white;
+    color:  #80ced7;
+    border-radius: 7px;
+    border: none;
 }
 .logo {
     width: 70px;
