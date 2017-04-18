@@ -6,12 +6,13 @@ class TodaysMeds extends React.Component {
     constructor(props) {
         super(props)
         this.selectCurrentMed = this.selectCurrentMed.bind(this)
-        this.getMeds = this.getMeds.bind(this)
+        // this.getMeds = this.getMeds.bind(this)
         this.state = {
-            currentMed: 0
+            currentMed: 0,
+            prescriptions: []
         }
     }
-     getMeds() {
+     componentDidMount() {
         fetch('/users/profile?token=' + sessionStorage.getItem('token'))
             .then(res => res.json())
             .then(res => this.setState({...res}))
@@ -28,9 +29,10 @@ class TodaysMeds extends React.Component {
     }
 
     render() {
-        const currentMedLinks = [0,1,2].map((number, index) => <a key={index} href={'#currentMed' + index} onClick={() => this.selectCurrentMed(index)} className={this.state.currentMed === index ? "label label-success" : "label label-primary"}>Current Med {index}</a>)
+        const currentMedLinks = this.state.prescriptions.map((number, index) => <a key={index} href={'#currentMed' + index} onClick={() => this.selectCurrentMed(index)} className={this.state.currentMed === index ? "label label-success" : "label label-primary"}>Current Med {index}</a>)
 
-        const currentMeds = [0,1,2].map((number, index) => <CurrentMed key={index} index={index} />)
+        console.log(this.state.prescriptions)
+        const currentMeds = this.state.prescriptions.map((med, index) => <CurrentMed key={index} index={index} {...med} />)
 
         return <div>
            {/* <div className="panel panel-default">*/}

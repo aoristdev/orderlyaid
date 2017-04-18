@@ -3,8 +3,8 @@ import { browserHistory } from 'react-router'
 import './css/profile.css'
 
 class Profile extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.getProfile = this.getProfile.bind(this)
         this.state = {}
         this.goToTodaysMeds = this.goToTodaysMeds.bind(this)
@@ -13,6 +13,7 @@ class Profile extends React.Component {
 
     componentWillMount(){
         this.getProfile()
+        // console.log(this.props)
     }
 
     getProfile() {
@@ -98,7 +99,7 @@ class Profile extends React.Component {
 
                     <div className="col-sm-8">
                         <div className="tabs">
-                            <ul className="nav nav-tabs">
+                            <ul className="nav nav-pills">
                                 <li role="presentation" id="tabname" onClick={this.goToTodaysMeds}><a>Current</a></li>
                                 <li role="presentation" onClick={this.goToHistory}><a>History</a></li>
                             </ul>

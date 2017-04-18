@@ -30,6 +30,9 @@
 .dosage {
     font-size: 15px;
 }
+.listItem{
+    
+}
 .instructions {
     font-size: 15px;
 }
@@ -38,11 +41,6 @@
 }
 .notes {
     font-size: 15px;
-}
-
-.ctaBtns {
-    margin-top: 10px;
-    border-top: .5px solid rgba(0,0,0,0.1);
 }
 
 .currentMeds {

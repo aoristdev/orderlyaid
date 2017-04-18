@@ -20,6 +20,19 @@ class AddDescription extends React.Component {
         let token = sessionStorage.getItem('token')
         let savedData = store.get('savedData', {})
         savedData.token = token
+        savedData.prescriptions_attributes = [
+            {
+                name: savedData.name,
+                instructions: savedData.instructions, 
+                caution: savedData.caution,
+                notes: savedData.notes,
+                dosage: savedData.dosage,
+                count: savedData.count,
+                interval: savedData.interval,
+                start_time: savedData.start_time,
+                end_time: savedData.end_time
+            }
+        ]
 
         fetch('/users/update', {
             method: 'PATCH',

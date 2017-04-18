@@ -4,7 +4,7 @@ import './css/onboarding.css'
 
 class OnBoarding extends React.Component {
     render() {
-        console.log(this)
+        // console.log(this)
 
         return <div>
             <div className="container">
