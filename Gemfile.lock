@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/davegregg/hour.git
-  revision: a88abc2de949b9288071a2e2bab7616479bd1beb
+  revision: 77a0483ffd77d919cd04c1243a8e75b9dc15ee34
   branch: dev
   specs:
     hour (0.5.1)
