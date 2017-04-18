@@ -22,8 +22,7 @@ end
 
 test_user = User.new(
   password: 'merp',
-  username: 'turtlebear',
-  email: Faker::Internet.email,
+  email: 'merp@example.com',
   phone: '+1' + Faker::Number.number(10).to_s,
   forename: Faker::Name.first_name,
   surname: Faker::Name.last_name,
@@ -32,26 +31,34 @@ test_user = User.new(
   patient_avatar: Faker::Avatar.image
 )
 
-test_user.prescriptions << Prescription.new(
-  name: 'iApathy by Apple',
-  description: 'Eliminates emotions, so you can focus on what matters.',
-  physical_description: 'Designer white, egg-shaped, and trimmed with gold, with concave dimple on either end for precision single-finger guidance into your rectum.',
-  instructions: 'Administer rectally after your morning pachoulli vape.',
-  caution: 'Do not administer in public, around minors, or in the presence of strong magnets.',
-  notes: "#{Faker::Name.first_name} doesn't like this one. Grind it up into some food.",
-  dosage: [0.5, 1.0, 2.0, 3.0].sample,
-  total: pill_count = [*(5..10), 20, 30, 40, 50, 60, 100, 150, 200, 300].sample,
-  count: pill_count,
-  start_time: Hour::Hour.new([*(4..9)].sample, [0, 15, 30].sample).to_time,
-  end_time: Hour::Hour.new([*(19..23)].sample, [0, 15, 30].sample).to_time,
-  interval: Hour::Hour.new([*(1..5)].sample, 0).to_time
-)
+rx_name = ['Flintstones', 'Cialis', 'Viagra', 'Durian', 'iApathy by Apple']
+rx_description = ['Basically candy.', 'Makes you poop, but happy about it.', 'Makes it so you can\'t ignore your wife.', 'Tastes like expired cantelope rinds and vidalia onion marmalade, but is nonetheless delicious.', 'Eliminates emotions, so you can focus on what matters.']
+rx_physical_description = ['Assorted colors, shaped like cartoon characters', 'Looks just like a kiddy poo.', 'Small and blue', 'Yellow and spikey. About the size of a human head.', 'Designer white, egg-shaped, and trimmed with gold, with concave dimple on either end for precision single-finger guidance into your rectum.']
+rx_instructions = ['Chew it up, buttercup.', 'Dissolve it in a grain alcohol of your choice.', 'Crush and sniff it.', 'Apply hatchet. Peel open in halves. Scoop with fingers. Shovel into your carcass.', 'Administer rectally after your morning pachoulli vape.']
+rx_caution = ['May cause suicidal feelings in small children. Don\'t permit them to grow accustomed to jumping, no matter how adamant they are.', 'May turn skin green, though some patients have reported being happy about this.', 'May cause an erection lasting 4 hours. Call your doctor if you aren\'t a pornstar.', 'May pierce skull if falling at high rate of speed.', 'Do not administer in public, around minors, or in the presence of strong magnets.']
+
+test_user.prescriptions = rx_name.map.with_index do |rx, i|
+  Prescription.new(
+    name: rx_name[i],
+    description: rx_description[i],
+    physical_description: rx_physical_description[i],
+    instructions: rx_instructions[i],
+    caution: rx_caution[i],
+    notes: "#{Faker::Name.first_name} doesn't like this one. Grind it up into some food.",
+    dosage: [0.5, 1.0, 2.0, 3.0].sample,
+    total: pill_count = [*(5..10), 20, 30, 40, 50, 60, 100, 150, 200, 300].sample,
+    count: pill_count,
+    start_time: Hour::Hour.new([*(4..9)].sample, [0, 15, 30].sample).to_time,
+    end_time: Hour::Hour.new([*(19..23)].sample, [0, 15, 30].sample).to_time,
+    interval: Hour::Hour.new([*(1..5)].sample, 0).to_time,
+    active: pill_count > 0
+  )
+end
 test_user.save!
 
 5.times do
   user = User.new(
     password: Faker::Internet.password,
-    username: Faker::Internet.user_name,
     email: Faker::Internet.email,
     phone: '+1' + Faker::Number.number(10).to_s,
     forename: Faker::Name.first_name,
