@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/davegregg/hour.git
-  revision: 4b54a8711840597fb99bf5b6cf76a96837ca03bb
+  revision: a88abc2de949b9288071a2e2bab7616479bd1beb
   branch: dev
   specs:
-    hour (0.4.0)
+    hour (0.5.1)
 
 GIT
   remote: https://github.com/ffaker/ffaker.git
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/stympy/faker.git
-  revision: a949848fc7b82592aec3e48e3c6ef8f00211051f
+  revision: bb3f8facaf29dc8c0b11f2fcf07d57a169e3c958
   specs:
     faker (1.8.0)
       i18n (~> 0.5)

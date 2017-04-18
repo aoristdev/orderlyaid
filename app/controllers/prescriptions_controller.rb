@@ -13,24 +13,7 @@ class PrescriptionsController < ApplicationController
 # when rx is created or updated reminder cascading
 
   def create
-    rx = current_user.prescriptions.new(rx_params)
-
-    # calculate next reminder
-    interval   = Hour::Hour.new(rx.interval.hour, rx.interval.min)
-    start_time = Hour::Hour.new(rx.start_time.hour, rx.start_time.min)
-    end_time   = Hour::Hour.new(rx.end_time.hour, rx.start_time.min)
-    last_taken = rx.last_taken
-    window_in_hours = (rx.end_time - rx.start_time) / 3600
-    window_as_range_in_time = rx.start_time..rx.end_time
-    window_as_range = start_time.to_base10..end_time.to_base10
-    occurrences = (window_in_hours / (interval.hours + interval.minutes_in_base10)).floor
-    next_event = window_as_range.step(interval.to_base10).detect do |ev|
-      ev > Hour::Hour.from_time(Time.now).to_base10
-    end
-
-    binding.pry
-
-    # rx.reminders << Reminder.new(transmit_time: )
+    rx = current_user.prescriptions = Rxify.call(rx_params)
     render json: rx.save! ? rx : error('Prescription could not be created.', 400)
   end
 
@@ -59,7 +42,7 @@ class PrescriptionsController < ApplicationController
       :created_at, :updated_at
     )
 
-    rx_params[:last_taken] = Time.parse(    rx_params[:last_taken])         if rx_params[:last_taken]
+    rx_params[:last_taken] =     Time.parse(rx_params[:last_taken])         if rx_params[:last_taken]
     rx_params[:interval]   = Hour::Hour.new(rx_params[:interval]).to_time   if rx_params[:interval]
     rx_params[:start_time] = Hour::Hour.new(rx_params[:start_time]).to_time if rx_params[:start_time]
     rx_params[:end_time]   = Hour::Hour.new(rx_params[:end_time]).to_time   if rx_params[:end_time]
