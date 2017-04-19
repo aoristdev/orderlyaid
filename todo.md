@@ -1,10 +1,12 @@
 
-- Reminder generation on Rx creation/update (at least pseudo-code it)
 - Write Reminder task
-- Create a cron job, every 10 mins
+- Factor in refill/counts (including a reminder?)
+- Authenticate on single-use-token
+- Wipe single-use-token & set Reminder active status boolean
+- Create Reminder serializer (History endpoint, and a Next-Up endpoint (sorted) with nested rx)
+- Avatars (Gravatar / Cloudinary)
+- Consider dropping PHI, like Patient Name, Gender, DOB, Avatar
 - Create a Heroku Scheduled task
-- Create Reminder serializer
-- Create Reminder mailer
-- Think through serializers
-- Perform validations at model
-- Create Patient resource
+- Create Reminder mailer or Pusher/Twilio
+- Think through serializers, routes again
+- Perform validations at model!!!
