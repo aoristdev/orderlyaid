@@ -14,12 +14,12 @@ class Prescription < ApplicationRecord
           # window_as_range_in_time = self.start_time..self.end_time
           # occurrences = (window_in_hours / (interval.hours + interval.minutes_in_base10)).floor
     window_as_range = start_time.to_base10..end_time.to_base10
-    unless interval.to_base10 == 0
+    unless interval.to_base10.zero?
       event = window_as_range.step(interval.to_base10).detect do |ev|
         ev > Hour::Hour.from_time(Time.now).to_base10
       end
     end
-    next_event = Hour::Hour.from_base10(event)&.to_time || start_time.on_this_day(Time.now.tomorrow)
+    next_event = Hour::Hour.from_base10(event)&.on_this_day || start_time.on_this_day(Time.now.tomorrow)
     self.reminders << Reminder.new(transmit_time: next_event)
   end
 end

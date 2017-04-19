@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170412123342) do
 
   create_table "reminders", force: :cascade do |t|
     t.integer  "prescription_id"
-    t.time     "transmit_time"
+    t.datetime "transmit_time"
     t.string   "single_use_token"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false

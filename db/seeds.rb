@@ -48,7 +48,7 @@ test_user.prescriptions = rx_name.map.with_index do |rx, i|
     dosage: [0.5, 1.0, 2.0, 3.0].sample,
     total: pill_count = [*(5..10), 20, 30, 40, 50, 60, 100, 150, 200, 300].sample,
     count: pill_count,
-    start_time: Hour::Hour.new([*(4..9)].sample, [0, 15, 30].sample).to_time,
+    start_time: Hour::Hour.new([*(4..9)].sample, [0, 15, 30].sample).to_time, #Time.parse(0,1,1,[*(4..9)].sample, [0, 15, 30].sample,0,0)
     end_time: Hour::Hour.new([*(19..23)].sample, [0, 15, 30].sample).to_time,
     interval: Hour::Hour.new([*(1..5)].sample, 0).to_time,
     active: pill_count > 0
