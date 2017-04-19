@@ -23,6 +23,7 @@ gem 'rack-cors'
 gem 'active_model_serializers', '~> 0.10.0'
 # secure env var handling
 gem 'figaro'
+gem 'twilio-ruby'
 
 gem 'hour', github: 'davegregg/hour', branch: 'dev'
 
