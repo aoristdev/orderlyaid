@@ -1,94 +1,52 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import store from 'store'
+import 'rc-time-picker/assets/index.css'
+import './css/addpatient.css'
+import TimePicker from 'rc-time-picker'
 
-class SetSchedule extends React.Component { 
+class SetSchedule extends React.Component {
+    constructor(props) {
+        super(props)
+        this.save = this.save.bind(this)
+        this.state = {
+            dosage: '',
+            interval: '',
+            start_time: '',
+            end_time: '',
+        }
+    }
 
-    goToAddDescription() {
-    browserHistory.push('/new/description')
-   }
-    goToProfile() {
-    browserHistory.push('/profile')
-   }
+    save() {
+        let savedData = store.get('savedData', {})
+        savedData = Object.assign(savedData, this.state)
+        store.set('savedData', savedData)
 
-// addToCart(productId, name, qty) {
-//         fetch('/api/cart', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({
-//                 product_id: productId,
-//                 name: name,
-//                 quantity: qty
-//             })
-//         })
-//         .then(res => res.json())
-//         .then(res => {
-//             let cart = this.state.cart
-//             cart.push(res)
+        browserHistory.push('/new/description')
+    }
 
-//             this.setState({cart: cart, message: 'Product added to cart successfully.'})
 
-//             browserHistory.push('/')
-//         })
-//     }
-   
-render(){
-  
+    render() {
 
-    return<div>
-    <h1>Set your schedule.</h1>
-        <div className="form-group">
-            <label htmlFor="startDate">Start Date</label>
-            <input type="text" className="form-control" id="startDate" />
+        return <div>
+            <p className="stepTitle">Set your schedule.</p>
+            <div className="form-group">
+                <p className="fieldLabel">How many?</p>
+                <input id="input" type="text" className="form-control" value={this.state.dosage} onChange={(e) => this.setState({ dosage: e.target.value })} /><br />
 
-            <label htmlFor="quantity">Perscription Quantity</label>
-            <input type="text" className="form-control" id="quantity" />
+                <p className="fieldLabel">How often?</p>
+                <input id="input" type="text" className="form-control" value={this.state.interval} onChange={(e) => this.setState({ interval: e.target.value })} /><br />
 
-            <div className="radio">
-                <label>
-                    <input type="radio" name="everyday" id="everyday" value="everyday" />
-                    Everyday
-                </label>
-            </div>
+                <p className="fieldLabel">Wake Time</p>
+                <input id="input" type="text" className="form-control" value={this.state.start_time} onChange={(e) => this.setState({ start_time: e.target.value })} /><br />
 
-            <div className="radio" placeholder="Scheduled Days">
-                <label>
-                    <input type="radio" name="scheduledDays" id="scheduledDays" value="scheduledDays" />
-                    Scheduled Days
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                    <input type="checkbox" value="" />
-                    Sunday
-                </label>
-                <label>
-                    <input type="checkbox" value="" />
-                    Monday
-                </label>
-                <label>
-                    <input type="checkbox" value="" />
-                    Tuesday
-                </label>
-                <label>
-                    <input type="checkbox" value="" />
-                    Wednesday
-                </label>
-                    <label>
-                    <input type="checkbox" value="" />
-                    Thursday
-                </label>
-                    <label>
-                    <input type="checkbox" value="" />
-                    Friday
-                </label>
-                    <label>
-                    <input type="checkbox" value="" />
-                    Saturday
-                </label>
-                <button type="submit" className="btn btn-default" onClick={this.goToAddDescription}>Add</button>
+                <p className="fieldLabel">Bed Time</p>
+                <TimePicker showSecond={false} onChange={(time) => {if (time) {this.setState({end_time: time.format('HH:mm')})}}} />
+                <br/>
+
+                <button type="button" id="nextBtn" className="btn btn-default" onClick={this.save}>Add</button>
             </div>
         </div>
-    </div>
-}
+    }
 }
 export default SetSchedule

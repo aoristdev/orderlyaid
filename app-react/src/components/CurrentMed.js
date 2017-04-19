@@ -1,34 +1,43 @@
 import React from 'react'
-
+import './css/todaysmeds.css'
 class CurrentMed extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            prescriptions: ''
+        }
+    }
+    componentDidMount(){
+        console.log(this.props)
+    }
+    
     render() {
-        return <div className="well currentMed">
+        console.log(this.props)
+        return <div className="well currentMed transform">
             <a name={'currentMed' + this.props.index}></a>
-            <p className="medicationName">Medication Name</p>
-            <p className="dosage">2 Capsules</p>
-            <div className="list-group">
-                <a href="#" className="list-group-item active">
-                    <h4 className="list-group-item-heading">Instructions</h4>
-                    <p className="list-group-item-text">Take by mouth with water</p>
+            <p className="medicationName">{this.props.name}</p>
+            <p className="dosage">{this.props.dosage} Capsules</p>
+                <a href="#" id="listItem" className="list-group-item">
+                    <p className="curentMedHeading">Instructions</p>
+                    <p className="currentMedInfo">{this.props.instructions}</p>
                 </a>
                 <a href="#" className="list-group-item">
-                    <h4 className="list-group-item-heading">Cautions</h4>
-                    <p className="list-group-item-text">Not for women pregnant or nursing</p>
+                    <p className="curentMedHeading">Cautions</p>
+                    <p className="currentMedInfo">{this.props.caution}</p>
                 </a>
+                
                 <a href="#" className="list-group-item">
-                    <h4 className="list-group-item-heading">Notes</h4>
-                    <p className="list-group-item-text">Makes me nauseous without food</p>
+                    <p className="curentMedHeading">Notes</p>
+                    <p className="currentMedInfo">{this.props.notes}</p>
                 </a>
-            </div>
-            <div className="row ctaBtns">
-                <div className="col-sm-6">
-                    <button type="button" className="taken btn btn-link">taken</button>
-                    {/*<button type="button" id="takenbtn"className="taken btn btn-default btn-sm">taken</button>*/}
+
+            <div className="row">
+                <div className="col-sm-6 col-sm-offset-3" >                
+                    <button id="taken" type="button" className="btn btn-link">taken</button>
                 </div>
-                <div className="col-sm-6">
+                {/*<div className="col-sm-6">
                     <button type="button" className="reschedule border btn btn-link">reschedule</button>
-                    {/*<button type="button" className="reschedule btn btn-default btn-sm">reschedule</button>*/}
-                </div>
+                </div>*/}
             </div>
         </div>
     }

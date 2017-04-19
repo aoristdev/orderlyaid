@@ -1,59 +1,47 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-// import './css.addpatient.css'
+import './css/addpatient.css'
+import store from 'store'
+
 
 class AddPatient extends React.Component {
-        constructor(props) {
+    constructor(props) {
         super(props)
-        this.goToAddMedication = this.goToAddMedication.bind(this)
+        this.save = this.save.bind(this)
+
         this.state = {
+            patient_name: '',
+            patient_dob: '',
+            patient_avatar: ''
         }
-   }
+    }
 
-    goToAddMedication() {
-        // /post patient
-    
-    browserHistory.push('/new/medication')
-    }  
-// addToCart(productId, name, qty) {
-//         fetch('/api/cart', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({
-//                 product_id: productId,
-//                 name: name,
-//                 quantity: qty
-//             })
-//         })
-//         .then(res => res.json())
-//         .then(res => {
-//             let cart = this.state.cart
-//             cart.push(res)
+    save() {
+        let savedData = store.get('savedData', {})
+        savedData = Object.assign(savedData, this.state)
+        store.set('savedData', savedData)
 
-//             this.setState({cart: cart, message: 'Product added to cart successfully.'})
-
-//             browserHistory.push('/')
-//         })
-//     }
+        browserHistory.push('/new/medication')
+    }
 
     render() {
-        return<div>
-        <h1>Start by adding a patient.</h1>
+        return <div>
+            <p className="stepTitle">Start by adding a patient.</p>
             <div className="form-group">
                 <p className="fieldLabel">Name</p>
-                <input type="text" className="form-control" id="name" /><br/>
+                <input id="input" type="text" className="form-control" value={this.state.patient_name} onChange={(e) => this.setState({ patient_name: e.target.value })} /><br />
 
                 <p className="fieldLabel">Birth Date</p>
-                <input type="text" className="form-control" id="birthDate" /><br/>
+                <input id="input" type="text" className="form-control" onChange={(e) => this.setState({ patient_dob: e.target.value })} /><br />
 
-                <p className="fieldLabel">Photo</p>
+                <p className="fieldLabel">Photo URL</p>
                 <div className="input-group">
-                    <div className="input-group-addon">URL</div>
-                    <input type="text" className="form-control" id="photoUrl" /><br/>
+                    <div className="input-group-addon"><span className="glyphicon glyphicon-camera"></span></div>
+                    <input id="input" type="text" className="form-control" onChange={(e) => this.setState({ patient_avatar: e.target.value })} /><br />
                 </div>
             </div>
-        <button className="btn btn-default" onClick={this.goToAddMedication}>Add</button>
-        </div>                                    
+            <button type="button" id="nextBtn" className="btn btn-default" onClick={this.save}>Next</button>
+        </div>
     }
 }
 

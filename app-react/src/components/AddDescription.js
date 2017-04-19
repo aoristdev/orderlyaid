@@ -1,78 +1,96 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import store from 'store'
+import './css/addpatient.css'
 
 class AddDescription extends React.Component {
     constructor(props) {
         super(props)
-        this.goToAddMedication = this.goToAddMedication.bind(this)
-        this.goToProfile = this.goToProfile.bind(this)
-    }
-    goToAddMedication() {
-        browserHistory.push('/new/medication')
-    }
-    goToProfile() {
-        browserHistory.push('/nav/profile/todaysmeds')
-    }
-    // addToCart(productId, name, qty) {
-    //     fetch('/api/cart', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({
-    //             product_id: productId,
-    //             name: name,
-    //             quantity: qty
-    //         })
-    //     })
-    //     .then(res => res.json())
-    //     .then(res => {
-    //         let cart = this.state.cart
-    //         cart.push(res)
+        this.save = this.save.bind(this)
+        this.sendData = this.sendData.bind(this)
 
-    //         this.setState({cart: cart, message: 'Product added to cart successfully.'})
+        this.state = {
+            instructions: '',
+            caution: '',
+            notes: ''
+        }
+    }
 
-    //         browserHistory.push('/')
-    //     })
-    // }
+    sendData() {
+        let token = sessionStorage.getItem('token')
+        let savedData = store.get('savedData', {})
+        savedData.token = token
+        savedData.prescriptions_attributes = [
+            {
+                name: savedData.name,
+                instructions: this.state.instructions, 
+                caution: this.state.caution,
+                notes: this.state.notes,
+                dosage: savedData.dosage,
+                count: savedData.count,
+                interval: savedData.interval,
+                start_time: savedData.start_time,
+                end_time: savedData.end_time
+            }
+        ]
+
+        fetch('/users/update', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(savedData)
+        })
+            .then(res => res.json())
+            .then(res => {
+                store.remove('savedData')
+                browserHistory.push('/nav/profile/todaysmeds')
+            })
+    }
+
+    save() {
+        let savedData = store.get('savedData', {})
+        savedData = Object.assign(savedData, this.state)
+        store.set('savedData', savedData)
+
+        this.sendData()
+    }
+
     render() {
 
         return <div>
-            <h1>Make necessary edits to your medications description.</h1>
+            <p className="stepTitle">Add descriptions to your medication.</p>
             <div className="form-group">
-                <h3>Instructions</h3>
-                <div className="well">
-                    <div className="radio">
-                        <label>
-                            <input type="radio" name="noFood" id="noFood" value="noFood" />
-                            No food needed
-                </label>
-                    </div>
-                    <div className="radio">
-                        <label>
-                            <input type="radio" name="withFood" id="withFood" value="withFood" />
-                            Take with food
-                </label>
-                    </div>
-                    <div className="radio">
-                        <label>
-                            <input type="radio" name="before" id="before" value="before" />
-                            Take before eating
-                </label>
-                    </div>
-                    <div className="radio">
-                        <label>
-                            <input type="radio" name="after" id="after" value="after" />
-                            Take after eating
-                </label>
-                    </div>
+                <p className="subTitle">Instructions</p>
+                <div className="radio">
+                    <p className="radioLabel">
+                        <input type="radio" name="instructions" id="noFood" value="nofood" checked={this.state.instructions === 'nofood'} onClick={(e) => this.setState({ instructions: e.target.value })} />
+                        No food needed
+                        </p>
+                </div>
+                <div className="radio">
+                    <p className="radioLabel">
+                        <input type="radio" name="instructions" id="withFood" value="withfood" checked={this.state.instructions === 'withfood'} onClick={(e) => this.setState({ instructions: e.target.value })} />
+                        Take with food
+                        </p>
+                </div>
+                <div className="radio">
+                    <p className="radioLabel">
+                        <input type="radio" name="instructions" id="before" value="beforefood" checked={this.state.instructions === 'beforefood'} onClick={(e) => this.setState({ instructions: e.target.value })} />
+                        Take before eating
+                        </p>
+                </div>
+                <div className="radio">
+                    <p className="radioLabel radio inline control-label">
+                        <input type="radio" name="instructions" id="after" value="afterfood" checked={this.state.instructions === 'afterfood'} onClick={(e) => this.setState({ instructions: e.target.value })} />
+                        Take after eating
+                        </p>
                 </div>
 
-                <h3>Cautions</h3>
-                <div className="well">
-                    Some medications may decrease the effectivness of birthcontrol pills. Ask your Doctor or Pharmacist.
-        </div>
+                <p className="subTitle cautions">Cautions</p>
+                <textarea id="input" className="form-control" value={this.state.caution} onChange={(e) => this.setState({ caution: e.target.value })} rows="4"></textarea><br />
             </div>
-            <button type="button" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>
-            <button type="button" className="btn btn-default" onClick={this.goToProfile}>Next</button>
+
+            {/*<button type="button" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>*/}
+            <button type="button" id="nextBtn" className="btn btn-default" onClick={this.sendData}>Next</button>
 
 
         </div>

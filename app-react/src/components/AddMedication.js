@@ -1,44 +1,44 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import './css/addpatient.css'  
+import store from 'store'
+import './css/addpatient.css'
 
-class AddMedication extends React.Component { 
-    goToSetReminders() {
-    browserHistory.push('/new/reminders')
-   }
 
-// addToCart(productId, name, qty) {
-//         fetch('/api/cart', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({
-//                 product_id: productId,
-//                 name: name,
-//                 quantity: qty
-//             })
-//         })
-//         .then(res => res.json())
-//         .then(res => {
-//             let cart = this.state.cart
-//             cart.push(res)
+class AddMedication extends React.Component {
+    constructor(props) {
+        super(props)
+        this.save = this.save.bind(this)
+        this.state = {
+            name: '',
+            count: ''
+        }
+    }
 
-//             this.setState({cart: cart, message: 'Product added to cart successfully.'})
+    save() {
+        let savedData = store.get('savedData', {})
+        savedData = Object.assign(savedData, this.state)
+        store.set('savedData', savedData)
 
-//             browserHistory.push('/')
-//         })
-//     }
-render() {
-// add med title
-    return<div>
-    <div className="form-group">
-  
-        <p className="fieldLabel">Medication Name</p>
-        <input type="text" className="form-control" id="name" />
-    </div>
+        browserHistory.push('/new/schedule')
+    }
 
-   <button type="submit" className="btn btn-default" onClick={this.goToSetReminders}>Add</button>
+    render() {
 
-    </div>
+        return <div>
+            <p className="stepTitle">Add a medication.</p>
+            <div className="form-group">
+                <p className="fieldLabel">Prescription Name</p>
+                <input id="input" type="text" className="form-control" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} /><br />
+
+                <p className="fieldLabel">Quantity</p>
+                <input id="input" type="text" className="form-control" value={this.state.count} onChange={(e) => this.setState({ count: e.target.value })} />
+            </div>
+
+
+
+            <button type="button" id="nextBtn" className="btn btn-default" onClick={this.save}>Next</button>
+
+        </div>
     }
 }
 

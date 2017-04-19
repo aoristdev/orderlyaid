@@ -2,11 +2,6 @@
     box-sizing: border-box;
 }
 
-.card {
-    padding: 20px 20px 20px 20px;  
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-    background-color: #ffffff;
-}
 .todaysDate {
     text-align: center;
     font-size: 17px;
@@ -16,14 +11,21 @@
     text-align: center;
     font-size: 35px;
 }
+
 .listOfCurrentMeds {
-    margin-top: 15px;
+    margin-top: 30px;
 }
 .medicationName {
+    font-family: 'Roboto', sans-serif;
     font-size: 20px;
+    font-weight: 400;
+    margin-left: 8px;
 }
 .dosage {
     font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin-left: 8px;
 }
 .instructions {
     font-size: 15px;
@@ -34,20 +36,12 @@
 .notes {
     font-size: 15px;
 }
-
-.ctaBtns {
-    margin-top: 10px;
-    border-top: .5px solid silver;
+.label-success {
+   background-color: #80ced7;
 }
-.taken {
-    text-align: center;
-}
-.reschedule {
-    margin-left: 5px;
-    text-align: center;
-     border-left: .5px solid silver;
-}
-
+/*.label-primary{
+    background-color: #aec1be;
+}*/
 .currentMeds {
     display: flex;
     overflow: hidden;
@@ -58,10 +52,42 @@
     flex: 1;
     min-width: 300px;
     margin-right: 30px;
+    padding: 20px 20px 20px 20px;  
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    background:white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: solid .5px white;
+    border-radius: 1px;
+    /*transform: scale(.75);
+    transition: all(.3sec)*/
+}
+.medDisplay {
+    margin-top: 50px;
 }
 
-.currentMed:first-child {
+/*.currentMed:first-child {
     margin-left: 205px;
+}*/
+
+
+/*.medBackgroundPanel{
+    border-radius: 1px;
+    padding-top: 14px;
+    padding-bottom: 5px;
+    /*background: rgba(237,234,237,.2);*/
+    /*box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    border: solid 1px white;
+    background-color: #ffffff;
+
+}*/
+.curentMedHeading {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
 }
-
-
+.currentMedInfo {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+}
