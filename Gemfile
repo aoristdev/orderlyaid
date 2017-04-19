@@ -34,6 +34,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+  gem 'minitest-rails'
+  gem 'factory_girl_rails', '~> 4.5'
 end
 
 group :development do
