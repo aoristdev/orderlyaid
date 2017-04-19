@@ -5,21 +5,21 @@ import './css/profile.css'
 class Profile extends React.Component {
     constructor(props) {
         super(props)
-        this.getProfile = this.getProfile.bind(this)
         this.state = {}
         this.goToTodaysMeds = this.goToTodaysMeds.bind(this)
         this.goToHistory = this.goToHistory.bind(this)
+        this.getNextMeds = this.getNextMeds.bind(this)
     }
 
-    componentWillMount(){
-        this.getProfile()
+    componentWillMount() {
+        this.getNextMeds()
         // console.log(this.props)
     }
 
-    getProfile() {
+    getNextMeds() {
         fetch('/users/profile?token=' + sessionStorage.getItem('token'))
             .then(res => res.json())
-            .then(res => this.setState({...res}))
+            .then(res => this.setState({ ...res }))
             .then(res => console.log(this.state))
     }
 
@@ -34,21 +34,7 @@ class Profile extends React.Component {
     render() {
 
         return <div>
-            <div className="container">
-                <div className="userBio">
-                    <div className="row">
-                        <div className="col-sm-2">
-                            <img src="https://unsplash.it/200/?blur" alt="..." className="userImg img-circle" />
-                        </div>
-                        <div className="userProfile">
-                            <div className="col-sm-10">
-                                <p className="userName">{this.state.patient_name}</p>
-                                {/*<p className="userGender">{this.state.patient_name}</p>*/}
-                                <p className="userAge">{this.state.patient_dob}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div className="container-fluid">
 
                 <div className="row">
                     <div className="col-sm-4">
@@ -77,10 +63,7 @@ class Profile extends React.Component {
                                             <p className="medName">Medication Name</p>
                                         </div>
                                     </div>
-                                    {/*<div className="row medBtns">
-                                       <button type="button" className="btn btn-link pull-right"><span className="glyphicon glyphicon-plus"></span> </button>
-                                       <button type="button" className="btn btn-link pull-right"><span className="glyphicon glyphicon-pencil"></span> </button>
-                                    </div>*/}
+
                                 </div>
                                 <div className="well">
                                     <div className="row">
@@ -98,17 +81,7 @@ class Profile extends React.Component {
                     </div>
 
                     <div className="col-sm-8">
-                        <div className="tabs">
-                            <ul className="nav nav-pills">
-                                <li role="presentation" id="tabname" onClick={this.goToTodaysMeds}><a>Current</a></li>
-                                <li role="presentation" onClick={this.goToHistory}><a>History</a></li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            {this.props.children}
-                        </div>
-
+                        {this.props.children}
                     </div>
 
                 </div>

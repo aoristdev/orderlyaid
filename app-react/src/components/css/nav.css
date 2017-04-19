@@ -10,21 +10,59 @@ body {
     background-attachment: fixed;
 }
 .mainNav {
-    background-color: #80ced7;
-    padding: 8px 20px 6px 20px;
+    background-color: #ccdbdc;
+    padding: 4px 20px 4px 20px;
+    /*box-shadow: 0 8px 6px -6px rgba(204,219,220,.5);*/
 }
 #singout {
-    background: white;
-    color:  #80ced7;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    background: transparent;
+    color:  white;
     border-radius: 7px;
-    border: none;
+    border: solid .5px white;
+    padding: -3px;
 }
 .logo {
     width: 70px;
 }
 
-.footer {
+.profileNav {
+    background: white;
+    padding: 5px;
+    box-shadow: 0 8px 6px -6px rgba(204,219,220,.5);
+    margin-bottom: 40px;
+}
+/*.footer {
      background-color: #80ced7;
      padding:30px;
      margin-top: 30px;
+}*/
+
+.userImg {
+    max-width: 50px;
+    height: auto;
+    display: block;
+    text-align: center;
+    padding: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 100px;
+}
+.userName{
+    font-family: 'Varela Round', sans-serif;
+    font-size: 20px;
+    padding-top: 20px;
+    margin-left:-60px;
+}
+#medLinks{
+    margin: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding: 9,9,9,9;
+    font-size: 13px;
+    border-radius: 17px;
+}
+.tabs{
+    padding-top: 15px;
 }

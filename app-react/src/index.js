@@ -8,6 +8,7 @@ import SignIn from './components/SignIn'
 
 import Profile from './components/Profile'
 import MedHistory from './components/MedHistory'
+import AllMeds from './components/AllMeds'
 import TodaysMeds from './components/TodaysMeds'
 
 import Nav from './components/Nav'
@@ -27,6 +28,7 @@ ReactDOM.render (
             <Route path='profile' component={Profile}>        
                 <Route path='todaysmeds' component={TodaysMeds} />
                 <Route path='medhistory' component={MedHistory} />
+                <Route path='allmeds' component={AllMeds} />
             </Route>
         </Route>
         
