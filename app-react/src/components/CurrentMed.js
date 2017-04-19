@@ -18,17 +18,17 @@ class CurrentMed extends React.Component {
             <p className="medicationName">{this.props.name}</p>
             <p className="dosage">{this.props.dosage} Capsules</p>
                 <a href="#" id="listItem" className="list-group-item">
-                    <h4 className="list-group-item-heading">Instructions</h4>
-                    <p className="list-group-item-text">{this.props.instructions}</p>
+                    <p className="curentMedHeading">Instructions</p>
+                    <p className="currentMedInfo">{this.props.instructions}</p>
                 </a>
                 <a href="#" className="list-group-item">
-                    <h4 className="list-group-item-heading">Cautions</h4>
-                    <p className="list-group-item-text">{this.props.caution}</p>
+                    <p className="curentMedHeading">Cautions</p>
+                    <p className="currentMedInfo">{this.props.caution}</p>
                 </a>
                 
                 <a href="#" className="list-group-item">
-                    <h4 className="list-group-item-heading">Notes</h4>
-                    <p className="list-group-item-text">{this.props.notes}</p>
+                    <p className="curentMedHeading">Notes</p>
+                    <p className="currentMedInfo">{this.props.notes}</p>
                 </a>
 
             <div className="row">
