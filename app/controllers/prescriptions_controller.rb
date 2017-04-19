@@ -9,9 +9,7 @@ class PrescriptionsController < ApplicationController
   def show
     render json: find_rx
   end
-
-# when rx is created or updated reminder cascading
-
+  
   def create
     rx = current_user.prescriptions = Rxify.call(rx_params)
     render json: rx.save! ? rx : error('Prescription could not be created.', 400)
