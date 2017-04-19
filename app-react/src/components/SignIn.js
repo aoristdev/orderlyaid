@@ -14,7 +14,7 @@ class SignIn extends React.Component {
     }
     signIn() {
 
-        fetch('/users/profile', {
+        fetch('/users/authenticate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,8 +30,8 @@ class SignIn extends React.Component {
         .then(response => {
             if (response.token) {
                 sessionStorage.setItem('token', response.token)
-                sessionStorage.setItem('user_id', JSON.stringify(response.user.id))
-                browserHistory.push('/profile')
+                // sessionStorage.setItem('', JSON.stringify(response.user.id))
+                browserHistory.push('/nav/profile')
             }
             else {
                 alert('Entery not found. Please try again!')
@@ -47,7 +47,7 @@ class SignIn extends React.Component {
     }
 
     goToProfile(){
-        browserHistory.push('/profile')
+        browserHistory.push('/nav/profile')
     }
 
     render() {

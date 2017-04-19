@@ -9,6 +9,7 @@ class Nav extends React.Component {
         browserHistory.push('/signin')
     }
 
+
     render() {
         return <div>
             <div className="mainNav container-fluid">
