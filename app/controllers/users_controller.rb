@@ -15,8 +15,9 @@ class UsersController < ApplicationController
   end
 
   def authenticate
-    user = User.find_by(email: user_params[:email])
-               &.authenticate(user_params[:password])
+    user   = User.find_by(token: token)
+    user ||= User.find_by(email: user_params[:email])
+                 &.authenticate(user_params[:password])
     render json: user || error
   end
 

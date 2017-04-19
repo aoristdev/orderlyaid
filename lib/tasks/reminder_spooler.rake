@@ -1,19 +1,26 @@
 desc "Sends reminders"
 task reminder_spooler: :environment do
 
-  sh('echo', "#{User.all}")
+  Reminder.where('transmit_time < ?', DateTime.now).each do |reminder|
+    binding.pry
+    message = Twilio::REST::Client.new
+              .account.messages.create({
+                from: ENV['TWILIO_PHONE'],
+                to:   reminder.prescription.user.phone,
+                body: "It's time to take your #{reminder.prescription.dosage} #{reminder.prescription.name}! Tell us you took it: http://localhost:3000/reminder?t=#{reminder.single_use_token}"
+              })
+    puts message.sid
+  end
 
-  # Reminders.all.each {}
 
 
-  # when rx is created or updated reminder cascading
-  # where(start_time: (Time.now - 10.minutes)..(Time.now + 20.minutes))
 
-  # ReminderQueue.find_each(batch_size: Prescription.count) do |rx| # reduce Prescription.count to sensible portions for scaling once this query starts to feel expensive
-  #
-  #   binding.pry
-  #
-  # end
+
+
+
+
+
+
 
   #psuedocode begin
 
