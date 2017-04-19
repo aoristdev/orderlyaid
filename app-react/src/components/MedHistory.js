@@ -2,6 +2,19 @@ import React from 'react'
 
 
 class MedHistory extends React.Component { 
+      constructor(props) {
+        super(props)
+    
+        this.state = {
+            prescriptions: []
+        }
+    }
+     componentDidMount() {
+        fetch('/reminders/all?token=' + sessionStorage.getItem('token'))
+            .then(res => res.json())
+            .then(res => this.setState({...res}))
+            .then(res => console.log(this.state))
+    }
 render(){
 
     return<div>
@@ -31,7 +44,7 @@ render(){
                 <p className="text-center">3:00 pm</p>
                 </div>
                 <div className="col-sm-4">
-                <p className="text-center">Advil</p>
+                <p className="text-center">{this.props.name}</p>
                 </div>
                 <div className="col-sm-2">
                 <p className="text-center">2</p>

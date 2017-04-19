@@ -13,7 +13,7 @@ class CurrentMed extends React.Component {
     
     render() {
         console.log(this.props)
-        return <div className="well currentMed">
+        return <div className="well currentMed transform">
             <a name={'currentMed' + this.props.index}></a>
             <p className="medicationName">{this.props.name}</p>
             <p className="dosage">{this.props.dosage} Capsules</p>
@@ -30,7 +30,7 @@ class CurrentMed extends React.Component {
                     <h4 className="list-group-item-heading">Notes</h4>
                     <p className="list-group-item-text">{this.props.notes}</p>
                 </a>
-                
+
             <div className="row">
                 <div className="col-sm-6 col-sm-offset-3" >                
                     <button id="taken" type="button" className="btn btn-link">taken</button>

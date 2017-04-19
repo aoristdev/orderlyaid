@@ -30,9 +30,6 @@
 .dosage {
     font-size: 15px;
 }
-.listItem{
-    
-}
 .instructions {
     font-size: 15px;
 }
@@ -55,16 +52,20 @@
     margin-right: 30px;
     padding: 20px 20px 20px 20px;  
     box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-    background: rgba(237,234,237,.2);
+    background:white;
     padding-top: 20px;
     padding-bottom: 20px;
     border: solid .5px white;
     border-radius: 1px;
+    transform: scale(.75);
+    transition: all(.3sec)
 }
 
-.currentMed:first-child {
+/*.currentMed:first-child {
     margin-left: 205px;
-}
+}*/
+
+
 .medBackgroundPanel{
     border-radius: 1px;
     padding-top: 14px;
