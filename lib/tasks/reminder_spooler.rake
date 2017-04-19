@@ -1,6 +1,7 @@
 desc "Sends reminders"
 task reminder_spooler: :environment do
 
+  sh('echo', "#{User.all}")
 
   # Reminders.all.each {}
 
