@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class ReminderTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
+
+  # def test_reminder_belongs_to_prescription
+  #
   # end
+
 end
