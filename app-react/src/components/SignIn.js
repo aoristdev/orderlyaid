@@ -80,9 +80,8 @@ class SignIn extends React.Component {
                                         </div>
                                     </div>
                                     <div className="col-sm-4 line sidebar">
-                                        <p className="sidebarTitle">Why you'll love us.</p>
-                                        <p className="whyPoint">Recieve text messages when it's time to take your next perscription.</p>
-                                        <p className="whyPoint">Add loved ones to recieve reminders to help you stay on track.</p>
+                                        <p className="sidebarTitle">Why you'll love us</p>
+                                        <p className="whyPoint">Receive text messages when it's time to take your next prescription.</p>
                                         <p className="whyPoint">Get alerts when it's time for a refill.</p>
                                     </div>
                                 </div>

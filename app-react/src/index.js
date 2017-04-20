@@ -14,7 +14,7 @@ import TodaysMeds from './components/TodaysMeds'
 
 import Nav from './components/Nav'
 import OnBoarding from './components/OnBoarding'
-import AddPatient from './components/AddPatient'
+// import AddPatient from './components/AddPatient'
 import AddMedication from './components/AddMedication'
 
 import SetSchedule from './components/SetSchedule' 
@@ -34,7 +34,7 @@ ReactDOM.render (
         </Route>
         
         <Route path='/new' component={OnBoarding}>
-            <Route path='patient' component={AddPatient} />
+            {/*<Route path='patient' component={AddPatient} />*/}
             <Route path='medication' component={AddMedication} />
             <Route path='schedule' component={SetSchedule} />
             <Route path='description' component={AddDescription} />

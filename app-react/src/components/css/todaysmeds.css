@@ -42,6 +42,10 @@
 /*.label-primary{
     background-color: #aec1be;
 }*/
+
+.label:hover{
+     background-color:#80ced7;
+}
 .currentMeds {
     display: flex;
     overflow: hidden;
@@ -70,6 +74,10 @@
     opacity: 1;
     /*margin-right: -150px;*/
 }
+
+/*.currentMed.active:hover {
+    background: #80ced7;
+}*/
 
 .medDisplay {
     margin-top: 50px;
