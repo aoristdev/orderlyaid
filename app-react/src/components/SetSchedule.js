@@ -19,11 +19,28 @@ class SetSchedule extends React.Component {
         }
     }
 
-    save() {
-        let savedData = store.get('savedData', {})
-        savedData = Object.assign(savedData, this.state)
-        store.set('savedData', savedData)
+    componentDidMount() {
+        //    let x = store.get('savedData',)
+        // let x = store.get('savedData')
+        window.$('#dtPicker').datetimepicker({
+            format: 'LT'
+        });
+    }
 
+    save() {
+        let savedData = store.get('savedData')
+        console.log(savedData)
+        let x = savedData.prescriptions = this.state
+        savedData.time_taken = this.state.time_taken
+        savedData.dosage = this.state.dosage
+        savedData.start_time = this.state.start_time
+        savedData.end_time = this.state.end_time
+        savedData.interval = this.state.interval
+        store.set('savedData', savedData)
+        // savedData = Object.assign(savedData, this.state)
+        // store.set('savedData', savedData)
+        console.log("End of SetSachedule save")
+        console.log(store.get('savedData'))
         browserHistory.push('/new/description')
     }
 
@@ -33,7 +50,7 @@ class SetSchedule extends React.Component {
             <p className="stepTitle">Set your schedule.</p>
             <div className="form-group">
                 <p className="fieldLabel" >Last time you took this medication</p>
-                <input id="input" placeholder="00:00" type="text" className="form-control" value={this.state.interval} onChange={(e) => this.setState.time({ time_taken: moment(e.target.value,'X')})} /><br />
+                <input id="input" placeholder="00:00" type="text" className="form-control" value={this.state.time_taken} onChange={(e) => this.setState({time_taken: e.target.value})} /><br />
 
                 <p className="fieldLabel">How much do you take each time?</p>
                 <input id="input" placeholder="dosage" type="text" className="form-control" value={this.state.dosage} onChange={(e) => this.setState({ dosage: e.target.value })} /><br />
@@ -51,17 +68,14 @@ class SetSchedule extends React.Component {
                 <input id="input" type="text" className="form-control" placeholder="00:00" value={this.state.start_time} onChange={(e) => this.setState({ start_time: e.target.value })} /><br />
 
                 <p className="fieldLabel">What time do you go to bed?</p>
-                <TimePicker placeholder="00:00" showSecond={false} onChange={(time) => {if (time) {this.setState({end_time: time.format('HH:mm')})}}} />
-                <br/>
+                {/*<TimePicker placeholder="00:00" showSecond={false} onChange={(time) => {if (time) {this.setState({end_time: time.format('HH:mm')})}}} />*/}
        
-               {/*} <div cclassName='input-group date' id='datetimepicker3'>
-                    <input type='text' className="form-control" />
+                <div className="input-group date" id="dtPicker">
+                    <input type="text"  value={this.state.end_time} onChange={(e) => this.setState({ end_time: e.target.value })}className="form-control" />
                     <span className="input-group-addon">
                         <span className="glyphicon glyphicon-time"></span>
                     </span>
-                </div>*/}
-       
-     
+                </div><br />
 
                 <button type="button" id="nextBtn" className="btn btn-default" onClick={this.save}>Add</button>
             </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import { browserHistory } from 'react-router'
 import './css/profile.css'
 
@@ -32,8 +33,9 @@ class Profile extends React.Component {
                 return <div className="well" key={i}>
                                     <div className="row">
                                         <div className="col-sm-5">
-                                            <p className="medTime">{medInfo.last_taken}</p>
-                                            {/*} <p className="medDate">{this.state.start_time}7</p>*/}
+                                            <p className="medTime">{moment(medInfo.last_taken).format('h:mma')}</p>
+                                        {/*} <p className="medDate">{moment(medInfo.last_taken).format('dddd')}7</p>*/}
+                                        {/*} <p className="medDate">{moment(medInfo.last_taken).format('M:D:YY')}7</p>*/}
                                         </div>
                                         <div className="col-sm-7">
                                             <p className="medName">{medInfo.name}</p>
