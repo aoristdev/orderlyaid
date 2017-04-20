@@ -1,16 +1,5 @@
  /*font-family: 'Varela Round', sans-serif;*/
     /*font-family: 'Roboto', sans-serif;*/
-html {
-    height: 100%;
-}
-body {
-    background: -webkit-linear-gradient(left,rgba(174,193,190,0),rgba(204,219,220,.2));
-    height: 100%;
-    margin: 0;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: auto;
-}
 
 .userBio{
     margin-top: 30px;

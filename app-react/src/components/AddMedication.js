@@ -13,13 +13,21 @@ class AddMedication extends React.Component {
             count: ''
         }
     }
+    componentDidMount() {
+        let x = store.set('savedData', {prescriptions:[]})
+    //     // console.log(x.prescriptions)
+        
+    }
 
     save() {
-        let savedData = store.get('savedData', {})
-        savedData = Object.assign(savedData, this.state)
+        let savedData = store.get('savedData')
+        // savedData = Object.assign(savedData.prescriptions, this.state)
+        // let x = savedData.prescriptions = this.state
+        savedData.name = this.state.name
+        savedData.count = this.state.count
         store.set('savedData', savedData)
-
         browserHistory.push('/new/schedule')
+        console.log(store.get('savedData'))
     }
 
     render() {

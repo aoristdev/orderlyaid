@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router'
 import store from 'store'
 import './css/addpatient.css'
 
-
 class AddDescription extends React.Component {
     constructor(props) {
         super(props)
@@ -12,15 +11,23 @@ class AddDescription extends React.Component {
         this.goToAddMedication = this.goToAddMedication.bind(this)
 
         this.state = {
+            prescriptions: [],
             instructions: '',
             caution: '',
             notes: ''
         }
     }
+    // componentDidMount() {
+        //  let x = store.set('savedData', {prescriptions:[]})
+        // let x = store.get('savedData')
+    //     console.log(x.name)
+    // }
 
     sendData() {
         let token = sessionStorage.getItem('token')
-        let savedData = store.get('savedData', {})
+        let savedData = store.get('savedData')
+        //  let x = savedData.prescriptions_attributes = this.state
+        // let prescriptions = this.state.prescriptions
         savedData.token = token
         savedData.prescriptions_attributes = [
             {
@@ -35,7 +42,7 @@ class AddDescription extends React.Component {
                 end_time: savedData.end_time
             }
         ]
-
+        console.log(savedData)
         fetch('/users/update', {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
@@ -91,7 +98,7 @@ class AddDescription extends React.Component {
                 </div>
 
                 <p className="subTitle cautions">Cautions</p>
-                <textarea id="input" placeholder="Please add cautions as seen on prescription lable." className="form-control" value={this.state.caution} onChange={(e) => this.setState({ caution: e.target.value })} rows="4"></textarea><br />
+                <textarea id="input" placeholder="Please add cautions as seen on prescription label." className="form-control" value={this.state.caution} onChange={(e) => this.setState({ caution: e.target.value })} rows="4"></textarea><br />
 
                 <p className="subTitle cautions">Notes</p>
                 <textarea id="input" className="form-control" placeholder="Please add notes. 'Drink with juice to hide taste.'" value={this.state.notes} onChange={(e) => this.setState({ notes: e.target.value })} rows="4"></textarea><br />

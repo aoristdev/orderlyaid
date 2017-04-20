@@ -18,7 +18,7 @@ class OnBoarding extends React.Component {
                                     </div>
                                     
                                     <div className="col-sm-4 sidebar line">
-                                        <p className="sidebarTitle">Steps to get started.</p>
+                                        <p className="sidebarTitle">Steps to get started</p>
                                         <p className={location.pathname === '/new/patient' ? "active sidebarStep" : "sidebarStep"}>Add Patient</p>
                                         <p className={location.pathname === '/new/medication' ? "active sidebarStep" : "sidebarStep"}>Add Medication</p>
                                         <p className={location.pathname === '/new/schedule' ? "active sidebarStep" : "sidebarStep"}>Set Schedule</p>
