@@ -10,14 +10,14 @@ gem 'rails', '~> 5.0.2'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
-
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'twilio-ruby', '~> 5.0.0.rc17'
-
-gem 'hour' #, github: 'davegregg/hour', branch: 'dev'
+gem 'rollbar'
 
 gem 'faker', github: 'stympy/faker'
 gem 'ffaker', github: 'ffaker/ffaker'
+
+gem 'hour' #, github: 'davegregg/hour', branch: 'dev'
 
 group :development, :test do
   gem 'figaro'
@@ -25,8 +25,8 @@ group :development, :test do
   gem 'minitest-rails'
   gem 'factory_girl_rails', '~> 4.5'
   gem 'brakeman'
+  gem 'guard-brakeman'
   gem 'pry-rails'
-  gem 'pry-byebug'
   gem 'pry-stack_explorer'
 end
 
