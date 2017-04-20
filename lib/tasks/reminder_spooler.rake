@@ -14,7 +14,6 @@ task reminder_spooler: :environment do
   Reminder.where('transmit_time < ?', DateTime.now).each do |reminder|
     message = sms_client.("It's time to take your #{reminder.prescription.dosage} #{reminder.prescription.name}! Tell us you took it: #{reminder_path}?t=#{reminder.single_use_token}")
     reminder.prescription.count -= reminder.prescription.dosage
-    reminder.single_use_token = nil
     reminder.save
     puts message.sid
 
@@ -22,6 +21,9 @@ task reminder_spooler: :environment do
       message = sms_client.("Don't forget to refill your prescription of #{reminder.prescription.name}!. You're running low!")
       puts message.sid
     end
+
+    HistoricalReminder.create!(transmit_time: DateTime.now, scheduled_time: reminder.transmit_time, single_use_token: reminder.single_use_token)
+    reminder.destroy!
   end
 
 
