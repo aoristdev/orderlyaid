@@ -16,7 +16,7 @@ test_user = User.new(
   password: 'merp',
   email: 'merp@example.com',
   phone: '+1' + '8126712638', #' + Faker::Number.number(10).to_s,
-  fullname: Faker::Name.name,
+  display_name: Faker::Name.name,
 )
 
 rx_name = ['Flintstones', 'Cialis', 'Viagra', 'Durian', 'iApathy by Apple']
@@ -49,7 +49,7 @@ test_user.save!
     password: Faker::Internet.password,
     email: Faker::Internet.email,
     phone: '+1' + Faker::Number.number(10).to_s,
-    fullname: Faker::Name.name,
+    display_name: Faker::Name.name,
   )
 
   random_rxes = (1..5).collect do
