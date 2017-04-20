@@ -23,7 +23,7 @@ end
 test_user = User.new(
   password: 'merp',
   email: 'merp@example.com',
-  phone: '+1' + Faker::Number.number(10).to_s,
+  phone: '+18126712638', #' + Faker::Number.number(10).to_s,
   forename: Faker::Name.first_name,
   surname: Faker::Name.last_name,
   avatar: Faker::Avatar.image,
@@ -33,9 +33,9 @@ test_user = User.new(
 
 rx_name = ['Flintstones', 'Cialis', 'Viagra', 'Durian', 'iApathy by Apple']
 rx_description = ['Basically candy.', 'Makes you poop, but happy about it.', 'Makes it so you can\'t ignore your wife.', 'Tastes like expired cantelope rinds and vidalia onion marmalade, but is nonetheless delicious.', 'Eliminates emotions, so you can focus on what matters.']
-rx_physical_description = ['Assorted colors, shaped like cartoon characters', 'Looks just like a kiddy poo.', 'Small and blue', 'Yellow and spikey. About the size of a human head.', 'Designer white, egg-shaped, and trimmed with gold, with concave dimple on either end for precision single-finger guidance into your rectum.']
+rx_physical_description = ['Assorted colors, shaped like cartoon characters', 'Looks just like a kiddy poo.', 'Small and blue', 'Yellow and spikey. About the size of a human head.', 'Designer white, egg-shaped, and trimmed with gold, with concave dimples on either end for precision single-finger guidance into your rectum.']
 rx_instructions = ['Chew it up, buttercup.', 'Dissolve it in a grain alcohol of your choice.', 'Crush and sniff it.', 'Apply hatchet. Peel open in halves. Scoop with fingers. Shovel into your carcass.', 'Administer rectally after your morning pachoulli vape.']
-rx_caution = ['May cause suicidal feelings in small children. Don\'t permit them to grow accustomed to jumping, no matter how adamant they are.', 'May turn skin green, though some patients have reported being happy about this.', 'May cause an erection lasting 4 hours. Call your doctor if you aren\'t a pornstar.', 'May pierce skull if falling at high rate of speed.', 'Do not administer in public, around minors, or in the presence of strong magnets.']
+rx_caution = ['May cause suicidal feelings in small children. Don\'t permit them to grow accustomed to jumping, no matter how adamant they are.', 'May turn skin green, though some patients have reported being happy about this.', 'May cause an erection lasting more than 4 hours. Call your doctor if you aren\'t a pornstar.', 'May pierce skull if falling at high rate of speed.', 'Do not administer in public, around minors, or in the presence of strong magnets.']
 
 test_user.prescriptions = rx_name.map.with_index do |rx, i|
   Prescription.new(

@@ -9,9 +9,9 @@ class PrescriptionsController < ApplicationController
   def show
     render json: find_rx
   end
-  
+
   def create
-    rx = current_user.prescriptions = Rxify.call(rx_params)
+    rx = Rxify.call(rx_params, current_user)
     render json: rx.save! ? rx : error('Prescription could not be created.', 400)
   end
 

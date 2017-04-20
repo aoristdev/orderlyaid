@@ -2,6 +2,7 @@ import React from 'react'
 import './css/medTables.css'
 
 
+
 class MedHistory extends React.Component { 
       constructor(props) {
         super(props)
@@ -21,10 +22,10 @@ render(){
             return  <div className="panel-body dataBorder" key={i}>
             <div className="row historyData">
                 <div className="col-sm-3">
-                <p className="text-center">{medInfo.date}</p>
+                <p className="text-center">{medInfo.last_taken}</p>
                 </div>
                 <div className="col-sm-3">
-                <p className="text-center">{medInfo.time}</p>
+                <p className="text-center">{medInfo.last_taken}</p>
                 </div>
                 <div className="col-sm-4">
                 <p className="text-center">{medInfo.name}</p>

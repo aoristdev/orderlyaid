@@ -1,12 +1,4 @@
 
-- Write Reminder task
-- Factor in refill/counts (including a reminder?)
-- Authenticate on single-use-token
-- Wipe single-use-token & set Reminder active status boolean
-- Create Reminder serializer (History endpoint, and a Next-Up endpoint (sorted) with nested rx)
-- Avatars (Gravatar / Cloudinary)
-- Consider dropping PHI, like Patient Name, Gender, DOB, Avatar
-- Create a Heroku Scheduled task
-- Create Reminder mailer or Pusher/Twilio
+- Look into Heroku Scheduler dashboard and task firing/timing management
 - Think through serializers, routes again
 - Perform validations at model!!!

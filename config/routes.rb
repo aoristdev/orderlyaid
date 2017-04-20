@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'application#static'
+
   scope '/users' do
     post   '/create',       to: 'users#create'
     post   '/authenticate', to: 'users#authenticate'
@@ -18,12 +20,9 @@ Rails.application.routes.draw do
 
   get '/reminders/all',     to: 'reminders#index'
   get '/reminders/history', to: 'reminders#history'
+  get '/reminders/next',    to: 'reminders#next'
   get '/reminder',          to: 'users#show'
 
-  root to: redirect('http://localhost:3001/')
-
-  # root to: redirect(
-  #   Rails.env.production? ? 'https://.../' : 'http://localhost:8000/'
-  # )
+  get '/:param1(/:param2)(/:param3)' => 'application#static'
 
 end

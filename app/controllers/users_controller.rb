@@ -4,11 +4,11 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    user.prescriptions = Rxify.call(rx_params)
+    # user.prescriptions = Rxify.call(rx_params)
     render json:
       if user.save!
         UserMailer.signup(user).deliver
-        user #, include: { prescriptions: { include: :reminders } } # will also need applied to Update, Show, need serializer
+        user
       else
         error('User registration failed.', 400)
       end
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    current_user.prescriptions << Rxify.call(rx_params)
     render json:
       if current_user.update(user_params)
         current_user
