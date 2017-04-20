@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router'
 import store from 'store'
 import './css/addpatient.css'
 
-
 class AddDescription extends React.Component {
     constructor(props) {
         super(props)
@@ -12,15 +11,23 @@ class AddDescription extends React.Component {
         this.goToAddMedication = this.goToAddMedication.bind(this)
 
         this.state = {
+            prescriptions: [],
             instructions: '',
             caution: '',
             notes: ''
         }
     }
+    // componentDidMount() {
+        //  let x = store.set('savedData', {prescriptions:[]})
+        // let x = store.get('savedData')
+    //     console.log(x.name)
+    // }
 
     sendData() {
         let token = sessionStorage.getItem('token')
-        let savedData = store.get('savedData', {})
+        let savedData = store.get('savedData')
+        //  let x = savedData.prescriptions_attributes = this.state
+        // let prescriptions = this.state.prescriptions
         savedData.token = token
         savedData.prescriptions_attributes = [
             {
@@ -35,7 +42,7 @@ class AddDescription extends React.Component {
                 end_time: savedData.end_time
             }
         ]
-
+        console.log(savedData)
         fetch('/users/update', {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },

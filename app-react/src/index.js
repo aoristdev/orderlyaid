@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory, Router, Route } from 'react-router';
 import store from 'store';
+import './components/css/global.css';
 
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'

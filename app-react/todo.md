@@ -1,25 +1,30 @@
-- current meds 
-    - should already be there 
-        - get date (transmit_time)
-        - get take time (transmit_time)
+- *test* current meds 
+    - date 
+    - time
 
+- *test* pull in 'next meds' in queue
+     - date 
+    - time
+- *test*  Test Gravtar 
 
-- pull in 'next meds' in queue
+- fix hover rollover 
+
+- Make 'taken btn' work (clear out)
 
 - fix fields*
     - dosage (1, .5)
-    - find time picker/use time picker
+    - adjustments to timepicker  
+    
+- add user advatar to the left top with a roll over for logout and add medication 
 
-<!--- use/add gravatar for user avatar 
-    - User profile inforation: Name and avatar -->
-    - Patient has generic avatar assigned 
+- Making marketing landing page
 
 
-
-- onClick highlight for current med
 
 TOMORROW
-- fix background 
-- Collin helps with div transform and transistion
-- add user advatar to the left top with a roll over for loout and add medication 
-- last taken - moment format 
+<!--- Collin helps with div transform and transistion-->
+<!--- last taken - moment format -->
+<!--use/add gravatar for user avatar 
+    - User profile inforation: Name and avatar 
+    - Patient has generic avatar assigned -->
+<!--find time picker/use time picker-->

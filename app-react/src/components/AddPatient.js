@@ -31,7 +31,7 @@ class AddPatient extends React.Component {
             <div className="form-group">
                 <p className="fieldLabel">Name</p>
                 <input id="input" type="text" className="form-control" value={this.state.patient_name} onChange={(e) => this.setState({ patient_name: e.target.value })} /><br />
-               {/*} <img src={"https://gravatar.com/avatar/" + md5('davegregg@gmail.com')} alt="..."/>*/}
+                <img src={'https://gravatar.com/avatar/' + md5(this.state.email)} alt="..." />
 
                 <p className="fieldLabel">Photo URL</p>
                 <div className="input-group">

@@ -1,10 +1,4 @@
-body {
-    /*background: linear-gradient(white, #ccdbdc);*/
-    background: -webkit-linear-gradient(left,rgba(174,193,190,0),rgba(204,219,220,.2));
-    background-repeat: no-repeat;
-    background: cover;
-    height: 58vw;
-}
+
 .onBoardingCard {
     padding-top: 20px;
     padding-bottom: 20px;
