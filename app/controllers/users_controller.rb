@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     render json:
       if user.save!
         UserMailer.signup(user).deliver
-        user #, include: { prescriptions: { include: :reminders } } # will also need applied to Update, Show, need serializer
+        user
       else
         error('User registration failed.', 400)
       end
