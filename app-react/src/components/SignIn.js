@@ -71,12 +71,12 @@ class SignIn extends React.Component {
                                         <div className="form-group">
 
                                             <p className="fieldLabel">Email Address</p>
-                                            <input id="input" type="email" className="form-control" onChange={(e)=>this.setState ({email:e.target.value})} id="email" /><br/>
+                                            <input id="input" type="email" className="form-control" onChange={(e)=>this.setState ({email:e.target.value})}  /><br/>
 
                                             <p className="fieldLabel">Password</p>
-                                            <input id="input" type="password" className="form-control" onChange={(e)=>this.setState ({password:e.target.value})} id="password" /><br/>
+                                            <input id="input" type="password" className="form-control" onChange={(e)=>this.setState ({password:e.target.value})}  /><br/>
 
-                                            <button type="button" className="btn btn-default" onClick={this.signIn}>Next</button>
+                                            <button type="button" id="nextBtn" className="btn btn-default" onClick={this.signIn}>Next</button>
                                         </div>
                                     </div>
                                     <div className="col-sm-4 line sidebar">
