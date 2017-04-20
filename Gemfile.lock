@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/stympy/faker.git
-  revision: bb3f8facaf29dc8c0b11f2fcf07d57a169e3c958
+  revision: 46a85c85a6879b2fbe3ce98ea2421e0008c719c4
   specs:
     faker (1.8.0)
       i18n (~> 0.5)
@@ -75,11 +75,16 @@ GEM
     concurrent-ruby (1.0.5)
     debug_inspector (0.0.2)
     erubis (2.7.0)
+<<<<<<< HEAD
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
+=======
+    faraday (0.12.0.1)
+      multipart-post (>= 1.2, < 3)
+>>>>>>> Implemented reminders loop logic, implemented Twilio, wrote reminder copy, preliminarily wrote reminders routes
     ffi (1.9.18)
     figaro (1.1.1)
       thor (~> 0.14)
@@ -101,10 +106,14 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+<<<<<<< HEAD
     minitest-rails (3.0.0)
       minitest (~> 5.8)
       railties (~> 5.0)
     multi_json (1.12.1)
+=======
+    multipart-post (2.0.0)
+>>>>>>> Implemented reminders loop logic, implemented Twilio, wrote reminder copy, preliminarily wrote reminders routes
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
@@ -168,10 +177,10 @@ GEM
       sprockets (>= 3.0.0)
     thor (0.19.4)
     thread_safe (0.3.6)
-    twilio-ruby (4.13.0)
+    twilio-ruby (5.0.0.rc18)
       builder (>= 2.1.2)
+      faraday (~> 0.9)
       jwt (~> 1.0)
-      multi_json (>= 1.3.0)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     websocket-driver (0.6.5)
@@ -200,7 +209,7 @@ DEPENDENCIES
   rails (~> 5.0.2)
   spring
   spring-watcher-listen (~> 2.0.0)
-  twilio-ruby
+  twilio-ruby (~> 5.0.0.rc17)
 
 RUBY VERSION
    ruby 2.3.3p222

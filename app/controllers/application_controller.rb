@@ -13,15 +13,19 @@ class ApplicationController < ActionController::API
   end
 
   def find_user
-    User.find_by(token: params[:token]) #|| Reminder.find_by(single_use_token: params[:single_use_token]).user
+    User.find_by(token: token)
   end
 
   def current_user
-    @current_user ||= find_user if params[:token]
+    @current_user ||= find_user if token
   end
 
   def require_user
     render json: error if !current_user
+  end
+
+  def token
+    params[:token] || Reminder.find_by(single_use_token: params[:t])&.prescription&.user&.token
   end
 
 end

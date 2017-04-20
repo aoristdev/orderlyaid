@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   scope '/users' do
     post   '/create',       to: 'users#create'
     post   '/authenticate', to: 'users#authenticate'
@@ -17,11 +16,11 @@ Rails.application.routes.draw do
     delete '/delete', to: 'prescriptions#destroy'
   end
 
-  # scope '/reminders' do
-  #   get '/all', to: 'reminders#index'
-  # end
+  get '/reminders/all',     to: 'reminders#index'
+  get '/reminders/history', to: 'reminders#history'
+  get '/reminder',          to: 'users#show'
 
-  root to: redirect('http://localhost:3000/')
+  root to: redirect('http://localhost:3001/')
 
   # root to: redirect(
   #   Rails.env.production? ? 'https://.../' : 'http://localhost:8000/'
