@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::API
 
+  def static
+    render html: File.open("#{Rails.root}/public/index.html").read.html_safe, status: 200
+  end
+
   private
 
   def signal(message = 'Success!', status = 200)
