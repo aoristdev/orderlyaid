@@ -12,9 +12,9 @@ def generate_partial_prescription
   )
 end
 
-%w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each_with_index do |name, number|
-  Weekday.create!(name: name, number: number + 1)
-end
+# %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each_with_index do |name, number|
+#   Weekday.create!(name: name, number: number + 1)
+# end
 
 test_user = User.new(
   password: 'merp',
