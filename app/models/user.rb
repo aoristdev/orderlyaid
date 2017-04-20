@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_secure_token
 
   validates :email, presence: true,
-                    uniqueness: true
+                    uniqueness: true,
+                    :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
 
 end
