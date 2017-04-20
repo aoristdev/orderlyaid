@@ -31,7 +31,7 @@ class SignIn extends React.Component {
             if (response.token) {
                 sessionStorage.setItem('token', response.token)
                 // sessionStorage.setItem('', JSON.stringify(response.user.id))
-                browserHistory.push('/nav/profile')
+                browserHistory.push('/nav/profile/todaysmeds')
             }
             else {
                 alert('Entery not found. Please try again!')
@@ -47,7 +47,7 @@ class SignIn extends React.Component {
     }
 
     goToProfile(){
-        browserHistory.push('/nav/profile')
+        browserHistory.push('/nav/profile/todaysmeds')
     }
 
     render() {

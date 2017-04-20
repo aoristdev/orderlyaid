@@ -3,11 +3,13 @@ import { browserHistory } from 'react-router'
 import store from 'store'
 import './css/addpatient.css'
 
+
 class AddDescription extends React.Component {
     constructor(props) {
         super(props)
         this.save = this.save.bind(this)
         this.sendData = this.sendData.bind(this)
+        this.goToAddMedication = this.goToAddMedication.bind(this)
 
         this.state = {
             instructions: '',
@@ -53,6 +55,9 @@ class AddDescription extends React.Component {
 
         this.sendData()
     }
+    goToAddMedication(){
+        browserHistory.push('/nav/profile')
+    }
 
     render() {
 
@@ -89,7 +94,8 @@ class AddDescription extends React.Component {
                 <textarea id="input" className="form-control" value={this.state.caution} onChange={(e) => this.setState({ caution: e.target.value })} rows="4"></textarea><br />
             </div>
 
-            {/*<button type="button" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>*/}
+            <button type="button" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>
+
             <button type="button" id="nextBtn" className="btn btn-default" onClick={this.sendData}>Next</button>
 
 
