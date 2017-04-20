@@ -32,11 +32,11 @@ class SetSchedule extends React.Component {
         return <div>
             <p className="stepTitle">Set your schedule.</p>
             <div className="form-group">
-                <p className="fieldLabel">Last time you took this medication</p>
-                <input id="input" type="text" className="form-control" value={this.state.interval} onChange={(e) => this.setState.time({ time_taken: moment(e.target.value,'X')})} /><br />
+                <p className="fieldLabel" >Last time you took this medication</p>
+                <input id="input" placeholder="00:00" type="text" className="form-control" value={this.state.interval} onChange={(e) => this.setState.time({ time_taken: moment(e.target.value,'X')})} /><br />
 
-                <p className="fieldLabel">How many?</p>
-                <input id="input" type="text" className="form-control" value={this.state.dosage} onChange={(e) => this.setState({ dosage: e.target.value })} /><br />
+                <p className="fieldLabel">How much do you take each time?</p>
+                <input id="input" placeholder="dosage" type="text" className="form-control" value={this.state.dosage} onChange={(e) => this.setState({ dosage: e.target.value })} /><br />
 
                {/*} <select className="selectpicker">
                     <option>Mustard</option>
@@ -44,14 +44,14 @@ class SetSchedule extends React.Component {
                     <option>Relish</option>
                 </select>*/}
 
-                <p className="fieldLabel">How often?</p>
-                <input id="input" type="text" className="form-control" value={this.state.interval} onChange={(e) => this.setState({ interval: e.target.value })} /><br />
+                <p className="fieldLabel">How many hours between dose?</p>
+                <input id="input" type="text" className="form-control" placeholder="00:00" value={this.state.interval} onChange={(e) => this.setState({ interval: e.target.value })} /><br />
 
-                <p className="fieldLabel">Wake Time</p>
-                <input id="input" type="text" className="form-control" value={this.state.start_time} onChange={(e) => this.setState({ start_time: e.target.value })} /><br />
+                <p className="fieldLabel">What time do you wake up?</p>
+                <input id="input" type="text" className="form-control" placeholder="00:00" value={this.state.start_time} onChange={(e) => this.setState({ start_time: e.target.value })} /><br />
 
-                <p className="fieldLabel">Bed Time</p>
-                <TimePicker showSecond={false} onChange={(time) => {if (time) {this.setState({end_time: time.format('HH:mm')})}}} />
+                <p className="fieldLabel">What time do you go to bed?</p>
+                <TimePicker placeholder="00:00" showSecond={false} onChange={(time) => {if (time) {this.setState({end_time: time.format('HH:mm')})}}} />
                 <br/>
        
                {/*} <div cclassName='input-group date' id='datetimepicker3'>

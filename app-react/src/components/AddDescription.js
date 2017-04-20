@@ -62,7 +62,7 @@ class AddDescription extends React.Component {
     render() {
 
         return <div>
-            <p className="stepTitle">Add descriptions to your medication.</p>
+            <p className="stepTitle">Add instructions for your medication.</p>
             <div className="form-group">
                 <p className="subTitle">Instructions</p>
                 <div className="radio">
@@ -91,7 +91,10 @@ class AddDescription extends React.Component {
                 </div>
 
                 <p className="subTitle cautions">Cautions</p>
-                <textarea id="input" className="form-control" value={this.state.caution} onChange={(e) => this.setState({ caution: e.target.value })} rows="4"></textarea><br />
+                <textarea id="input" placeholder="Please add cautions as seen on prescription lable." className="form-control" value={this.state.caution} onChange={(e) => this.setState({ caution: e.target.value })} rows="4"></textarea><br />
+
+                <p className="subTitle cautions">Notes</p>
+                <textarea id="input" className="form-control" placeholder="Please add notes. 'Drink with juice to hide taste.'" value={this.state.notes} onChange={(e) => this.setState({ notes: e.target.value })} rows="4"></textarea><br />
             </div>
 
             <button type="button" id="addBtn" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>

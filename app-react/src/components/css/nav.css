@@ -76,7 +76,7 @@ body {
     font-size: 20px;
     padding-top: 30px;
     margin-right: -350px;
-    color: #80ced7;
+    color: #223755;
     
 }
 #medLinks{
@@ -88,14 +88,14 @@ body {
     border-radius: 17px;
 }
 .tabs{
-    padding-top: 28px;
+    padding-top: 23px;
     margin-left: 75px;
 }
 
 a {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    color:  gray;
+    color:  #223755;
     font-size: 18px;
     margin-left: 5px;
 

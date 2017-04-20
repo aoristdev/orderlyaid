@@ -31,7 +31,7 @@ class AddMedication extends React.Component {
                 <input id="input" type="text" className="form-control" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} /><br />
 
                 <p className="fieldLabel">Quantity</p>
-                <input id="input" type="text" className="form-control" value={this.state.count} onChange={(e) => this.setState({ count: e.target.value })} />
+                <input id="input" type="text" className="form-control" placeholder="prescription fill total" value={this.state.count} onChange={(e) => this.setState({ count: e.target.value })} />
             </div>
 
 
