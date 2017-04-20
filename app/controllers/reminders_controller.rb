@@ -6,4 +6,8 @@ class RemindersController < ApplicationController
     render json: Reminder.where('transmit_time < ?', DateTime.now)
   end
 
+  def next
+    render json: Reminder.where('transmit_time > ?', DateTime.now)
+  end
+
 end
