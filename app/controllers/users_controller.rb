@@ -48,14 +48,13 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:password, :email, :phone, :forename, :surname, :avatar,
-                  :patient_name, :patient_avatar, :patient_dob, :patient_gender)
+    params.permit(:password, :email, :phone, :display_name)
   end
 
   def rx_params
     params.permit(prescriptions_attributes:
       [
-        :id, :status,
+        :id,
         :name, :description, :physical_description,
         :instructions, :caution, :notes,
         :dosage, :total, :count,
