@@ -1,6 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
 
 def generate_partial_prescription
   Prescription.new(
@@ -16,19 +13,11 @@ def generate_partial_prescription
   )
 end
 
-%w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each_with_index do |name, number|
-  Weekday.create!(name: name, number: number + 1)
-end
-
 test_user = User.new(
   password: 'merp',
   email: 'merp@example.com',
-  phone: '+18126712638', #' + Faker::Number.number(10).to_s,
-  forename: Faker::Name.first_name,
-  surname: Faker::Name.last_name,
-  avatar: Faker::Avatar.image,
-  patient_name: Faker::Name.name,
-  patient_avatar: Faker::Avatar.image
+  phone: '+1' + '8126712638', #' + Faker::Number.number(10).to_s,
+  display_name: Faker::Name.name,
 )
 
 rx_name = ['Flintstones', 'Cialis', 'Viagra', 'Durian', 'iApathy by Apple']
@@ -61,11 +50,7 @@ test_user.save!
     password: Faker::Internet.password,
     email: Faker::Internet.email,
     phone: '+1' + Faker::Number.number(10).to_s,
-    forename: Faker::Name.first_name,
-    surname: Faker::Name.last_name,
-    avatar: Faker::Avatar.image,
-    patient_name: Faker::Name.name,
-    patient_avatar: Faker::Avatar.image
+    display_name: Faker::Name.name,
   )
 
   random_rxes = (1..5).collect do

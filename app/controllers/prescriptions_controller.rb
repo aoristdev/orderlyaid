@@ -32,7 +32,7 @@ class PrescriptionsController < ApplicationController
 
   def rx_params
     rx_params = params.permit(
-      :id, :active, :status,
+      :id,
       :name, :description, :physical_description,
       :instructions, :caution, :notes,
       :dosage, :total, :count,

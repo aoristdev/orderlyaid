@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420110218) do
+ActiveRecord::Schema.define(version: 20170420182013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,19 +25,9 @@ ActiveRecord::Schema.define(version: 20170420110218) do
     t.index ["prescription_id"], name: "index_archived_reminders_on_prescription_id", using: :btree
   end
 
-  create_table "prescription_to_weekday_joins", force: :cascade do |t|
-    t.integer  "prescription_id"
-    t.integer  "weekday_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["prescription_id"], name: "index_prescription_to_weekday_joins_on_prescription_id", using: :btree
-    t.index ["weekday_id"], name: "index_prescription_to_weekday_joins_on_weekday_id", using: :btree
-  end
-
   create_table "prescriptions", force: :cascade do |t|
     t.integer  "user_id"
     t.boolean  "active",               default: true
-    t.string   "status"
     t.string   "name"
     t.text     "description"
     t.text     "physical_description"
@@ -67,32 +57,16 @@ ActiveRecord::Schema.define(version: 20170420110218) do
 
   create_table "users", force: :cascade do |t|
     t.string   "token"
-    t.string   "username"
     t.string   "email"
     t.string   "phone"
-    t.string   "forename"
-    t.string   "surname"
-    t.string   "avatar"
-    t.string   "patient_name"
-    t.string   "patient_avatar"
-    t.string   "patient_gender"
-    t.date     "patient_dob"
     t.boolean  "active",          default: true
     t.string   "password_digest"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-  end
-
-  create_table "weekdays", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "display_name"
   end
 
   add_foreign_key "archived_reminders", "prescriptions"
-  add_foreign_key "prescription_to_weekday_joins", "prescriptions"
-  add_foreign_key "prescription_to_weekday_joins", "weekdays"
   add_foreign_key "prescriptions", "users"
   add_foreign_key "reminders", "prescriptions"
 end

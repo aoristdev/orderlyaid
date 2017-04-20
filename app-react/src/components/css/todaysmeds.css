@@ -43,8 +43,8 @@
     background-color: #aec1be;
 }*/
 
-.label-success:hover{
-     background-color:#80ced7!important;
+.label:hover{
+     background-color:#80ced7;
 }
 .currentMeds {
     display: flex;

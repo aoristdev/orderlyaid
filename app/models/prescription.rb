@@ -1,9 +1,12 @@
 class Prescription < ApplicationRecord
   belongs_to :user
   has_many :reminders
-  has_many :prescription_to_weekday_joins
-  has_many :weekdays, through: :prescription_to_weekday_joins
+  hours = { with: /\d\d{,2}:[0-5]\d/ }
+  validates :interval, format: hours
+  validates :start_time, format: hours
+  validates :end_time, format: hours
   before_save :create_reminder
+
 
   def create_reminder
     interval   = Hour::Hour.new(self.interval.hour, self.interval.min)
