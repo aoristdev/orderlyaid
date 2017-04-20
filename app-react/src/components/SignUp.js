@@ -14,8 +14,8 @@ class SignUp extends React.Component {
         this.signup = this.signup.bind(this)
         this.goToSignUp = this.goToSignUp.bind(this)
         this.goToSignIn = this.goToSignIn.bind(this)
-        
- 
+
+
     }
     signup() {
         // console.log(this.state)
@@ -38,7 +38,7 @@ class SignUp extends React.Component {
                 password: password,
             })
 
-        })  
+        })
             .then(response => response.json())
             .then(response => {
                 if (response.token) {
@@ -52,7 +52,7 @@ class SignUp extends React.Component {
     }
     goToSignUp() {
         browserHistory.push('/')
-    } 
+    }
     render() {
         return <div>
             <div className="container">
@@ -89,7 +89,7 @@ class SignUp extends React.Component {
                                     </div>
                                     <div className="col-sm-4 line sidebar">
                                         <p className="sidebarTitle">Why you'll love us.</p>
-                                        <p className="whyPoint">Recieve text messages when it's time to take your next perscription.</p>
+                                        <p className="whyPoint">Recieve text messages when it's time to take your next prescription.</p>
                                         <p className="whyPoint">Add loved ones to recieve reminders.</p>
                                         <p className="whyPoint">Get alerts when it's time for a refill.</p>
                                     </div>
@@ -109,4 +109,4 @@ export default SignUp;
 // <input type="email" className="form-control" value={this.state.email} onChange={(e)=>this.setState({email:e.target.value})} />
 
 // <label htmlFor="confirmPassword">Confirm Password</label>
-// <input type="password" className="form-control" value={this.state.password} onChange={(e)=>this.setState({password:e.target.value})} /> 
+// <input type="password" className="form-control" value={this.state.password} onChange={(e)=>this.setState({password:e.target.value})} />

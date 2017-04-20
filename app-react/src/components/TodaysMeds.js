@@ -17,7 +17,7 @@ class TodaysMeds extends React.Component {
             .then(res => res.json())
             .then(res => this.setState({ ...res }))
             .then(res => console.log(this.state))
-        // .then(res => console.log(this.state.perscriptions))
+        // .then(res => console.log(this.state.prescriptions))
     }
 
     selectCurrentMed(index) {

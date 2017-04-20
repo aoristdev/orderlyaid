@@ -7,9 +7,9 @@ FactoryGirl.define do
     dosage        { Faker::Number.decimal(3) }
     total         { Faker::Number.number(2)  }
     count         { Faker::Number.decimal(2) }
-    interval      "2017-04-19 22:37:03"
-    start_time    "2017-04-19 22:37:03"
-    end_time      "2017-04-19 22:37:03"
-    last_taken    "2017-04-19 22:37:03"
+    interval      { "#{rand(0..24)}:#{[0,30].sample}" }
+    start_time    { DateTime.now }
+    end_time      { DateTime.now + 1 }
+    last_taken    { Faker::Time.between(DateTime.now, DateTime.now + 1 ) }
   end
 end

@@ -25,17 +25,9 @@ class UserTest < ActiveSupport::TestCase
     user.prescriptions << prescription
     user.prescriptions << prescription1
     user.save
+    prescription.save
+    prescription1.save
     assert user.prescriptions.count == 2
   end
-
-  # def test_user_has_many_reminders
-  #   user = build(:user)
-  #   reminder = build(:reminder)
-  #   reminder1 = build(:reminder)
-  #   user.reminders << reminder
-  #   user.reminders << reminder1
-  #   user.save
-  #   assert user.reminders.count == 2
-  # end
 
 end
