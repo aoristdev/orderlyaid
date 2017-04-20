@@ -31,6 +31,7 @@ gem 'faker', github: 'stympy/faker'
 gem 'ffaker', github: 'ffaker/ffaker'
 
 group :development, :test do
+  gem 'brakeman'
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
