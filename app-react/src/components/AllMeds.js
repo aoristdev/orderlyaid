@@ -20,13 +20,13 @@ class AllMeds extends React.Component {
             return  <div className="panel-body dataBorder" key={i}>
             <div className="row historyData">
                 <div className="col-sm-3">
-                <p className="text-center">{medInfo.date}</p>
+                <p className="text-center">{medInfo.name}</p>
                 </div>
                 <div className="col-sm-3">
-                <p className="text-center">{medInfo.time}</p>
+                <p className="text-center">{medInfo.total}</p>
                 </div>
                 <div className="col-sm-4">
-                <p className="text-center">{medInfo.name}</p>
+                <p className="text-center">{medInfo.dosage}</p>
                 </div>
                 <div className="col-sm-2">
                 <p className="text-center">{medInfo.count}</p>

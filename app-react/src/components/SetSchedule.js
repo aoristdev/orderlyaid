@@ -38,11 +38,11 @@ class SetSchedule extends React.Component {
                 <p className="fieldLabel">How many?</p>
                 <input id="input" type="text" className="form-control" value={this.state.dosage} onChange={(e) => this.setState({ dosage: e.target.value })} /><br />
 
-                <select className="selectpicker">
+               {/*} <select className="selectpicker">
                     <option>Mustard</option>
                     <option>Ketchup</option>
                     <option>Relish</option>
-                </select>
+                </select>*/}
 
                 <p className="fieldLabel">How often?</p>
                 <input id="input" type="text" className="form-control" value={this.state.interval} onChange={(e) => this.setState({ interval: e.target.value })} /><br />
@@ -54,12 +54,12 @@ class SetSchedule extends React.Component {
                 <TimePicker showSecond={false} onChange={(time) => {if (time) {this.setState({end_time: time.format('HH:mm')})}}} />
                 <br/>
        
-                <div cclassName='input-group date' id='datetimepicker3'>
+               {/*} <div cclassName='input-group date' id='datetimepicker3'>
                     <input type='text' className="form-control" />
                     <span className="input-group-addon">
                         <span className="glyphicon glyphicon-time"></span>
                     </span>
-                </div>
+                </div>*/}
        
      
 

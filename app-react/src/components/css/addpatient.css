@@ -42,6 +42,13 @@ textarea {
     color: white;
     border:  #80ced7;
 }
+#addBtn {
+    margin-top: 10px;
+    color: #112535;
+    border-radius: 15px;
+    border: solid 1px #80ced7;
+    margin-right: 8px;
+}
 
 #nextBtn {
     margin-top: 10px;

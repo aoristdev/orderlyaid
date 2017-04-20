@@ -2,6 +2,7 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 import './css/addpatient.css'
 import store from 'store'
+import md5 from 'blueimp-md5'
 
 
 class AddPatient extends React.Component {
