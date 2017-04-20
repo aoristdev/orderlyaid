@@ -1,6 +1,6 @@
 class Rxify
 
-  def self.call(params, user = '')
+  def self.call(params, user = nil)
     if params[:prescriptions_attributes]
       params[:prescriptions_attributes]&.map do |_, rx|
         rx = rx.to_h
@@ -11,8 +11,8 @@ class Rxify
         Prescription.new(rx)
       end || []
     else
-      params[:user] = user
-      Prescription.new(params)
+      params[:user] = user || User.find_by(token: params[:token])
+      Prescription.new(params) || []
     end
   end
 
