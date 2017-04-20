@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412123342) do
+ActiveRecord::Schema.define(version: 20170420110218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "archived_reminders", force: :cascade do |t|
+    t.integer  "prescription_id"
+    t.datetime "transmit_time"
+    t.datetime "scheduled_time"
+    t.string   "single_use_token"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["prescription_id"], name: "index_archived_reminders_on_prescription_id", using: :btree
+  end
 
   create_table "prescription_to_weekday_joins", force: :cascade do |t|
     t.integer  "prescription_id"
@@ -80,6 +90,7 @@ ActiveRecord::Schema.define(version: 20170412123342) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "archived_reminders", "prescriptions"
   add_foreign_key "prescription_to_weekday_joins", "prescriptions"
   add_foreign_key "prescription_to_weekday_joins", "weekdays"
   add_foreign_key "prescriptions", "users"
