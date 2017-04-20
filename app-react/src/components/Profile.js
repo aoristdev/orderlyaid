@@ -5,22 +5,18 @@ import './css/profile.css'
 class Profile extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            info: []
+        }
         this.goToTodaysMeds = this.goToTodaysMeds.bind(this)
         this.goToHistory = this.goToHistory.bind(this)
-        this.getNextMeds = this.getNextMeds.bind(this)
     }
 
-    componentWillMount() {
-        this.getNextMeds()
-        // console.log(this.props)
-    }
-
-    getNextMeds() {
-        fetch('/users/profile?token=' + sessionStorage.getItem('token'))
+    componentDidMount() {
+         fetch('/rx/all?token=' + sessionStorage.getItem('token'))
             .then(res => res.json())
-            .then(res => this.setState({ ...res }))
-            .then(res => console.log(this.state))
+            .then(res => this.setState({info: res}))
+            .then(res => console.log(this.state.info))
     }
 
     goToTodaysMeds() {
@@ -32,50 +28,27 @@ class Profile extends React.Component {
     }
 
     render() {
-
+        let info = this.state.info.map((medInfo, i) => {
+                return <div className="well" key={i}>
+                                    <div className="row">
+                                        <div className="col-sm-5">
+                                            <p className="medTime">{medInfo.last_taken}</p>
+                                            {/*} <p className="medDate">{this.state.start_time}7</p>*/}
+                                        </div>
+                                        <div className="col-sm-7">
+                                            <p className="medName">{medInfo.name}</p>
+                                        </div>
+                                    </div>
+                                </div>
+        })
         return <div>
             <div className="container-fluid">
-
                 <div className="row">
                     <div className="col-sm-4">
                         <div className="panel panel-default nextMedPanel">
                             <div className="panel-body">
                                 <p className="lead nextMed">Next Medications</p>
-                                <div className="well">
-                                    <div className="row">
-                                        <div className="col-sm-5">
-                                            <p className="medTime">{this.state.start_time}</p>
-                                            <p className="medDate">{this.state.start_time}7</p>
-                                        </div>
-                                        <div className="col-sm-7">
-                                            <p className="medName">Medication Name</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="well">
-                                    <div className="row">
-                                        <div className="col-sm-5">
-                                            <p className="medTime">{this.state.start_time}</p>
-                                            <p className="medDate">{this.state.end_time}</p>
-                                        </div>
-                                        <div className="col-sm-7">
-                                            <p className="medName">Medication Name</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div className="well">
-                                    <div className="row">
-                                        <div className="col-sm-5">
-                                            <p className="medTime">3:00 pm</p>
-                                            <p className="medDate">April 5 2017</p>
-                                        </div>
-                                        <div className="col-sm-7">
-                                            <p className="medName">Medication Name</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                {info}
                             </div>
                         </div>
                     </div>

@@ -94,7 +94,7 @@ class AddDescription extends React.Component {
                 <textarea id="input" className="form-control" value={this.state.caution} onChange={(e) => this.setState({ caution: e.target.value })} rows="4"></textarea><br />
             </div>
 
-            <button type="button" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>
+            <button type="button" id="addBtn" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>
 
             <button type="button" id="nextBtn" className="btn btn-default" onClick={this.sendData}>Next</button>
 
