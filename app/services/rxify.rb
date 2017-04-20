@@ -2,7 +2,7 @@ class Rxify
 
   def self.call(params, user = nil)
     if params[:prescriptions_attributes]
-      params[:prescriptions_attributes]&.map do |_, rx|
+      params[:prescriptions_attributes]&.map do |rx|
         rx = rx.to_h
         rx[:last_taken] =     Time.parse(rx[:last_taken])         if rx[:last_taken]
         rx[:interval]   = Hour::Hour.new(rx[:interval]).to_time   if rx[:interval]
