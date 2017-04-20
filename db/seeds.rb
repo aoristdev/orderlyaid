@@ -23,7 +23,7 @@ end
 test_user = User.new(
   password: 'merp',
   email: 'merp@example.com',
-  phone: '+1' + Faker::Number.number(10).to_s,
+  phone: '+18126712638', #' + Faker::Number.number(10).to_s,
   forename: Faker::Name.first_name,
   surname: Faker::Name.last_name,
   avatar: Faker::Avatar.image,
