@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/davegregg/hour.git
-  revision: 638f22703e933d796483a834b0fb2bb8a78afb2d
-  branch: dev
-  specs:
-    hour (0.5.2)
-
-GIT
   remote: https://github.com/ffaker/ffaker.git
   revision: fbef473d49bbc2ff9092d42c91617b72401dc644
   specs:
@@ -88,6 +81,7 @@ GEM
       thor (~> 0.14)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    hour (0.1.6)
     i18n (0.8.1)
     jsonapi-renderer (0.1.2)
     jwt (1.5.6)
@@ -192,7 +186,7 @@ DEPENDENCIES
   faker!
   ffaker!
   figaro
-  hour!
+  hour
   listen (~> 3.0.5)
   minitest-rails
   pg (~> 0.18)
