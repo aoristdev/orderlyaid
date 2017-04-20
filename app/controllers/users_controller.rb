@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    # user.prescriptions = Rxify.call(rx_params, user)
+    # user.prescriptions = Rxify.call(rx_params)
     render json:
       if user.save!
         UserMailer.signup(user).deliver
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.prescriptions = Rxify.call(rx_params)
+    current_user.prescriptions << Rxify.call(rx_params)
     render json:
       if current_user.update(user_params)
         current_user
