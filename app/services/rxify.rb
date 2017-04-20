@@ -1,6 +1,6 @@
 class Rxify
 
-  def self.call(params, user)
+  def self.call(params, user = '')
     if params[:prescriptions_attributes]
       params[:prescriptions_attributes]&.map do |_, rx|
         rx = rx.to_h
