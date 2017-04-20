@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
 
   def static
-    render html: File.open("#{Rails.root}-react/public/index.html").read.html_safe, status: 200
+    render html: File.open("#{Rails.root}/public/index.html").read.html_safe, status: 200
   end
 
   private
