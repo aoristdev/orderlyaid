@@ -13,15 +13,6 @@ task reminder_spooler: :environment do
   end
 
 
-
-
-
-
-
-
-
-
-
   #psuedocode begin
 
     # every 10 minutes
@@ -35,8 +26,6 @@ task reminder_spooler: :environment do
 
   # argument_1 = args.arg_1
   # include Rails.application.routes.url_helpers; puts "user profile is #{profile_path}"
-
-  # Reminder notification: Drug name, Physical Description, Dosage, with food (etc.), Caution, a button for Ignore, a button for I've Taken This which has a one-time token which lives on Queue table
 
 
 end
