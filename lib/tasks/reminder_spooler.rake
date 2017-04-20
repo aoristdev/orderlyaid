@@ -14,21 +14,21 @@ task reminder_spooler: :environment do
   Reminder.where('transmit_time < ?', DateTime.now).each do |reminder|
     body = "It's time to take your #{reminder.prescription.dosage} #{reminder.prescription.name}! Tell us you took it: #{reminder_path}?t=#{reminder.single_use_token}"
 
-    if ENV['SMS_OPTIN']
+    if ENV['SMS_OPTIN'] == 'true'
       message = sms_client.(body)
       puts message.sid
     end
     reminder.prescription.count -= reminder.prescription.dosage
     reminder.save
 
-    ReminderMailer.administer(user, body).deliver if ENV['MAILER_OPTIN']
+    ReminderMailer.administer(user, body).deliver if ENV['MAILER_OPTIN'] == 'true'
 
     if reminder.prescription.count < reminder.prescription.dosage * 7
-      if ENV['SMS_OPTIN']
+      if ENV['SMS_OPTIN'] == 'true'
         message = sms_client.(body)
         puts message.sid
       end
-      ReminderMailer.refill(user, body).deliver if ENV['MAILER_OPTIN']
+      ReminderMailer.refill(user, body).deliver if ENV['MAILER_OPTIN'] == 'true'
     end
 
     HistoricalReminder.create!(transmit_time: DateTime.now, scheduled_time: reminder.transmit_time, single_use_token: reminder.single_use_token)
