@@ -6,7 +6,7 @@ class SignUp extends React.Component {
     constructor(){
         super()
         this.state = {
-            name:'',
+            display_name:'',
             email:'',
             mobile:'',
             photo:'',
@@ -31,10 +31,9 @@ class SignUp extends React.Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: name,
+                display_name: name,
                 email: email,
                 phone: mobile,
-                avatar: photo,
                 password: password,
             })
 
@@ -43,7 +42,7 @@ class SignUp extends React.Component {
             .then(response => {
                 if (response.token) {
                 sessionStorage.setItem('token', response.token)
-                browserHistory.push('/new/patient')
+                browserHistory.push('/new/medication')
             }
     })
     }
@@ -73,7 +72,7 @@ class SignUp extends React.Component {
                                         <p className="signupTitle">Manage your medications in one place.</p>
                                         <div className="form-group">
                                             <p className="fieldLabel">Name</p>
-                                            <input id="input" type="text" className="form-control" onChange={(e)=>this.setState ({name:e.target.value})} /> <br/>
+                                            <input id="input" type="text" className="form-control" onChange={(e)=>this.setState ({display_name:e.target.value})} /> <br/>
 
                                             <p className="fieldLabel">Email Address</p>
                                             <input id="input" type="email" className="form-control" onChange={(e)=>this.setState({email:e.target.value})} /><br/>
@@ -88,9 +87,8 @@ class SignUp extends React.Component {
                                         </div>
                                     </div>
                                     <div className="col-sm-4 line sidebar">
-                                        <p className="sidebarTitle">Why you'll love us.</p>
-                                        <p className="whyPoint">Recieve text messages when it's time to take your next perscription.</p>
-                                        <p className="whyPoint">Add loved ones to recieve reminders.</p>
+                                        <p className="sidebarTitle">Why you'll love us</p>
+                                        <p className="whyPoint">Receive text messages when it's time to take your next prescription.</p>
                                         <p className="whyPoint">Get alerts when it's time for a refill.</p>
                                     </div>
                                 </div>

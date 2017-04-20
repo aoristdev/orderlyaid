@@ -1,7 +1,7 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-// import Profile from './components/Profile'
 import './css/nav.css'
+import md5 from 'blueimp-md5'
 
 class Nav extends React.Component {
     constructor(props) {
@@ -72,10 +72,10 @@ class Nav extends React.Component {
                         </div>
                     </div>
                       <div className="col-sm-2">
-                        <p className="userName pull-right">{this.state.patient_name}</p>
+                        <p className="userName pull-right">{this.state.display_name}</p>
                     </div>
                       <div className="col-sm-2 pull-right">
-                        <img src="https://unsplash.it/200/?blur" alt="..." className="userImg img-circle pull-right" />
+                        <img src={'https://gravatar.com/avatar/' + md5(this.state.email)} className="userImg pull-right" alt="..." />
                     </div>
                 </div>
             </div>

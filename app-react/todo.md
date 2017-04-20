@@ -1,15 +1,18 @@
+- Making marketing landing page
+
+- fix hover rollover 
+
 - *test* current meds 
     - date 
     - time
 
 - *test* pull in 'next meds' in queue
-     - date 
+    - date 
     - time
-- *test*  Test Gravtar 
 
-- fix hover rollover 
-
-- Make 'taken btn' work (clear out)
+-  *test* Make 'taken btn' work (clear out)
+    -  History 
+        - add history data
 
 - fix fields*
     - dosage (1, .5)
@@ -17,7 +20,7 @@
     
 - add user advatar to the left top with a roll over for logout and add medication 
 
-- Making marketing landing page
+
 
 
 
@@ -28,3 +31,4 @@ TOMORROW
     - User profile inforation: Name and avatar 
     - Patient has generic avatar assigned -->
 <!--find time picker/use time picker-->
+<!--- *test*  Test Gravtar -->
