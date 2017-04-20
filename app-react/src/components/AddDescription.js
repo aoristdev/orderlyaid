@@ -3,11 +3,13 @@ import { browserHistory } from 'react-router'
 import store from 'store'
 import './css/addpatient.css'
 
+
 class AddDescription extends React.Component {
     constructor(props) {
         super(props)
         this.save = this.save.bind(this)
         this.sendData = this.sendData.bind(this)
+        this.goToAddMedication = this.goToAddMedication.bind(this)
 
         this.state = {
             instructions: '',
@@ -53,11 +55,14 @@ class AddDescription extends React.Component {
 
         this.sendData()
     }
+    goToAddMedication(){
+        browserHistory.push('/nav/profile')
+    }
 
     render() {
 
         return <div>
-            <p className="stepTitle">Add descriptions to your medication.</p>
+            <p className="stepTitle">Add instructions for your medication.</p>
             <div className="form-group">
                 <p className="subTitle">Instructions</p>
                 <div className="radio">
@@ -86,10 +91,14 @@ class AddDescription extends React.Component {
                 </div>
 
                 <p className="subTitle cautions">Cautions</p>
-                <textarea id="input" className="form-control" value={this.state.caution} onChange={(e) => this.setState({ caution: e.target.value })} rows="4"></textarea><br />
+                <textarea id="input" placeholder="Please add cautions as seen on prescription lable." className="form-control" value={this.state.caution} onChange={(e) => this.setState({ caution: e.target.value })} rows="4"></textarea><br />
+
+                <p className="subTitle cautions">Notes</p>
+                <textarea id="input" className="form-control" placeholder="Please add notes. 'Drink with juice to hide taste.'" value={this.state.notes} onChange={(e) => this.setState({ notes: e.target.value })} rows="4"></textarea><br />
             </div>
 
-            {/*<button type="button" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>*/}
+            <button type="button" id="addBtn" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>
+
             <button type="button" id="nextBtn" className="btn btn-default" onClick={this.sendData}>Next</button>
 
 

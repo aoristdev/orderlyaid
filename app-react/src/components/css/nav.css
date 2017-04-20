@@ -9,22 +9,42 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
 .mainNav {
     background-color: #ccdbdc;
     padding: 4px 20px 4px 20px;
     /*box-shadow: 0 8px 6px -6px rgba(204,219,220,.5);*/
 }
+
 #singout {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     background: transparent;
     color:  white;
-    border-radius: 7px;
+    border-radius: 15px;
     border: solid .5px white;
     padding: -3px;
+    margin-top: 13px;
+    margin-left: 7px;
+    margin-right: 40px;
+}
+#addNew {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    background: transparent;
+    color:  white;
+    border-radius: 15px;
+    border: solid .5px white;
+    padding: -3px;
+    margin-top: 13px;
+    margin-left: 7px;
+
 }
 .logo {
-    width: 70px;
+    font-family: 'Lobster', cursive;
+    font-size: 35px;
+    color: white; 
+    margin-left: 70px;
 }
 
 .profileNav {
@@ -47,13 +67,17 @@ body {
     padding: none;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 100px;
+    margin-right: 70px;
+   
 }
 .userName{
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     font-size: 20px;
-    padding-top: 20px;
-    margin-left:-60px;
+    padding-top: 30px;
+    margin-right: -350px;
+    color: #223755;
+    
 }
 #medLinks{
     margin: 5px;
@@ -64,5 +88,15 @@ body {
     border-radius: 17px;
 }
 .tabs{
-    padding-top: 15px;
+    padding-top: 23px;
+    margin-left: 75px;
+}
+
+a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color:  #223755;
+    font-size: 18px;
+    margin-left: 5px;
+
 }

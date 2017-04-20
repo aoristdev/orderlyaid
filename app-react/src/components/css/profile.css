@@ -71,13 +71,15 @@ body {
 }
 .medName {
     padding-top: 15px;
-    font-size: 15px;
+    font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
+    color: grey; 
 }
 .medTime {
-    font-size: 20px;
+    font-size: 12px;
     font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 .medDate {
     margin-top: -8px;
