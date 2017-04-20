@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get '/reminders/all',     to: 'reminders#index'
   get '/reminders/history', to: 'reminders#history'
+  get '/reminders/next',    to: 'reminders#next'
   get '/reminder',          to: 'users#show'
 
   get '/:param1(/:param2)(/:param3)' => 'application#static'
