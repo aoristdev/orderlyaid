@@ -1,6 +1,6 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import './css/signup.css'  
+import './css/signup.css'
 class SignIn extends React.Component {
     constructor(props){
         super(props)
@@ -19,11 +19,11 @@ class SignIn extends React.Component {
             headers: {
                 'Content-Type': 'application/json'
             },
-            
+
             body: JSON.stringify({
                     email: this.state.email,
                     password: this.state.password,
-                    token: this.state.token 
+                    token: this.state.token
             })
         })
         .then(response => response.json())

@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/davegregg/hour.git
-  revision: 638f22703e933d796483a834b0fb2bb8a78afb2d
-  branch: dev
-  specs:
-    hour (0.5.2)
-
-GIT
   remote: https://github.com/ffaker/ffaker.git
   revision: fbef473d49bbc2ff9092d42c91617b72401dc644
   specs:
@@ -13,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/stympy/faker.git
-  revision: 46a85c85a6879b2fbe3ce98ea2421e0008c719c4
+  revision: 040bd63cd65a1bea46ae31921a2b4c6dddf04f97
   specs:
     faker (1.8.0)
       i18n (~> 0.5)
@@ -69,7 +62,6 @@ GEM
       debug_inspector (>= 0.0.1)
     brakeman (3.6.1)
     builder (3.2.3)
-    byebug (9.0.6)
     case_transform (0.2)
       activesupport
     coderay (1.1.1)
@@ -86,8 +78,22 @@ GEM
     ffi (1.9.18)
     figaro (1.1.1)
       thor (~> 0.14)
+    formatador (0.2.5)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    guard (2.14.1)
+      formatador (>= 0.2.4)
+      listen (>= 2.7, < 4.0)
+      lumberjack (~> 1.0)
+      nenv (~> 0.1)
+      notiffany (~> 0.0)
+      pry (>= 0.9.12)
+      shellany (~> 0.0)
+      thor (>= 0.18.1)
+    guard-brakeman (0.8.3)
+      brakeman (>= 2.1.1)
+      guard (>= 2.0.0)
+    hour (0.5.3)
     i18n (0.8.1)
     jsonapi-renderer (0.1.2)
     jwt (1.5.6)
@@ -96,6 +102,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    lumberjack (1.0.11)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
@@ -107,18 +114,20 @@ GEM
     minitest-rails (3.0.0)
       minitest (~> 5.8)
       railties (~> 5.0)
+    multi_json (1.12.1)
     multipart-post (2.0.0)
+    nenv (0.3.0)
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
+    notiffany (0.1.1)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
     pg (0.20.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.4.2)
-      byebug (~> 9.0)
-      pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     pry-stack_explorer (0.4.9.2)
@@ -156,6 +165,9 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    rollbar (2.14.1)
+      multi_json
+    shellany (0.0.1)
     slop (3.6.0)
     spring (2.0.1)
       activesupport (>= 4.2)
@@ -192,16 +204,17 @@ DEPENDENCIES
   faker!
   ffaker!
   figaro
-  hour!
+  guard-brakeman
+  hour
   listen (~> 3.0.5)
   minitest-rails
   pg (~> 0.18)
-  pry-byebug
   pry-rails
   pry-stack_explorer
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.2)
+  rollbar
   spring
   spring-watcher-listen (~> 2.0.0)
   twilio-ruby (~> 5.0.0.rc17)
