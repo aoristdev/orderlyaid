@@ -1,6 +1,6 @@
 require "test_helper"
 
-class HistoricalReminder  < ActionDispatch::IntegrationTest
+class HistoricalReminder < ActionDispatch::IntegrationTest
   # let(:historical_reminder) { HistoricalReminder.new }
   #
   # it "must be valid" do

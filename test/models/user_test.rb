@@ -14,21 +14,21 @@ class UserTest < ActiveSupport::TestCase
   def test_user_email_is_unique
     user = build(:user, email: "asdf@gmail.com")
     user1 = build(:user, email: "asdf@gmail.com")
-    binding.pry
+    # binding.pry
     assert user.save
-    # refute user1.save
+    refute user1.save
   end
-  #
-  # def test_user_has_many_prescriptions
-  #   user = build(:user)
-  #   prescription = build(:prescription)
-  #   prescription1 = build(:prescription)
-  #   user.prescriptions << prescription
-  #   user.prescriptions << prescription1
-  #   user.save
-  #   prescription.save
-  #   prescription1.save
-  #   assert user.prescriptions.count == 2
-  # end
+  
+  def test_user_has_many_prescriptions
+    user = build(:user)
+    prescription = build(:prescription)
+    prescription1 = build(:prescription)
+    user.prescriptions << prescription
+    user.prescriptions << prescription1
+    user.save
+    prescription.save
+    prescription1.save
+    assert user.prescriptions.count == 2
+  end
 
 end
