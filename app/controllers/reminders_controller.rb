@@ -2,8 +2,6 @@ class RemindersController < ApplicationController
 
   before_action :require_user
 
-  def show; end
-
   def state
     archived_reminder = ArchivedReminder.find_by(single_use_token: reminder_params[:t]) ||
                         ArchivedReminder.find(reminder_params[:id]) ||
@@ -22,19 +20,20 @@ class RemindersController < ApplicationController
   end
 
   def archived
-    binding.pry
-    render json: current_user.archived_reminders
+    render json: { archived_reminders: current_user.archived_reminders }
   end
 
-  def later_today
-    render json:
-      current_user.reminders.map do |reminder|
-        {
-          prescription_id: reminder.prescription.id,
-          prescription_name: reminder.prescription.name,
-          daily_schedule: reminder.prescription.daily_schedule
-        }
-      end
+  def daily_schedule
+    render json: {
+      daily_schedule:
+        current_user.reminders.map do |reminder|
+          {
+            prescription_id: reminder.prescription.id,
+            prescription_name: reminder.prescription.name,
+            daily_schedule: reminder.prescription.daily_schedule
+          }
+        end
+    }
   end
 
   private
