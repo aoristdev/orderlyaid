@@ -1,6 +1,7 @@
 import React from 'react'
 import './css/todaysmeds.css'
 import CurrentMed from './CurrentMed'
+import moment from 'moment'
 
 class TodaysMeds extends React.Component {
     constructor(props) {
@@ -40,8 +41,8 @@ class TodaysMeds extends React.Component {
 
             <div className="medDisplay row">
                 <div className="col-sm-6 col-sm-offset-3">
-                    <p className="currentTime">{this.props.transmit_time}     {/*} <p className="medDate">{moment(medInfo.last_taken).format('H:')}7</p>*/}</p>
-                    <p className="todaysDate">Thursday, April 13</p>
+                    <p className="currentTime">{moment(this.state.last_taken).format('H:MM')}</p>
+                    <p className="todaysDate">{moment(this.state.last_taken).format('dddd, MMMM D')}</p>
                     <p className="text-center">{currentMedLinks}</p><br/>
                 </div>
 

@@ -2,21 +2,23 @@
 .fieldLabel {
      font-family: 'Roboto', sans-serif;
      font-weight: 300;
-     margin-bottom: 2.5px;
-     color: #112535;
+     margin-bottom: 7px;
+     color: rgba(34,55,85,.8);;
 }
 .stepTitle {
-   color: #112535;
+   color: rgba(34,55,85,.8);;
     font-size: 30px;
-    font-family: 'Varela Round', sans-serif;
     margin-bottom: 35px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    letter-spacing: .5px;
 }
 
 .subTitle {
      font-family: 'Roboto', sans-serif;
      font-size: 18px;
      font-weight: 300;
-     color: #112535; 
+     color: rgba(34,55,85,.8);; 
 }
 
 .radioLabel {
@@ -44,15 +46,16 @@ textarea {
 }
 #addBtn {
     margin-top: 10px;
-    color: #112535;
+    color: rgba(34,55,85,.8);;
     border-radius: 15px;
     border: solid 1px #80ced7;
     margin-right: 8px;
+  
 }
 
 #nextBtn {
     margin-top: 10px;
-    color: #112535;
+    color: rgba(34,55,85,.8);;
     border-radius: 15px;
     border: solid 1px #80ced7;
 }
@@ -60,7 +63,7 @@ textarea {
     border-radius: 1.5px;  
 }
 
-.rc-time-picker-input {
+/*.rc-time-picker-input {
     width: 100%;
     position: relative;
     display: inline-block;
@@ -89,4 +92,4 @@ textarea {
 
 .rc-time-picker {
     width: 100% !important;
-}
+}*/

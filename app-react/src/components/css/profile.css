@@ -18,20 +18,8 @@
     margin-top: 20px;
 }
 .userName{
-    font-family: 'Varela Round', sans-serif;
-    font-size: 25px;
-}
-.userGender{
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 300;
-    margin-top: -5px; 
-}
-.userAge {
-     font-family: 'Roboto', sans-serif;
-     font-size: 15px;
-     font-weight: 300;
-     margin-top: -5px; 
+    font-size: 25px;
 }
 
 .nextMedPanel{
@@ -39,7 +27,7 @@
     max-width: 70%;
     border: solid 1px white;
     border-radius: 1px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
     min-height: 614px;
     margin-left: 60px;
 }
@@ -48,54 +36,53 @@
     border-radius: 1px;
     padding-top: 14px;
     padding-bottom: 5px;
-    background: rgba(237,234,237,.2);
-    border: solid 1px white;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    background:white;
+    background: rgba(204,219,220,.2);
+    border: solid 1px rgba(204,219,220,.2);
+    box-shadow: .5px 1px 1.5px rgba(0,0,0,0.07);
 }
 .nextMed {
     font-family: 'Roboto', sans-serif;
-    margin-left: 5px;
-    margin-top: 10px;
+    margin-left: 7px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(34,55,85,.8); 
+    /*color:#80ced7;*/
+    text-transform: uppercase;
+    letter-spacing: 1px;
     
 }
 .medName {
-    padding-top: 15px;
+    padding-top: 10px;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    color: grey; 
+    color: rgba(34,55,85,.9); 
+   
 }
 .medTime {
-    font-size: 12px;
+    font-size: 14px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
+    letter-spacing: 1px;
+     color: rgba(34,55,85,.8); 
+
 }
 .medDate {
     margin-top: -8px;
     font-size: 12px;
     font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: rgba(34,55,85,.8);
+    
 }
 .medBtns {
-    border-top: .5px solid silver;
-}
-.historyTable {
-    padding: 20px;
+    border-top: .5px solid rgba(34,55,85,.8);
 }
 
 .time {
    position:relative;
 }
 
-/*.thisDiv{
-    position:absolute;
-    left:50%;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);*/
 
-/*}*/
-.historyTitle {
-    margin-top: 35px;
-    margin-bottom: 5px;
-   font-family: 'Varela Round', sans-serif;
-   font-size: 16px;
-}

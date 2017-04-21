@@ -66,12 +66,12 @@ class Nav extends React.Component {
                         <div className="tabs">
                             <ul className="nav nav-pills">
                                 <li role="presentation" id="tabname" onClick={this.goToTodaysMeds}><a>Current</a></li>
-                                <li role="presentation" onClick={this.goToHistory}><a>History</a></li>
+                                <li role="presentation" onClick={this.goToHistory}><a>Archived</a></li>
                                 <li role="presentation" onClick={this.goToAllMeds}><a>All</a></li>
                             </ul>
                         </div>
                     </div>
-                      <div className="col-sm-2">
+                    <div className="col-sm-2">
                         <p className="userName pull-right">{this.state.display_name}</p>
                     </div>
                       <div className="col-sm-2 pull-right">
@@ -82,12 +82,7 @@ class Nav extends React.Component {
 
             
             {this.props.children}
-            <div className="footer container-fluid">
-                <div className="row">
-                    <div className="col-sm-12">
-                    </div>
-                </div>
-            </div>
+            
         </div>
     }
 }

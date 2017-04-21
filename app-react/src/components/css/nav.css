@@ -1,5 +1,7 @@
 .mainNav {
-    background-color: #ccdbdc;
+    /*background-color: #ccdbdc;*/
+    background-color:#80ced7;
+    /*background-color: rgba(34,55,85,.8);*/
     padding: 4px 20px 4px 20px;
     /*box-shadow: 0 8px 6px -6px rgba(204,219,220,.5);*/
 }
@@ -14,7 +16,7 @@
     padding: -3px;
     margin-top: 13px;
     margin-left: 7px;
-    margin-right: 40px;
+    margin-right: 50px;
 }
 #addNew {
     font-family: 'Roboto', sans-serif;
@@ -41,11 +43,6 @@
     box-shadow: 0 8px 6px -6px rgba(204,219,220,.5);
     margin-bottom: 40px;
 }
-/*.footer {
-     background-color: #80ced7;
-     padding:30px;
-     margin-top: 30px;
-}*/
 
 .userImg {
     max-width: 60px;
@@ -64,17 +61,17 @@
     font-weight: 300;
     font-size: 20px;
     padding-top: 30px;
-    margin-right: -350px;
-    color: #223755;
+    margin-right: -330px;
+     color: rgba(34,55,85,.8);
     
 }
 #medLinks{
     margin: 5px;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    padding: 9,9,9,9;
+    padding: 11,11,11,11;
     font-size: 13px;
-    border-radius: 17px;
+    border-radius: 9px;
 }
 .tabs{
     padding-top: 23px;
@@ -84,8 +81,13 @@
 a {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    color:  #223755;
+    color: rgba(34,55,85,.8);
     font-size: 18px;
     margin-left: 5px;
 }
-
+.label-success:hover {
+    background:#80ced7!important;
+}
+.label-primary:hover {
+    background:#80ced7!important;
+}
