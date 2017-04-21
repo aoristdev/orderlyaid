@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
          status:  status)
   end
 
-  def error(message = 'A valid combination of username and password is required.', status = 401)
+  def error(message = ['A valid combination of username and password is required.'], status = 401)
     Hash(error:  message,
          status: status)
   end

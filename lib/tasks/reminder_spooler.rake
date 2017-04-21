@@ -3,50 +3,66 @@ task reminder_spooler: :environment do
 
   include Rails.application.routes.url_helpers
 
-  sms_client = lambda do |body|
+  reminder_state_endpoint = "#{ENV['WEBSITE_URL']}/reminders/state"
+
+  def sms_client(recipient, message)
     Twilio::REST::Client.new.account.messages.create({
       from: ENV['TWILIO_PHONE'],
-      to:   reminder.prescription.user.phone,
-      body: body
+      to:   recipient.phone,
+      body: message
     })
   end
 
-  Reminder.where('transmit_time < ?', DateTime.now).each do |reminder|
-    body = "It's time to take your #{reminder.prescription.dosage} #{reminder.prescription.name}! Tell us you took it: #{reminder_path}?t=#{reminder.single_use_token}"
-
-    if ENV['SMS_OPTIN'] == 'true'
-      message = sms_client.(body)
+  def send_sms(user, body)
+    unless user.optout_sms
+      message = sms_client(user, body)
       puts message.sid
     end
-    reminder.prescription.count -= reminder.prescription.dosage
-    reminder.save
+  end
 
-    ReminderMailer.administer(user, body).deliver if ENV['MAILER_OPTIN'] == 'true'
-
-    if reminder.prescription.count < reminder.prescription.dosage * 7
-      if ENV['SMS_OPTIN'] == 'true'
-        message = sms_client.(body)
-        puts message.sid
-      end
-      ReminderMailer.refill(user, body).deliver if ENV['MAILER_OPTIN'] == 'true'
+  def send_email(user, rx, body, log_message)
+    if user.optin_email
+      ReminderMailer.refill(user, rx, body).deliver
+      puts log_message
     end
+  end
 
-    HistoricalReminder.create!(transmit_time: DateTime.now, scheduled_time: reminder.transmit_time, single_use_token: reminder.single_use_token)
+  def archive_then_destroy!(reminder)
+    ArchivedReminder.create!(transmit_time: DateTime.now,
+                             scheduled_time: reminder.transmit_time,
+                             single_use_token: reminder.single_use_token)
     reminder.destroy!
   end
 
+  Reminder.where('transmit_time < ?', DateTime.now).each do |reminder|
+    rx = reminder.prescription
+    user = rx.user
 
-  #psuedocode begin
+    if user.optout_sms && !user.optin_email
+      user.reminders.each do |reminder|
+        archive_then_destroy(reminder)
+      end
+    end
 
-    # every 10 minutes
-      # check reminder events for date and times within the next 30 minutes
-      # mark all of these queued
-    # end
+    reminder_taken_url = "#{reminder_state_endpoint}?s=t&t=#{reminder.single_use_token}"
+    reminder_missed_url = "#{reminder_state_endpoint}?s=m&t=#{reminder.single_use_token}"
+    body = "It's time to take your #{rx.dosage} #{rx.name}!\n\n" +
+           "Tell us you took it: #{reminder_taken_url}\n\n" +
+           "Tell us you missed it: #{reminder_missed_url}\n\n" +
+           "—OrderlyAid"
 
-    # probably needs a second scheduler that catches the queue when the primary scheduler fails?
-    # move reminder to history table (or, set status to sent, and add stuff to the WHERE)
+    send_sms(user, body)
+    send_email(user, rx, body, "An email was sent to #{user.email} for reminder with token #{reminder.single_use_token}.")
 
-  #pseudocode end
+    if reminder.prescription.count < reminder.prescription.dosage * 7 #TODO: refactor to take total consumption-per-day into account
+      send_sms(user, body)
+      send_email(user, rx, body, "A refill-reminder email was sent to #{user.email}.")
+    end
 
+    archive_then_destroy!(reminder)
+
+  end
+
+  #QUESTION: probably needs a second scheduler that catches the queue when the primary scheduler fails?
 
 end

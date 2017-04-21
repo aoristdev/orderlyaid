@@ -25,7 +25,7 @@ group :development, :test do
   gem 'brakeman'
   gem 'guard-brakeman'
   gem 'pry-rails'
-  gem 'pry-stack_explorer'
+  gem 'pry-byebug'
   gem 'minitest-rails'
   gem 'factory_girl_rails', '~> 4.5'
 end

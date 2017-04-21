@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420182013) do
+ActiveRecord::Schema.define(version: 20170421163123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20170420182013) do
     t.datetime "transmit_time"
     t.datetime "scheduled_time"
     t.string   "single_use_token"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "state",            default: "Unmarked"
     t.index ["prescription_id"], name: "index_archived_reminders_on_prescription_id", using: :btree
   end
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170420182013) do
     t.time     "last_taken",           default: '2000-01-01 00:00:00'
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
+    t.string   "daily_schedule"
     t.index ["user_id"], name: "index_prescriptions_on_user_id", using: :btree
   end
 
@@ -61,9 +63,11 @@ ActiveRecord::Schema.define(version: 20170420182013) do
     t.string   "phone"
     t.boolean  "active",          default: true
     t.string   "password_digest"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "display_name"
+    t.boolean  "optout_sms",      default: false
+    t.boolean  "optin_email",     default: false
   end
 
   add_foreign_key "archived_reminders", "prescriptions"

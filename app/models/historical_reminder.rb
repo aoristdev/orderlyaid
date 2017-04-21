@@ -1,2 +1,0 @@
-class HistoricalReminder < ApplicationRecord
-end

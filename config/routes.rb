@@ -18,10 +18,13 @@ Rails.application.routes.draw do
     delete '/delete', to: 'prescriptions#destroy'
   end
 
-  get '/reminders/all',     to: 'reminders#index'
-  get '/reminders/history', to: 'reminders#history'
-  get '/reminders/next',    to: 'reminders#next'
-  get '/reminder',          to: 'users#show'
+  scope  '/reminders' do
+    get  '/all',         to: 'reminders#index'
+    get  '/archived',     to: 'reminders#archived'
+    get  '/later_today', to: 'reminders#later_today'
+    post '/state',       to: 'reminders#state'
+  end
+  # get '/reminder',          to: 'users#show'
 
   get '/:param1(/:param2)(/:param3)' => 'application#static'
 
