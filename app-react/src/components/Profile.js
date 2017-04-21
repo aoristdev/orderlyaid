@@ -33,9 +33,9 @@ class Profile extends React.Component {
                 return <div className="well" key={i}>
                                     <div className="row">
                                         <div className="col-sm-5">
-                                            <p className="medTime">{moment(medInfo.last_taken).format('h:mma')}</p>
-                                        {/*} <p className="medDate">{moment(medInfo.last_taken).format('dddd')}7</p>*/}
-                                        {/*} <p className="medDate">{moment(medInfo.last_taken).format('M:D:YY')}7</p>*/}
+                                            <p className="medTime">{moment(medInfo.last_taken).format('h:mm a')}</p>
+                                            <p className="medDate">{moment(medInfo.last_taken).format(`dddd, MMM D`)}</p>
+                                           
                                         </div>
                                         <div className="col-sm-7">
                                             <p className="medName">{medInfo.name}</p>
@@ -49,7 +49,7 @@ class Profile extends React.Component {
                     <div className="col-sm-4">
                         <div className="panel panel-default nextMedPanel">
                             <div className="panel-body">
-                                <p className="lead nextMed">Next Medications</p>
+                                <p className="nextMed">Later Today</p>
                                 {info}
                             </div>
                         </div>

@@ -32,8 +32,8 @@ class CurrentMed extends React.Component {
             </a>
 
             <div className="row">
-                <div className="col-sm-6 col-sm-offset-3" >
-                    <button id="taken" type="button" className="btn btn-link">taken</button>
+                <div className="col-sm-6 col-sm-offset-3">
+                <button id="taken" className="btn" type="button">taken</button>
                 </div>
             </div>
         </div>

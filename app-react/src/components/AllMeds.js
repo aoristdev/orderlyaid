@@ -19,36 +19,31 @@ class AllMeds extends React.Component {
          let info = this.state.info.map((medInfo, i) => {
             return  <div className="panel-body dataBorder" key={i}>
             <div className="row historyData">
-                <div className="col-sm-3">
-                <p className="text-center">{medInfo.name}</p>
-                </div>
-                <div className="col-sm-3">
-                <p className="text-center">{medInfo.total}</p>
+                <div className="col-sm-4">
+                <p className="text-name" id="textInfoName"><span className="textInfoNameTitle">Name: </span>{medInfo.name}</p> 
+                <p className="text-name" id="textInfoName"><span className="textInfoNameTitle">Dosage:</span> {medInfo.dosage}</p>
                 </div>
                 <div className="col-sm-4">
-                <p className="text-center">{medInfo.dosage}</p>
+                <p className="textAll" id="textInfo">{medInfo.total}</p>
                 </div>
-                <div className="col-sm-2">
-                <p className="text-center">{medInfo.count}</p>
+                <div className="col-sm-4">
+                <p className="textAll" id="textInfo">{medInfo.count}</p>
                 </div>
             </div>
         </div>
         })
 
         return <div>
-
+         <p className="tablesTitles">Your Medications</p>
             <div className="row medTableTitle">
-                <div className="col-sm-3">
-                    <p className="text-center">Medication</p>
-                </div>
-                <div className="col-sm-3">
-                    <p className="text-center">Quantity</p>
+                <div className="col-sm-4">
+                    <p className="text-title">Medication</p>
                 </div>
                 <div className="col-sm-4">
-                    <p className="text-center">Dosage</p>
+                    <p className="text-title">Refill Quantity</p>
                 </div>
-                <div className="col-sm-2">
-                    <p className="text-center">Remaining</p>
+                <div className="col-sm-4">
+                    <p className="text-title">Pills Remaining</p>
                 </div>
             </div>
              {info}

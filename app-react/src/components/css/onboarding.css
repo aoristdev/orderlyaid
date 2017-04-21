@@ -11,7 +11,7 @@
 
 }
 .line {
-    border-left: .2px solid #aec1be;
+    border-left: .2px solid rgba(34,55,85,.8);
 }
 .sidebar {
     margin-left: 25px;
@@ -30,12 +30,11 @@
     margin-bottom: 25px;
     line-height: 15px;
     font-weight: 300;
-    color: #223755;
+    color: rgba(34,55,85,.8);
 }
 
 .active {
-     color: #80ced7;
+    color: #80ced7;
     font-family: 'Roboto', sans-serif;
-    /*font-weight: 700;*/
     
 }

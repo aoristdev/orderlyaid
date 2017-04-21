@@ -1,15 +1,88 @@
 .medTableTitle {
     margin-left: 5px;
-    margin-right: 10px;
-    margin-top: 50px;
-    font-family: 'Varela Round', sans-serif;
+    margin-right: 50px;
+    margin-top: 9px;
+    margin-bottom: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    /*color:#80ced7;*/
+     /*color: rgba(34,55,85,.8);*/
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    border-radius: .5px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    /*background: rgba(34,55,85,.8);*/
+    background: rgba(128,206,215,1);
+      /*background-color: #ccdbdc;*/
+      /*background: white;*/
+    border: none;
+    box-shadow: 1px 2px 2px rgba(0,0,0,0.1);  
+    margin-right: 50px;
+    text-transform: uppercase;
+    
+    
 }
 .dataBorder {
     margin-bottom: 15px;
     border-radius: .5px;
     padding-top: 18px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     background: white;
     border: solid 1px white;
     box-shadow: 1px 2px 2px rgba(0,0,0,0.1);  
+    margin-right: 50px;
+}
+.text-name {
+    margin-left: 70px;
+}
+
+.textHis {
+    margin-left: 90px;
+    padding-top: 12px;
+}
+.textHisCount {
+    margin-left: 90px;
+    padding-left: 30px;
+    padding-top: 12px;
+}
+.textAll {
+    padding-top: 12px;
+    margin-left: 90px;
+    padding-left: 10px;
+}
+
+#textInfo {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: rgba(34,55,85,1);
+}
+
+#textInfoName {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: rgba(34,55,85,1);
+}
+.textInfoNameTitle {
+    font-weight: 300;
+    color: rgba(34,55,85,.8);
+}
+.text-title {
+    margin-left: 50px;
+}
+
+.tablesTitles {
+    margin-top: 47px;
+    margin-left: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 28px;
+    color: rgba(34,55,85,.8);
+    
+    text-transform: uppercase;
+     /*color:#80ced7;*/
+    
+   
 }

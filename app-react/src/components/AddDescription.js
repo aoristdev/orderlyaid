@@ -101,7 +101,7 @@ class AddDescription extends React.Component {
                 <textarea id="input" placeholder="Please add cautions as seen on prescription label." className="form-control" value={this.state.caution} onChange={(e) => this.setState({ caution: e.target.value })} rows="4"></textarea><br />
 
                 <p className="subTitle cautions">Notes</p>
-                <textarea id="input" className="form-control" placeholder="Please add notes. 'Drink with juice to hide taste.'" value={this.state.notes} onChange={(e) => this.setState({ notes: e.target.value })} rows="4"></textarea><br />
+                <textarea id="input" className="form-control" placeholder="List what this medication is for and any known side effects.'" value={this.state.notes} onChange={(e) => this.setState({ notes: e.target.value })} rows="4"></textarea><br />
             </div>
 
             <button type="button" id="addBtn" className="btn btn-default" onClick={this.goToAddMedication}>Add More</button>
