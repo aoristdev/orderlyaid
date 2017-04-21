@@ -58,15 +58,13 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.4)
     bcrypt (3.1.11)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     brakeman (3.6.1)
     builder (3.2.3)
+    byebug (9.0.6)
     case_transform (0.2)
       activesupport
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
-    debug_inspector (0.0.2)
     erubis (2.7.0)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
@@ -128,11 +126,11 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.2)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
-    pry-stack_explorer (0.4.9.2)
-      binding_of_caller (>= 0.7)
-      pry (>= 0.9.11)
     puma (3.8.2)
     rack (2.0.1)
     rack-cors (0.4.1)
@@ -209,8 +207,8 @@ DEPENDENCIES
   listen (~> 3.0.5)
   minitest-rails
   pg (~> 0.18)
+  pry-byebug
   pry-rails
-  pry-stack_explorer
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.2)

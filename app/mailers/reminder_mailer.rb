@@ -1,11 +1,11 @@
 class ReminderMailer < ApplicationMailer
 
-  def administer(recipient, body)
-    generic(recipient, "Time to take your #{reminder.prescription.name}", body)
+  def administer(recipient, rx, message)
+    generic(recipient, "Time to take your #{rx.name}!", message)
   end
 
-  def refill(recipient, body)
-    generic(recipient, "Time to refill your #{reminder.prescription.name}", body)
+  def refill(recipient, rx, message)
+    generic(recipient, "Time to refill your #{rx.name}!", message)
   end
 
   private

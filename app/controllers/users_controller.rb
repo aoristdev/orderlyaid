@@ -6,11 +6,11 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     # user.prescriptions = Rxify.call(rx_params)
     render json:
-      if user.save!
+      if user.save
         UserMailer.signup(user).deliver
         user
       else
-        error('User registration failed.', 400)
+        error(user.errors.full_messages, 400)
       end
   end
 
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     user   = User.find_by(token: token)
     user ||= User.find_by(email: user_params[:email])
                  &.authenticate(user_params[:password])
-    render json: user || error
+    render json: user || error(user.errors.full_messages)
   end
 
   def show
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       if current_user.update(user_params)
         current_user
       else
-        error('User update failed.', 400)
+        error(current_user.errors.full_messages, 400)
       end
   end
 
@@ -52,13 +52,13 @@ class UsersController < ApplicationController
   end
 
   def rx_params
-    params.permit(prescriptions_attributes:
-      [
+    params.permit(
+      prescriptions_attributes: [
         :id,
         :name, :description, :physical_description,
         :instructions, :caution, :notes,
         :dosage, :total, :count,
-        :interval, :start_time, :end_time, :last_taken
+        :interval, :start_time, :end_time, :last_taken, :daily_schedule
       ]
     )
   end

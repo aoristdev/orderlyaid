@@ -1,28 +1,52 @@
 class Prescription < ApplicationRecord
   belongs_to :user
   has_many :reminders
-  hours = { with: /\d\d{,2}:[0-5]\d/ }
-  validates :interval, format: hours
+  has_many :archived_reminders
+
+  validates :interval,   format: hours = { with: /\d\d{,2}:[0-5]\d/ }
   validates :start_time, format: hours
-  validates :end_time, format: hours
+  validates :end_time,   format: hours
+
   before_save :create_reminder
 
-
   def create_reminder
-    interval   = Hour::Hour.new(self.interval.hour, self.interval.min)
+    interval = Hour::Hour.new(self.interval.hour, self.interval.min).to_base10
     start_time = Hour::Hour.new(self.start_time.hour, self.start_time.min)
-    end_time   = Hour::Hour.new(self.end_time.hour, self.start_time.min)
-    # last_taken = self.last_taken
-          # window_in_hours = (self.end_time - self.start_time) / 3600
-          # window_as_range_in_time = self.start_time..self.end_time
-          # occurrences = (window_in_hours / (interval.hours + interval.minutes_in_base10)).floor
-    window_as_range = start_time.to_base10..end_time.to_base10
-    unless interval.to_base10.zero?
-      event = window_as_range.step(interval.to_base10).detect do |ev|
-        ev > Hour::Hour.from_time(Time.now).to_base10
+    start_time_today_in_time =
+      [Hour::Hour.from_time(self.last_taken).on_this_day,
+       Hour::Hour.from_time(self.start_time).on_this_day].max
+    start_time_today_in_hour = Hour::Hour.from_time(start_time_today_in_time)
+    end_time = Hour::Hour.new(self.end_time.hour, self.start_time.min)
+
+    schedule =
+      lambda do |range|
+        range.step(interval).map do |event|
+          Hour::Hour.from_base10(event).on_this_day
+        end
       end
-    end
-    next_event = Hour::Hour.from_base10(event)&.on_this_day || start_time.on_this_day(Time.now.tomorrow)
+
+    # window_in_hours = (self.end_time - self.start_time) / 3600
+    # window_as_range_in_time = self.start_time..self.end_time
+    # occurrences = (window_in_hours / (interval.hours + interval.minutes_in_base10)).floor
+
+    next_event =
+      unless interval.zero?
+        window_as_range = (start_time.to_base10..end_time.to_base10) || (0.0...24.0)
+        daily_schedule = schedule[window_as_range] || [start_time.to_time]
+
+        window_today_as_range = (start_time_today_in_hour.to_base10..end_time.to_base10) || (0.0...24.0)
+        todays_schedule = schedule[window_today_as_range]
+        todays_schedule.detect do |event|
+          event > Time.now
+        end
+      else
+        interval = 24.0
+        start_time.on_this_day if start_time.on_this_day > Time.now
+      end
+    next_event ||= start_time.on_this_day.tomorrow
+
+    self.daily_schedule = daily_schedule.join(',') if daily_schedule
+
     self.reminders << Reminder.new(transmit_time: next_event)
   end
 end
