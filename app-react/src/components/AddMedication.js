@@ -14,9 +14,9 @@ class AddMedication extends React.Component {
         }
     }
     componentDidMount() {
-        let x = store.set('savedData', {prescriptions:[]})
-    //     // console.log(x.prescriptions)
-        
+        let x = store.set('savedData', { prescriptions: [] })
+        //     // console.log(x.prescriptions)
+
     }
 
     save() {

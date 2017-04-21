@@ -2,11 +2,11 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 import './css/signup.css'
 class SignIn extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            email:'',
-            password:''
+            email: '',
+            password: ''
         }
 
         this.signIn = this.signIn.bind(this)
@@ -21,33 +21,33 @@ class SignIn extends React.Component {
             },
 
             body: JSON.stringify({
-                    email: this.state.email,
-                    password: this.state.password,
-                    token: this.state.token
+                email: this.state.email,
+                password: this.state.password,
+                token: this.state.token
 
             })
         })
-        .then(response => response.json())
-        .then(response => {
-            if (response.token) {
-                sessionStorage.setItem('token', response.token)
-                // sessionStorage.setItem('', JSON.stringify(response.user.id))
-                browserHistory.push('/nav/profile/todaysmeds')
-            }
-            else {
-                alert('Entery not found. Please try again!')
-            }
-        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.token) {
+                    sessionStorage.setItem('token', response.token)
+                    // sessionStorage.setItem('', JSON.stringify(response.user.id))
+                    browserHistory.push('/nav/profile/todaysmeds')
+                }
+                else {
+                    alert('Entery not found. Please try again!')
+                }
+            })
     }
-        signedin(){
-           return sessionStorage.setItem('token')
-        }
+    signedin() {
+        return sessionStorage.setItem('token')
+    }
 
     goToSignUp() {
         browserHistory.push('/')
     }
 
-    goToProfile(){
+    goToProfile() {
         browserHistory.push('/nav/profile/todaysmeds')
     }
 
@@ -72,10 +72,10 @@ class SignIn extends React.Component {
                                         <div className="form-group">
 
                                             <p className="fieldLabel">Email Address</p>
-                                            <input id="input" type="email" className="form-control" onChange={(e)=>this.setState ({email:e.target.value})}  /><br/>
+                                            <input id="input" type="email" className="form-control" onChange={(e) => this.setState({ email: e.target.value })} /><br />
 
                                             <p className="fieldLabel">Password</p>
-                                            <input id="input" type="password" className="form-control" onChange={(e)=>this.setState ({password:e.target.value})}  /><br/>
+                                            <input id="input" type="password" className="form-control" onChange={(e) => this.setState({ password: e.target.value })} /><br />
 
                                             <button type="button" id="nextBtn" className="btn btn-default" onClick={this.signIn}>Next</button>
                                         </div>

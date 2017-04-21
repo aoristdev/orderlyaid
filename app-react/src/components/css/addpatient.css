@@ -62,7 +62,10 @@ textarea {
 #input {
     border-radius: 1.5px;  
 }
-
+.datetimepicker.k-input  {
+    border-radius: solid 1.5px rgba(237,234,237,.2);  
+    background: rgba(237,234,237,.2);
+}
 /*.rc-time-picker-input {
     width: 100%;
     position: relative;
