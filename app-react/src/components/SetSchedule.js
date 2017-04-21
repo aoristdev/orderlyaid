@@ -5,13 +5,16 @@ import 'rc-time-picker/assets/index.css'
 import './css/addpatient.css'
 import TimePicker from 'rc-time-picker'
 import moment from 'moment'
+// import DateTimePicker from 'datetimepicker'
+
+
 
 class SetSchedule extends React.Component {
     constructor(props) {
         super(props)
         this.save = this.save.bind(this)
         this.state = {
-            time_take:'',
+            time_take: '',
             dosage: '',
             interval: '',
             start_time: '',
@@ -20,12 +23,20 @@ class SetSchedule extends React.Component {
     }
 
     componentDidMount() {
-        //    let x = store.get('savedData',)
-        // let x = store.get('savedData')
-        window.$('#dtPicker').datetimepicker({
-            format: 'LT'
-        });
+    
+        //    window.$(document).ready(function () {
+                // create DateTimePicker from input HTML element
+                window.$("#datetimepicker").kendoDateTimePicker({
+                    value: new Date()
+                })
+            // });
+     
+        // window.$('#dtPicker').datetimepicker({
+        //     format: 'LT'
+      console.log(this.componentDidMount)
+       
     }
+   
 
     save() {
         let savedData = store.get('savedData')
@@ -50,32 +61,20 @@ class SetSchedule extends React.Component {
             <p className="stepTitle">Set your schedule.</p>
             <div className="form-group">
                 <p className="fieldLabel" >What time did you last take this medication?</p>
-                <input id="input" placeholder="00:00" type="text" className="form-control" value={this.state.time_taken} onChange={(e) => this.setState({time_taken: e.target.value})} /><br />
+                <input id="input" type="text" className="form-control" placeholder="00:00" value={this.state.time_taken} onChange={(e) => this.setState({ start_time: e.target.value })} /><br/>
 
                 <p className="fieldLabel">How many pills do you take each time??</p>
                 <input id="input" placeholder="ie: 2" type="text" className="form-control" value={this.state.dosage} onChange={(e) => this.setState({ dosage: e.target.value })} /><br />
 
-               {/*} <select className="selectpicker">
-                    <option>Mustard</option>
-                    <option>Ketchup</option>
-                    <option>Relish</option>
-                </select>*/}
 
                 <p className="fieldLabel">How many hours between each dose?</p>
-                <input id="input" type="text" className="form-control" placeholder="00:00" value={this.state.interval} onChange={(e) => this.setState({ interval: e.target.value })} /><br />
+                 <input id="input" type="text" style={{width:'100%'}} placeholder="00:00" className="form-control" value={this.state.interval} onChange={(e) => this.setState({ start_time: e.target.value })} /><br />
 
                 <p className="fieldLabel">What time do you wake up?</p>
-                <input id="input" type="text" className="form-control" placeholder="00:00" value={this.state.start_time} onChange={(e) => this.setState({ start_time: e.target.value })} /><br />
+                <input id="input" className="form-control" type="text" style={{width:'100%'}} placeholder="00:00" value={this.state.start_time} onChange={(e) => this.setState({ start_time: e.target.value })} /><br />
 
                 <p className="fieldLabel">What time do you go to bed?</p>
-                {/*<TimePicker placeholder="00:00" showSecond={false} onChange={(time) => {if (time) {this.setState({end_time: time.format('HH:mm')})}}} />*/}
-       
-                <div className="input-group date" id="dtPicker">
-                    <input type="text"  value={this.state.end_time} onChange={(e) => this.setState({ end_time: e.target.value })}className="form-control" />
-                    <span className="input-group-addon">
-                        <span className="glyphicon glyphicon-time"></span>
-                    </span>
-                </div><br />
+                 <input id="input" className="form-control" type="text" style={{width:'100%'}} placeholder="00:00" value={this.state.end_time} onChange={(e) => this.setState({ start_time: e.target.value })} /><br />
 
                 <button type="button" id="nextBtn" className="btn btn-default" onClick={this.save}>Add</button>
             </div>

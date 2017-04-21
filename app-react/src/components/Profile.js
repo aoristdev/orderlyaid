@@ -14,9 +14,9 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-         fetch('/rx/all?token=' + sessionStorage.getItem('token'))
+        fetch('/rx/all?token=' + sessionStorage.getItem('token'))
             .then(res => res.json())
-            .then(res => this.setState({info: res}))
+            .then(res => this.setState({ info: res }))
             .then(res => console.log(this.state.info))
     }
 
@@ -30,18 +30,18 @@ class Profile extends React.Component {
 
     render() {
         let info = this.state.info.map((medInfo, i) => {
-                return <div className="well" key={i}>
-                                    <div className="row">
-                                        <div className="col-sm-5">
-                                            <p className="medTime">{moment(medInfo.last_taken).format('h:mm a')}</p>
-                                            <p className="medDate">{moment(medInfo.last_taken).format(`dddd, MMM D`)}</p>
-                                           
-                                        </div>
-                                        <div className="col-sm-7">
-                                            <p className="medName">{medInfo.name}</p>
-                                        </div>
-                                    </div>
-                                </div>
+            return <div className="well" key={i}>
+                <div className="row">
+                    <div className="col-sm-5">
+                        <p className="medTime">{moment(medInfo.last_taken).format('h:mm a')}</p>
+                        <p className="medDate">{moment(medInfo.last_taken).format(`dddd, MMM D`)}</p>
+
+                    </div>
+                    <div className="col-sm-7">
+                        <p className="medName">{medInfo.name}</p>
+                    </div>
+                </div>
+            </div>
         })
         return <div>
             <div className="container-fluid">

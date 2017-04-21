@@ -18,8 +18,8 @@ class AddDescription extends React.Component {
         }
     }
     // componentDidMount() {
-        //  let x = store.set('savedData', {prescriptions:[]})
-        // let x = store.get('savedData')
+    //  let x = store.set('savedData', {prescriptions:[]})
+    // let x = store.get('savedData')
     //     console.log(x.name)
     // }
 
@@ -32,7 +32,7 @@ class AddDescription extends React.Component {
         savedData.prescriptions_attributes = [
             {
                 name: savedData.name,
-                instructions: this.state.instructions, 
+                instructions: this.state.instructions,
                 caution: this.state.caution,
                 notes: this.state.notes,
                 dosage: savedData.dosage,
@@ -62,7 +62,7 @@ class AddDescription extends React.Component {
 
         this.sendData()
     }
-    goToAddMedication(){
+    goToAddMedication() {
         browserHistory.push('/nav/profile')
     }
 

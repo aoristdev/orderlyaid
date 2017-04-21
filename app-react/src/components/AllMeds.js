@@ -16,25 +16,25 @@ class AllMeds extends React.Component {
             .then(res => console.log(this.state.info))
     }
     render() {
-         let info = this.state.info.map((medInfo, i) => {
-            return  <div className="panel-body dataBorder" key={i}>
-            <div className="row historyData">
-                <div className="col-sm-4">
-                <p className="text-name" id="textInfoName"><span className="textInfoNameTitle">Name: </span>{medInfo.name}</p> 
-                <p className="text-name" id="textInfoName"><span className="textInfoNameTitle">Dosage:</span> {medInfo.dosage}</p>
-                </div>
-                <div className="col-sm-4">
-                <p className="textAll" id="textInfo">{medInfo.total}</p>
-                </div>
-                <div className="col-sm-4">
-                <p className="textAll" id="textInfo">{medInfo.count}</p>
+        let info = this.state.info.map((medInfo, i) => {
+            return <div className="panel-body dataBorder" key={i}>
+                <div className="row historyData">
+                    <div className="col-sm-4">
+                        <p className="text-name" id="textInfoName"><span className="textInfoNameTitle">Name: </span>{medInfo.name}</p>
+                        <p className="text-name" id="textInfoName"><span className="textInfoNameTitle">Dosage:</span> {medInfo.dosage}</p>
+                    </div>
+                    <div className="col-sm-4">
+                        <p className="textAll" id="textInfo">{medInfo.total}</p>
+                    </div>
+                    <div className="col-sm-4">
+                        <p className="textAll" id="textInfo">{medInfo.count}</p>
+                    </div>
                 </div>
             </div>
-        </div>
         })
 
         return <div>
-         <p className="tablesTitles">Your Medications</p>
+            <p className="tablesTitles">Your Medications</p>
             <div className="row medTableTitle">
                 <div className="col-sm-4">
                     <p className="text-title">Medication</p>
@@ -46,7 +46,7 @@ class AllMeds extends React.Component {
                     <p className="text-title">Pills Remaining</p>
                 </div>
             </div>
-             {info}
+            {info}
         </div>
     }
 }

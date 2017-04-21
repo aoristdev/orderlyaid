@@ -3,13 +3,13 @@ import { browserHistory } from 'react-router'
 import './css/signup.css'
 
 class SignUp extends React.Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
-            display_name:'',
-            email:'',
-            mobile:'',
-            photo:'',
+            display_name: '',
+            email: '',
+            mobile: '',
+            photo: '',
         }
         this.signup = this.signup.bind(this)
         this.goToSignUp = this.goToSignUp.bind(this)
@@ -39,10 +39,10 @@ class SignUp extends React.Component {
             .then(response => response.json())
             .then(response => {
                 if (response.token) {
-                sessionStorage.setItem('token', response.token)
-                browserHistory.push('/new/medication')
-            }
-    })
+                    sessionStorage.setItem('token', response.token)
+                    browserHistory.push('/new/medication')
+                }
+            })
     }
     goToSignIn() {
         browserHistory.push('/signin')
@@ -57,7 +57,7 @@ class SignUp extends React.Component {
                     <div className="col-sm-8 col-sm-offset-2">
                         <div className="toggleBtns pull-right">
                             <button type="button" id="toggle" className="btn btn-link pull-right" onClick={this.goToSignUp}>Sign Up</button>
-                            <button type="button" id="toggle" className="btn btn-link pull-right"  onClick={this.goToSignIn}>Sign In</button>
+                            <button type="button" id="toggle" className="btn btn-link pull-right" onClick={this.goToSignIn}>Sign In</button>
                         </div>
                     </div>
                 </div>
@@ -70,16 +70,16 @@ class SignUp extends React.Component {
                                         <p className="signupTitle">Manage your medications in one place.</p>
                                         <div className="form-group">
                                             <p className="fieldLabel">Name</p>
-                                            <input id="input" type="text" className="form-control" onChange={(e)=>this.setState ({display_name:e.target.value})} /> <br/>
+                                            <input id="input" type="text" className="form-control" onChange={(e) => this.setState({ display_name: e.target.value })} /> <br />
 
                                             <p className="fieldLabel">Email Address</p>
-                                            <input id="input" type="email" className="form-control" onChange={(e)=>this.setState({email:e.target.value})} /><br/>
+                                            <input id="input" type="email" className="form-control" onChange={(e) => this.setState({ email: e.target.value })} /><br />
 
                                             <p className="fieldLabel">Mobile Number</p>
-                                            <input id="input" type="tel" className="form-control" onChange={(e)=>this.setState({mobile:e.target.value})} /><br/>
+                                            <input id="input" type="tel" className="form-control" onChange={(e) => this.setState({ mobile: e.target.value })} /><br />
 
                                             <p className="fieldLabel">Password</p>
-                                            <input id="input" type="password" className="form-control"  onChange={(e)=>this.setState({password:e.target.value})}/><br/>
+                                            <input id="input" type="password" className="form-control" onChange={(e) => this.setState({ password: e.target.value })} /><br />
 
                                             <button type="button" id="nextBtn" className="btn btn-default" onClick={this.signup}>Next</button>
                                         </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 import './css/nav.css'
 import md5 from 'blueimp-md5'
+import DropdownMenu from 'react-dd-menu';
 
 class Nav extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class Nav extends React.Component {
         this.getProfile = this.getProfile.bind(this)
         this.addNew = this.addNew.bind(this)
     }
-      componentWillMount(){
+    componentWillMount() {
         this.getProfile()
         // console.log(this.props)
     }
@@ -20,7 +21,7 @@ class Nav extends React.Component {
     getProfile() {
         fetch('/users/profile?token=' + sessionStorage.getItem('token'))
             .then(res => res.json())
-            .then(res => this.setState({...res}))
+            .then(res => this.setState({ ...res }))
             .then(res => console.log(this.state))
     }
 
@@ -28,7 +29,7 @@ class Nav extends React.Component {
         sessionStorage.removeItem('token')
         browserHistory.push('/signin')
     }
-        goToTodaysMeds() {
+    goToTodaysMeds() {
         browserHistory.push('/nav/profile/todaysmeds')
     }
 
@@ -39,11 +40,12 @@ class Nav extends React.Component {
         browserHistory.push('/nav/profile/allmeds')
     }
     addNew() {
-         browserHistory.push('/new/medication')
+        browserHistory.push('/new/medication')
     }
 
 
     render() {
+        
         return <div>
             <div className="mainNav container-fluid">
                 <div className="mainNav">
@@ -52,9 +54,9 @@ class Nav extends React.Component {
                             <p className="logo">OrderlyAid</p>
                         </div>
                         <div className="col-sm-6">
-                         <button id="singout" className="btn btn-default pull-right" onClick={this.signedout}>Log Out</button>
+                            <button id="singout" className="btn btn-default pull-right" onClick={this.signedout}>Log Out</button>
 
-                        <button id="addNew" className="btn btn-default pull-right" onClick={this.addNew}>Add New</button>
+                            <button id="addNew" className="btn btn-default pull-right" onClick={this.addNew}>Add New</button>
                         </div>
                     </div>
                 </div>
@@ -74,15 +76,15 @@ class Nav extends React.Component {
                     <div className="col-sm-2">
                         <p className="userName pull-right">{this.state.display_name}</p>
                     </div>
-                      <div className="col-sm-2 pull-right">
+                    <div className="col-sm-2 pull-right">
                         <img src={'https://gravatar.com/avatar/' + md5(this.state.email)} className="userImg pull-right" alt="..." />
                     </div>
                 </div>
             </div>
 
-            
+
             {this.props.children}
-            
+
         </div>
     }
 }
