@@ -22,8 +22,6 @@ gem 'hour' #, github: 'davegregg/hour', branch: 'dev'
 group :development, :test do
   gem 'figaro'
   gem 'rack-cors'
-  gem 'minitest-rails'
-  gem 'factory_girl_rails', '~> 4.5'
   gem 'brakeman'
   gem 'guard-brakeman'
   gem 'pry-rails'
