@@ -25,15 +25,6 @@ ActiveRecord::Schema.define(version: 20170420182013) do
     t.index ["prescription_id"], name: "index_archived_reminders_on_prescription_id", using: :btree
   end
 
-  create_table "prescription_to_weekday_joins", force: :cascade do |t|
-    t.integer  "prescription_id"
-    t.integer  "weekday_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["prescription_id"], name: "index_prescription_to_weekday_joins_on_prescription_id", using: :btree
-    t.index ["weekday_id"], name: "index_prescription_to_weekday_joins_on_weekday_id", using: :btree
-  end
-
   create_table "prescriptions", force: :cascade do |t|
     t.integer  "user_id"
     t.boolean  "active",               default: true
@@ -57,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170420182013) do
 
   create_table "reminders", force: :cascade do |t|
     t.integer  "prescription_id"
-    t.time     "transmit_time"
+    t.datetime "transmit_time"
     t.string   "single_use_token"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -75,16 +66,7 @@ ActiveRecord::Schema.define(version: 20170420182013) do
     t.string   "display_name"
   end
 
-  create_table "weekdays", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "archived_reminders", "prescriptions"
-  add_foreign_key "prescription_to_weekday_joins", "prescriptions"
-  add_foreign_key "prescription_to_weekday_joins", "weekdays"
   add_foreign_key "prescriptions", "users"
   add_foreign_key "reminders", "prescriptions"
 end
