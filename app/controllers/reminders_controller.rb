@@ -25,7 +25,7 @@ class RemindersController < ApplicationController
 
   def daily_schedule
     render json: {
-      daily_schedule:
+      daily_schedules:
         current_user.reminders.map do |reminder|
           {
             prescription_id: reminder.prescription.id,
