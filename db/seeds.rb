@@ -1,3 +1,4 @@
+
 def generate_partial_prescription
   Prescription.new(
     name: FFaker::HealthcareIpsum.word,

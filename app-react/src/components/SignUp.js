@@ -14,8 +14,6 @@ class SignUp extends React.Component {
         this.signup = this.signup.bind(this)
         this.goToSignUp = this.goToSignUp.bind(this)
         this.goToSignIn = this.goToSignIn.bind(this)
-
-
     }
     signup() {
         // console.log(this.state)
