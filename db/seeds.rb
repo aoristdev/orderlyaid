@@ -74,23 +74,3 @@ test_user.save!
   user.prescriptions << random_rxes << [interval_per_day_rx, set_time_per_day_rx]
   user.save!
 end
-
-Rx = Prescription
-
-# gal = Rx.new(name: "Gal Gadot", description: "Multilingual", physical_description: "Attractive", caution: "CAUTION: HOT! DO NOT TOUCH.", total: 60, count: 60)
-
-# response["results"][0]["openfda"]["generic_name|brand_name|substance_name"] == "Omeprazole" (case-insensitive)
-# API key for OpenFDA: bBxbkpf6rdhvKOyXSP99gMJj7vKV0Mqs2PqA8Bbq
-
-# https://api.fda.gov/drug/label.json?search=ibuprofen&limit=5  ## results not in sensible order
-# https://api.fda.gov/drug/label.json\?search\=openfda.generic_name:ibuprofen  ## doesn't return something like Viagra, but does Naproxen
-# https://rxnav.nlm.nih.gov/REST/rxcui.json?name=ibuprofen
-# https://rxnav.nlm.nih.gov/REST/rxcui/5640.json
-
-
-# simple list: require 'net/http'; require 'json';  gimme = -> limit, drug { JSON.parse(Net::HTTP.get(URI("https://api.fda.gov/drug/label.json?search=openfda.brand_name:#{drug}&limit=#{limit.to_s}")))["results"].map{|result| "#{result['openfda']['brand_name'][0]} (#{result['openfda']['generic_name'][0]}) from #{result['openfda']['manufacturer_name'][0]}"} }
-# full result: require 'net/http'; require 'json';  gimme = -> limit, drug { JSON.parse(Net::HTTP.get(URI("https://api.fda.gov/drug/label.json?search=openfda.brand_name:#{drug}&limit=#{limit.to_s}")))["results"].map{|result| result.with_indifferent_access}}
-# gimme.(5, "ibuprofen")
-
-# 1.+->(*){!_ ? _: 2}.(!())
-# => 3
