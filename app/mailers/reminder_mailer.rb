@@ -12,9 +12,9 @@ class ReminderMailer < ApplicationMailer
 
   def generic(recipient, subject, body)
     @user = recipient
+    @body = message
     mail(to: @user.email,
-         subject: subject,
-         body:    body)
+         subject: subject)
   end
 
 end

@@ -49,7 +49,7 @@ task reminder_spooler: :environment do
     body = "It's time to take your #{rx.dosage} #{rx.name}!\n\n" +
            "Tell us you took it: #{reminder_taken_url}\n\n" +
            "Tell us you missed it: #{reminder_missed_url}\n\n" +
-           "—OrderlyAid"
+           "— OrderlyAid"
 
     send_sms(user, body)
     send_email(user, rx, body, "An email was sent to #{user.email} for reminder with token #{reminder.single_use_token}.")
