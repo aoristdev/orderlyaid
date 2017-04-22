@@ -18,6 +18,7 @@ test_user = User.new(
   email: 'merp@example.com',
   phone: '+1' + '8126712638', #' + Faker::Number.number(10).to_s,
   display_name: Faker::Name.name,
+  optout_sms: false,
   optin_email: true
 )
 
