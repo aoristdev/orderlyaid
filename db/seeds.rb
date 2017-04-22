@@ -18,6 +18,7 @@ test_user = User.new(
   email: 'merp@example.com',
   phone: '+1' + '8126712638', #' + Faker::Number.number(10).to_s,
   display_name: Faker::Name.name,
+  optin_email: true
 )
 
 rx_name = ['Flintstones', 'Cialis', 'Viagra', 'Durian', 'iApathy by Apple']
@@ -37,7 +38,7 @@ test_user.prescriptions = rx_name.map.with_index do |rx, i|
     dosage: [0.5, 1.0, 2.0, 3.0].sample,
     total: pill_count = [*(5..10), 20, 30, 40, 50, 60, 100, 150, 200, 300].sample,
     count: pill_count,
-    start_time: Hour::Hour.new([*(4..9)].sample, [0, 15, 30].sample).to_time, #Time.parse(0,1,1,[*(4..9)].sample, [0, 15, 30].sample,0,0)
+    start_time: Hour::Hour.new([*(4..9)].sample, [0, 15, 30].sample).to_time,
     end_time: Hour::Hour.new([*(19..23)].sample, [0, 15, 30].sample).to_time,
     interval: Hour::Hour.new([*(1..5)].sample, 0).to_time,
     active: pill_count > 0
@@ -51,6 +52,8 @@ test_user.save!
     email: Faker::Internet.email,
     phone: '+1' + Faker::Number.number(10).to_s,
     display_name: Faker::Name.name,
+    optout_sms: true,
+    optin_email: false
   )
 
   random_rxes = (1..5).collect do

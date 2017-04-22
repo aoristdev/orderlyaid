@@ -1,6 +1,8 @@
 desc "Sends reminders"
 task reminder_spooler: :environment do
 
+  puts 'BEGIN ReminderSpooler'
+
   include Rails.application.routes.url_helpers
 
   reminder_state_endpoint = "#{ENV['WEBSITE_URL']}/reminders/state"
@@ -28,9 +30,11 @@ task reminder_spooler: :environment do
   end
 
   def archive_then_destroy!(reminder)
-    ArchivedReminder.create!(transmit_time: DateTime.now,
-                             scheduled_time: reminder.transmit_time,
-                             single_use_token: reminder.single_use_token)
+    reminder.prescription.archived_reminders <<
+      ArchivedReminder.new(transmit_time: DateTime.now,
+                           scheduled_time: reminder.transmit_time,
+                           single_use_token: reminder.single_use_token)
+    reminder.prescription.save!
     reminder.destroy!
   end
 
@@ -39,8 +43,8 @@ task reminder_spooler: :environment do
     user = rx.user
 
     if user.optout_sms && !user.optin_email
-      user.reminders.each do |reminder|
-        archive_then_destroy(reminder)
+      user.reminders.each do |rem|
+        archive_then_destroy!(rem)
       end
     end
 
@@ -64,5 +68,7 @@ task reminder_spooler: :environment do
   end
 
   #QUESTION: probably needs a second scheduler that catches the queue when the primary scheduler fails?
+
+  puts 'END ReminderSpooler'
 
 end
