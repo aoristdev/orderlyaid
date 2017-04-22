@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   end
 
   scope  '/reminders' do
-    get  '/archived',       to: 'reminders#archived'
-    get  '/daily_schedule', to: 'reminders#daily_schedule'
-    post '/state',          to: 'reminders#state'
+    get  '/archived',    to: 'reminders#archived'
+    get  '/later_today', to: 'reminders#later_today'
+    post '/state',       to: 'reminders#state'
   end
 
   get '/:param1(/:param2)(/:param3)' => 'application#static'

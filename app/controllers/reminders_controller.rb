@@ -20,20 +20,34 @@ class RemindersController < ApplicationController
   end
 
   def archived
-    render json: { archived_reminders: current_user.archived_reminders }
+    render json: current_user.archived_reminders
   end
 
-  def daily_schedule
-    render json: {
-      daily_schedules:
-        current_user.reminders.map do |reminder|
+  def later_today
+    daily_schedule =
+      current_user.reminders.map do |reminder|
+        {
+          prescription_id: reminder.prescription.id,
+          name: reminder.prescription.name,
+          daily_schedule:
+            reminder.prescription.daily_schedule.split(',').map do |ev|
+              ev_in_time = Time.parse(ev)
+              Time.now < ev_in_time ? ev_in_time : nil
+            end.compact
+        }
+      end
+    remaining_schedule =
+      daily_schedule.map do |rx|
+        rx[:daily_schedule].map do |ev|
           {
-            prescription_id: reminder.prescription.id,
-            prescription_name: reminder.prescription.name,
-            daily_schedule: reminder.prescription.daily_schedule
+            scheduled_time: ev,
+            name: rx[:name],
+            prescription_id: rx[:prescription_id]
           }
         end
-    }
+      end.flatten
+    json = remaining_schedule.sort_by{ |key, val| key[:scheduled_time] }
+    render json: json
   end
 
   private
