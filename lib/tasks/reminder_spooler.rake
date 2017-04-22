@@ -28,9 +28,11 @@ task reminder_spooler: :environment do
   end
 
   def archive_then_destroy!(reminder)
-    ArchivedReminder.create!(transmit_time: DateTime.now,
-                             scheduled_time: reminder.transmit_time,
-                             single_use_token: reminder.single_use_token)
+    reminder.prescription.archived_reminders <<
+      ArchivedReminder.new(transmit_time: DateTime.now,
+                           scheduled_time: reminder.transmit_time,
+                           single_use_token: reminder.single_use_token)
+    reminder.prescription.save!
     reminder.destroy!
   end
 
@@ -40,7 +42,7 @@ task reminder_spooler: :environment do
 
     if user.optout_sms && !user.optin_email
       user.reminders.each do |reminder|
-        archive_then_destroy(reminder)
+        archive_then_destroy!(reminder)
       end
     end
 
