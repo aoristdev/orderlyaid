@@ -3,20 +3,21 @@ class RemindersController < ApplicationController
   before_action :require_user
 
   def state
-    archived_reminder = ArchivedReminder.find_by(single_use_token: reminder_params[:t]) ||
+    archived_reminder = ArchivedReminder.find_by(single_use_token: reminder_params[:single_use_token]) ||
                         ArchivedReminder.find(reminder_params[:id]) ||
-                        Prescription.find(reminder_params[:prescription_id]).reminders.first ||
+                        Prescription.find(reminder_params[:prescription_id]).archived_reminders.last
     archived_reminder.update_attributes(
       state:
         case reminder_params[:state]
-        when 'missed', 'm' then 'Missed'
+        when 'missed', 'm'
+          'Missed'
         else
           archived_reminder.prescription.count -= archived_reminder.prescription.dosage
           archived_reminder.prescription.save!
           'Taken'
         end
     )
-    redirect_to '/nav/profile'
+    redirect_to 'https://orderlyaid.herokuapp.com/nav/profile'
   end
 
   def archived
@@ -58,6 +59,7 @@ class RemindersController < ApplicationController
                                     :t, :single_use_token)
     reminder_params[:state] ||= reminder_params[:s]
     reminder_params[:single_use_token] ||= reminder_params[:t]
+    reminder_params
   end
 
 end
