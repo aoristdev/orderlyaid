@@ -1,7 +1,7 @@
 desc "Sends reminders"
 task reminder_spooler: :environment do
 
-  puts 'BEGIN ReminderSpooler'
+  puts '### BEGIN ReminderSpooler ###'
 
   include Rails.application.routes.url_helpers
 
@@ -69,6 +69,6 @@ task reminder_spooler: :environment do
 
   #QUESTION: probably needs a second scheduler that catches the queue when the primary scheduler fails?
 
-  puts 'END ReminderSpooler'
+  puts '### END ReminderSpooler ###'
 
 end
