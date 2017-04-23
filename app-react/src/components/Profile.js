@@ -14,7 +14,7 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/rx/all?token=' + sessionStorage.getItem('token'))
+        fetch('/reminders/later_today?token=' + sessionStorage.getItem('token'))
             .then(res => res.json())
             .then(res => this.setState({ info: res }))
             .then(res => console.log(this.state.info))
@@ -33,8 +33,8 @@ class Profile extends React.Component {
             return <div className="well" key={i}>
                 <div className="row">
                     <div className="col-sm-5">
-                        <p className="medTime">{moment(medInfo.last_taken).format('h:mm a')}</p>
-                        <p className="medDate">{moment(medInfo.last_taken).format(`dddd, MMM D`)}</p>
+                        <p className="medTime">{moment(medInfo.scheduled_time).format('h:mm a')}</p>
+                        <p className="medDate">{moment(medInfo.scheduled_time).format(`dddd, MMM D`)}</p>
 
                     </div>
                     <div className="col-sm-7">
