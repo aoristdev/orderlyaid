@@ -25,10 +25,10 @@ class MedHistory extends React.Component {
                         <p className="text-name" id="textInfoName"><span className="textInfoNameTitle">Taken: </span>yes</p>
                     </div>
                     <div className="col-sm-4">
-                        <p className="textHisCount" id="textInfo"><span className="textInfoNameTitle">Count: {medInfo.count}</span></p>
+                        <p className="textHisCount" id="textInfo"><span className="textInfoNameTitle">{medInfo.dosage} Caspules</span></p>
                     </div>
                     <div className="col-sm-4">
-                        <p className="textHis" id="textInfo">{moment(medInfo.last_taken).format('MMM D h:mm a')}</p>
+                        <p className="textHis" id="textInfo">{moment(medInfo.last_taken).format('h:mm a, MMM D')}</p>
                     </div>
                 </div>
             </div>

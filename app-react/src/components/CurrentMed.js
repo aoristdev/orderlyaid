@@ -17,7 +17,7 @@ class CurrentMed extends React.Component {
             <a name={'currentMed' + this.props.index}></a>
             <p className="medicationName">{this.props.name}</p>
             <p className="dosage">{this.props.dosage} Capsules</p>
-            <a href="#" id="listItem" className="list-group-item">
+            <a id="listItem" className="list-group-item">
                 <p className="curentMedHeading">Instructions</p>
                 <p className="currentMedInfo">{this.props.instructions}</p>
             </a>

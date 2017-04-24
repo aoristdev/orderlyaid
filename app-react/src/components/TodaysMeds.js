@@ -47,7 +47,7 @@ class TodaysMeds extends React.Component {
         return <div>
             <div className="medDisplay row">
                 <div className="col-sm-6 col-sm-offset-3">
-                    <p className="currentTime">{moment(this.state.last_taken).format('H:MM')}</p>
+                    <p className="currentTime">{moment(this.state.last_taken).format('h:mm a')}</p>
                     <p className="todaysDate">{moment(this.state.last_taken).format('dddd, MMMM D')}</p>
                     <p className="text-center">{currentMedLinks}</p><br />
                 </div>
