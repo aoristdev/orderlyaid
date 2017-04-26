@@ -3,7 +3,15 @@ class Prescription < ApplicationRecord
   has_many :reminders
   has_many :archived_reminders
 
-  validates :interval,   format: hours = { with: /\d\d{,2}:[0-5]\d/ }
+  validates :name, presence: true,
+                   length: {maximum: 30}
+  validates :dosage, presence: true,
+                     numericality: {less_than: 30}
+  validates :total, presence: true,
+                    numericality: {only_integer: true, less_than: 1001}
+  validates :count, presence: true,
+                    numericality: {less_than: 1001}
+  validates :interval,   format: hours = {with: /\d\d{,2}:[0-5]\d/}
   validates :start_time, format: hours
   validates :end_time,   format: hours
 

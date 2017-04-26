@@ -9,10 +9,10 @@ class User < ApplicationRecord
 
   validates :email, presence: true,
                     uniqueness: true,
-                    format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
+                    format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}
   validates :phone, presence: true,
-                    length: { maximum: 17 },
-                    format: { with: /\A\+?1? ?\(?\d{3}\)? ?\-?\d{3}\-? ?\d{4}\z/ }
+                    length: {maximum: 17},
+                    format: {with: /\A\+?1? ?\(?\d{3}\)? ?\-?\d{3}\-? ?\d{4}\z/}
   validates_length_of :display_name, maximum: 30, too_long: 'Pick a shorter display name'
 
 end
