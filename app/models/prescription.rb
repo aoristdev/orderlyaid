@@ -25,9 +25,24 @@ class Prescription < ApplicationRecord
                       less_than: 1001,
                       message: 'We will not accept a total pill count larger than 1000.'
                     }
-  validates :interval,   format: hours = {with: /\d\d{,2}:[0-5]\d/}
-  validates :start_time, format: hours
-  validates :end_time,   format: hours
+  validates :interval,   presence: {
+                           message: 'You must provide an interval for this prescription.'
+                         },
+                         format: hours = {with: /\d\d{,2}:[0-5]\d/}
+  validates :start_time, presence: {
+                           message: 'You must provide an start time for this prescription.'
+                         },
+                         format: hours
+  validates :end_time,   presence: {
+                           message: 'You must provide an start time for this prescription.'
+                         },
+                         format: hours
+
+  # with_options if: ->(rx) { Hour::Hour.from_time(rx.interval).to_seconds.zero? } do |daily_set_time|
+  #   daily_set_time.validates :start_time, if: ->(rx) { rx.start_time == rx.end_time }
+  #                                         # message: 'Once-a-day prescriptions must have a set time (identical start_time and end_time values).'
+  # end
+
   # validates :last_taken
 
   before_save :create_reminder
