@@ -7,12 +7,33 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token
 
-  validates :email, presence: true,
-                    uniqueness: true,
-                    format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
-  validates :phone, presence: true,
-                    length: { maximum: 17 },
-                    format: { with: /\A\+?1? ?\(?\d{3}\)? ?\-?\d{3}\-? ?\d{4}\z/ }
-  validates_length_of :display_name, maximum: 30, too_long: 'Pick a shorter display name'
+  validates :email, presence: {
+                      message: 'You must provide an email address.'
+                    },
+                    uniqueness: {
+                      message: 'You must provide an unique email address.'
+                    },
+                    format: {
+                      with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i,
+                      message: 'You must provide a valid email address.'
+                    }
+  validates :phone, presence: {
+                      message: 'You must provide a phone number.'
+                    },
+                    length: {
+                      maximum: 17,
+                      message: 'We will not accept a phone number longer than 17 characters.'
+                    },
+                    format: {
+                      with: /\A\+?1? ?\(?\d{3}\)? ?\-?\d{3}\-? ?\d{4}\z/,
+                      message: 'You must provide a valid U.S. phone number.'
+                    }
+  validates :display_name, presence: {
+                             message: 'You must provide a display name.'
+                           },
+                           length: {
+                             maximum: 30,
+                             message: 'We will not accept a display name longer than 30 characters.'
+                           }
 
 end

@@ -32,7 +32,6 @@ class PrescriptionsController < ApplicationController
   private
 
   def rx_params
-    # rx_params =
       params.permit(
         :id,
         :name, :description, :physical_description,
@@ -41,12 +40,6 @@ class PrescriptionsController < ApplicationController
         :interval, :start_time, :end_time, :last_taken, :daily_schedule,
         :created_at, :updated_at
       )
-
-    # rx_params[:last_taken] =     Time.parse(rx_params[:last_taken])         if rx_params[:last_taken]
-    # rx_params[:interval]   = Hour::Hour.new(rx_params[:interval]).to_time   if rx_params[:interval]
-    # rx_params[:start_time] = Hour::Hour.new(rx_params[:start_time]).to_time if rx_params[:start_time]
-    # rx_params[:end_time]   = Hour::Hour.new(rx_params[:end_time]).to_time   if rx_params[:end_time]
-    # rx_params
   end
 
   def find_rx

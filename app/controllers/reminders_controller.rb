@@ -47,7 +47,7 @@ class RemindersController < ApplicationController
           }
         end
       end.flatten
-    json = remaining_schedule.sort_by{ |key, val| key[:scheduled_time] }
+    json = remaining_schedule.sort_by{ |key, _| key[:scheduled_time] }
     render json: json
   end
 
