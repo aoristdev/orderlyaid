@@ -39,9 +39,8 @@
 
 .profileNav {
     background: white;
-    padding: 5px;
     box-shadow: 0 8px 6px -6px rgba(204,219,220,.5);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .userImg {
@@ -50,20 +49,24 @@
     display: block;
     text-align: center;
     padding: none;
-    margin-top: 10px;
+    margin-top: 8px;
     margin-bottom: 10px;
     margin-right: 72px;
+    margin-left: 5px;
     border-radius: 50px;
    
 }
 .userName{
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    font-size: 20px;
-    padding-top: 30px;
+    font-size: 18px;
+    padding-top: 40px;
     margin-right: -330px;
      color: rgba(34,55,85,.8);
     
+}
+#tabname {
+    padding-top: 6px;
 }
 #medLinks{
     margin: 5px;
@@ -73,6 +76,7 @@
     font-size: 13px;
     border-radius: 9px;
 }
+
 .tabs{
     padding-top: 23px;
     margin-left: 75px;

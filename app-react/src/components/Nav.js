@@ -68,8 +68,8 @@ class Nav extends React.Component {
                         <div className="tabs">
                             <ul className="nav nav-pills">
                                 <li role="presentation" id="tabname" onClick={this.goToTodaysMeds}><a>Current</a></li>
-                                <li role="presentation" onClick={this.goToHistory}><a>Archived</a></li>
-                                <li role="presentation" onClick={this.goToAllMeds}><a>All</a></li>
+                                <li role="presentation" id="tabname" onClick={this.goToHistory}><a>Archived</a></li>
+                                <li role="presentation" id="tabname" onClick={this.goToAllMeds}><a>All</a></li>
                             </ul>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ class Nav extends React.Component {
                         <p className="userName pull-right">{this.state.display_name}</p>
                     </div>
                     <div className="col-sm-2 pull-right">
-                        <img src={'https://gravatar.com/avatar/' + md5(this.state.email)} className="userImg pull-right" alt="..." />
+                        <img src={'https://gravatar.com/avatar/?d=https://robohash.org/person' + md5(this.state.email)} className="userImg pull-right" alt="..." />                 
                     </div>
                 </div>
             </div>
