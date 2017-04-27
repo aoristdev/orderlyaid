@@ -14,6 +14,7 @@ class Prescription < ApplicationRecord
   validates :interval,   format: hours = {with: /\d\d{,2}:[0-5]\d/}
   validates :start_time, format: hours
   validates :end_time,   format: hours
+  # validates :last_taken
 
   before_save :create_reminder
 
@@ -37,10 +38,13 @@ class Prescription < ApplicationRecord
     # window_as_range_in_time = self.start_time..self.end_time
     # occurrences = (window_in_hours / (interval.hours + interval.minutes_in_base10)).floor
 
+
+# what if interval is zero?
+# what if start_time and end_time are zero?
     next_event =
       unless interval.zero?
         window_as_range = (start_time.to_base10..end_time.to_base10) || (0.0...24.0)
-        daily_schedule = schedule[window_as_range] || [start_time.to_time]
+        daily_schedule = schedule[window_as_range] || [start_time.on_this_day]
 
         window_today_as_range = (start_time_today_in_hour.to_base10..end_time.to_base10) || (0.0...24.0)
         todays_schedule = schedule[window_today_as_range]
@@ -48,12 +52,12 @@ class Prescription < ApplicationRecord
           event > Time.now
         end
       else
-        interval = 24.0
+        daily_schedule = [start_time.on_this_day]
         start_time.on_this_day if start_time.on_this_day > Time.now
       end
     next_event ||= start_time.on_this_day.tomorrow
 
-    self.daily_schedule = daily_schedule.join(',') if daily_schedule
+    self.daily_schedule = daily_schedule.join(',')
 
     self.reminders << Reminder.new(transmit_time: next_event)
   end
