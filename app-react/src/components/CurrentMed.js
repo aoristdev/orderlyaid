@@ -9,6 +9,10 @@ class CurrentMed extends React.Component {
         }
     }
     componentDidMount() {
+         fetch('/reminders/state?token=' + sessionStorage.getItem('token'))
+            .then(res => res.json())
+            .then(res => this.setState({ info: res }))
+            .then(res => console.log(this.state.info))
         console.log(this.props)
     }
 
