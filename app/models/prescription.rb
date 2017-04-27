@@ -3,14 +3,28 @@ class Prescription < ApplicationRecord
   has_many :reminders
   has_many :archived_reminders
 
-  validates :name, presence: true,
-                   length: {maximum: 30}
-  validates :dosage, presence: true,
-                     numericality: {less_than: 30}
-  validates :total, presence: true,
-                    numericality: {only_integer: true, less_than: 1001}
-  validates :count, presence: true,
-                    numericality: {less_than: 1001}
+  validates :name, presence: {
+                     message: 'You must provide a name for this prescription.'
+                   },
+                   length: {
+                     maximum: 30,
+                     message: 'A prescription name cannot be longer than 30 characters.'
+                   }
+  validates :dosage, presence: {
+                       message: 'You must provide a dosage for this prescription.'
+                     },
+                     numericality: {
+                       less_than: 31,
+                       message: 'We will not accept a dosage larger than 30.'
+                     }
+  validates :total, presence: {
+                      message: 'You must provide a total pill count for this prescription.'
+                    },
+                    numericality: {
+                      only_integer: true,
+                      less_than: 1001,
+                      message: 'We will not accept a total pill count larger than 1000.'
+                    }
   validates :interval,   format: hours = {with: /\d\d{,2}:[0-5]\d/}
   validates :start_time, format: hours
   validates :end_time,   format: hours
@@ -38,19 +52,19 @@ class Prescription < ApplicationRecord
     # window_as_range_in_time = self.start_time..self.end_time
     # occurrences = (window_in_hours / (interval.hours + interval.minutes_in_base10)).floor
 
-
-# what if interval is zero?
-# what if start_time and end_time are zero?
     next_event =
       unless interval.zero?
-        window_as_range = (start_time.to_base10..end_time.to_base10) || (0.0...24.0)
+        window_as_range =
+          unless start_time.to_base10 == end_time.to_base10
+            start_time.to_base10..end_time.to_base10
+          else
+            0.0...24.0
+          end
         daily_schedule = schedule[window_as_range] || [start_time.on_this_day]
 
-        window_today_as_range = (start_time_today_in_hour.to_base10..end_time.to_base10) || (0.0...24.0)
+        window_today_as_range = (start_time_today_in_hour.to_base10..end_time.to_base10) || 0.0...24.0
         todays_schedule = schedule[window_today_as_range]
-        todays_schedule.detect do |event|
-          event > Time.now
-        end
+        todays_schedule.detect{ |event| event > Time.now }
       else
         daily_schedule = [start_time.on_this_day]
         start_time.on_this_day if start_time.on_this_day > Time.now
