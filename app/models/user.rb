@@ -28,6 +28,12 @@ class User < ApplicationRecord
                       with: /\A\+?1? ?\(?\d{3}\)? ?\-?\d{3}\-? ?\d{4}\z/,
                       message: 'You must provide a valid U.S. phone number.'
                     }
-  validates_length_of :display_name, maximum: 30, too_long: 'Pick a shorter display name'
+  validates :display_name, presence: {
+                             message: 'You must provide a display name.'
+                           },
+                           length: {
+                             maximum: 30,
+                             message: 'We will not accept a display name longer than 30 characters.'
+                           }
 
 end
