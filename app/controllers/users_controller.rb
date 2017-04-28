@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     user   = User.find_by(token: token)
     user ||= User.find_by(email: user_params[:email])
                  &.authenticate(user_params[:password])
-    render json: user || error(user.errors.full_messages)
+    render json: user || error
   end
 
   def show
