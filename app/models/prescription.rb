@@ -72,8 +72,7 @@ class Prescription < ApplicationRecord
             0.0...24.0
           end
         daily_schedule = schedule[window_as_range] || [start_time.on_this_day]
-
-        window_today_as_range = (start_time_today_in_hour.to_base10..end_time.to_base10) || 0.0...24.0
+        window_today_as_range = (start_time_today_in_hour.to_base10..end_time.to_base10) || (0.0...24.0)
         todays_schedule = schedule[window_today_as_range]
         todays_schedule.detect{ |event| event > Time.now }
       else

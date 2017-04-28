@@ -1,7 +1,7 @@
 
 def generate_partial_prescription
   Prescription.new(
-    name: FFaker::HealthcareIpsum.word,
+    name: FFaker::HealthcareIpsum.word.first(15),
     description: FFaker::HealthcareIpsum.sentence,
     physical_description: FFaker::HealthcareIpsum.phrase,
     instructions: FFaker::HealthcareIpsum.sentence,
