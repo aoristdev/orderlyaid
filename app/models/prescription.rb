@@ -34,7 +34,7 @@ class Prescription < ApplicationRecord
                          },
                          format: hours
   validates :end_time,   presence: {
-                           message: 'You must provide an start time for this prescription.'
+                           message: 'You must provide an end time for this prescription.'
                          },
                          format: hours
 
@@ -62,10 +62,6 @@ class Prescription < ApplicationRecord
           Hour::Hour.from_base10(event).on_this_day
         end
       end
-
-    # window_in_hours = (self.end_time - self.start_time) / 3600
-    # window_as_range_in_time = self.start_time..self.end_time
-    # occurrences = (window_in_hours / (interval.hours + interval.minutes_in_base10)).floor
 
     next_event =
       unless interval.zero?

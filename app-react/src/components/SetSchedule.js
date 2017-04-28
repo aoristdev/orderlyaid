@@ -12,14 +12,14 @@ class SetSchedule extends React.Component {
         super(props)
         this.save = this.save.bind(this)
         this.state = {
-            time_take: '',
+            time_taken: '',
             dosage: '',
             interval: '',
             start_time: '',
             end_time: '',
         }
     }
-   
+
 
     save() {
         let savedData = store.get('savedData')
@@ -33,7 +33,7 @@ class SetSchedule extends React.Component {
         store.set('savedData', savedData)
         // savedData = Object.assign(savedData, this.state)
         // store.set('savedData', savedData)
-        console.log("End of SetSachedule save")
+        console.log("End of SetSchedule save")
         console.log(store.get('savedData'))
         browserHistory.push('/new/description')
     }
