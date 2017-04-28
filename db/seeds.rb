@@ -1,7 +1,7 @@
 
 def generate_partial_prescription
   Prescription.new(
-    name: FFaker::HealthcareIpsum.word,
+    name: FFaker::HealthcareIpsum.word.first(15),
     description: FFaker::HealthcareIpsum.sentence,
     physical_description: FFaker::HealthcareIpsum.phrase,
     instructions: FFaker::HealthcareIpsum.sentence,
@@ -15,18 +15,19 @@ end
 
 test_user = User.new(
   password: 'merp',
-  email: 'merp@example.com',
-  phone: '+1' + '8126712638', #' + Faker::Number.number(10).to_s,
-  display_name: Faker::Name.name,
+  email: 'davegregg@gmail.com',
+  phone: '+1' + '8127839804',
+  display_name: 'David Gregg',
   optout_sms: false,
   optin_email: true
 )
 
-rx_name = ['Flintstones', 'Cialis', 'Viagra', 'Durian', 'iApathy by Apple']
-rx_description = ['Basically candy.', 'Makes you poop, but happy about it.', 'Makes it so you can\'t ignore your wife.', 'Tastes like expired cantelope rinds and vidalia onion marmalade, but is nonetheless delicious.', 'Eliminates emotions, so you can focus on what matters.']
-rx_physical_description = ['Assorted colors, shaped like cartoon characters', 'Looks just like a kiddy poo.', 'Small and blue', 'Yellow and spikey. About the size of a human head.', 'Designer white, egg-shaped, and trimmed with gold, with concave dimples on either end for precision single-finger guidance into your rectum.']
-rx_instructions = ['Chew it up, buttercup.', 'Dissolve it in a grain alcohol of your choice.', 'Crush and sniff it.', 'Apply hatchet. Peel open in halves. Scoop with fingers. Shovel into your carcass.', 'Administer rectally after your morning pachoulli vape.']
-rx_caution = ['May cause suicidal feelings in small children. Don\'t permit them to grow accustomed to jumping, no matter how adamant they are.', 'May turn skin green, though some patients have reported being happy about this.', 'May cause an erection lasting more than 4 hours. Call your doctor if you aren\'t a pornstar.', 'May pierce skull if falling at high rate of speed.', 'Do not administer in public, around minors, or in the presence of strong magnets.']
+rx_name = ['Adderall', 'Prilosec', 'Cialis', 'Glucophage', 'Xanax']
+rx_description = ['For my ADHD', 'For my heartburn', 'So I can\'t accidentally ignore my wife', 'To lower my blood sugar', 'For anxiety and panic attacks']
+rx_physical_description = ['Little sky-blue circles with a symbol that looks like a funky dollar sign', 'Long skinny tubes with a deep-ocean blue-green color which is lighter on the tips', 'Looks like a golden goose egg.', 'Perfect matte white circle with weird tapered edges', 'Small, peach-colored and oblong with what looks like butt cheeks on the back']
+rx_instructions = ['Take two in the morning with whole milk or breakfast.', 'Take one three times a day with a meal.', 'Take one as desired, no more frequently than once every 8 hours. I\'ll take my with dinner every night. Let\'s spice things up this week.', 'Take once a day with a meal.', 'Take one just after waking and one just after lunch.']
+rx_caution = ['Has to be taken in the morning and early afternoon, otherwise it can cause insomnia.', 'Doesn\'t start working as fast as some other antacids like Tums, Rolaids, or Maalox.', 'Can cause flushing, headache, and dizziness, or sudden hearing and vision changes.', 'Most people will have nausea, indigestion, or diarrhea in the first few weeks. You can minimize this if you take it on a full stomach.', 'Can cause memory problems, drowsiness, dizziness, and confusion.']
+rx_note = ['Tastes funny, take with orange fiber drink.', 'Lots of water.', 'Don\'t take if I expect to watch horror.', 'Always check levels first.', 'Can take one more if I have a panic attack. But ALWAYS keep track.']
 
 test_user.prescriptions = rx_name.map.with_index do |rx, i|
   Prescription.new(
@@ -35,7 +36,7 @@ test_user.prescriptions = rx_name.map.with_index do |rx, i|
     physical_description: rx_physical_description[i],
     instructions: rx_instructions[i],
     caution: rx_caution[i],
-    notes: "#{Faker::Name.first_name} doesn't like this one. Grind it up into some food.",
+    notes: rx_note[i],
     dosage: [0.5, 1.0, 2.0, 3.0].sample,
     total: pill_count = [*(5..10), 20, 30, 40, 50, 60, 100, 150, 200, 300].sample,
     count: pill_count,

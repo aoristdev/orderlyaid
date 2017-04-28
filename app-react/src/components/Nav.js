@@ -45,7 +45,7 @@ class Nav extends React.Component {
 
 
     render() {
-        
+
         return <div>
             <div className="mainNav container-fluid">
                 <div className="mainNav">
@@ -77,7 +77,7 @@ class Nav extends React.Component {
                         <p className="userName pull-right">{this.state.display_name}</p>
                     </div>
                     <div className="col-sm-2 pull-right">
-                        <img src={'https://gravatar.com/avatar/?d=https://robohash.org/person' + md5(this.state.email)} className="userImg pull-right" alt="..." />                 
+                        <img src={'https://gravatar.com/avatar/' + md5(this.state.email) + '?d=%3A%2F%2Frobohash.org%2Fperson'} className="userImg pull-right" alt="..." />                 
                     </div>
                 </div>
             </div>
